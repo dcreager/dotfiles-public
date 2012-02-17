@@ -6,7 +6,7 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 SOLARIZED_THEME=light
 
-plugins=(git)
+plugins=(path redjack git)
 
 typeset -U path
 source $ZSH/oh-my-zsh.sh

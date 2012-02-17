@@ -7,4 +7,5 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(git)
 
+typeset -U path
 source $ZSH/oh-my-zsh.sh

@@ -1,0 +1,12 @@
+if $(gls &>/dev/null); then
+    LS="gls --color"
+elif $(ls --color &>/dev/null); then
+    LS="ls --color"
+else
+    LS="ls -G"
+fi
+
+alias ls="$LS -F"
+alias ll="$LS -lAF"
+alias l="$LS -lF"
+alias la="$LS -AF"

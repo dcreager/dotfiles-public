@@ -1,0 +1,2 @@
+# Override some oh-my-zsh aliases
+alias gca="git commit -v --amend"

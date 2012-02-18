@@ -7,3 +7,6 @@
 [submodule ".vim/bundle/css-color.symlink"]
 	path = .vim/bundle/css-color.symlink
 	url = git://github.com/ap/vim-css-color.git
+[submodule ".vim/bundle/ctrlp.symlink"]
+	path = .vim/bundle/ctrlp.symlink
+	url = git://github.com/kien/ctrlp.vim.git

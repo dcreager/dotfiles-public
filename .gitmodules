@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/javascript.symlink"]
 	path = .vim/bundle/javascript.symlink
 	url = git://github.com/pangloss/vim-javascript.git
+[submodule ".vim/bundle/markdown.symlink"]
+	path = .vim/bundle/markdown.symlink
+	url = git://github.com/tpope/vim-markdown.git

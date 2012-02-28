@@ -1,0 +1,3 @@
+if which vim &>/dev/null; then
+    export EDITOR=$(which vim)
+fi

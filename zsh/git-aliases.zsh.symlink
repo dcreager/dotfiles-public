@@ -6,3 +6,10 @@ alias gs="git status --short"
 unalias gsd
 unalias gsr
 unalias gss
+
+# Use the hub command for interacting with github.  (There's a copy in
+# this repo's bin directory, so we don't need to check whether it's
+# installed in any system paths.)
+unalias g
+function g() {hub "$@"}
+function git() {hub "$@"}

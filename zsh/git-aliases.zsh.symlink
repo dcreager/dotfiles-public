@@ -1,8 +1,11 @@
 # Override some oh-my-zsh aliases
 alias gca="git commit -v --amend"
+alias gdc="git diff --cached -C -M"
+alias gdi="git diff -C -M"
 alias glg="git log --stat"
 alias glgg="git log --graph"
 alias gs="git status --short"
+alias gx="gitx --all"
 unalias gsd
 unalias gsr
 unalias gss

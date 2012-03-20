@@ -11,7 +11,8 @@ alias gpr="git pull-request"
 alias grff="git flow release finish -s"
 alias grfs="git flow release start"
 alias gs="git status --short"
-alias gx="gitx --all"
+alias gx="git log --graph --oneline --decorate --all"
+alias gxx="gitx --all"
 unalias gsd
 unalias gsr
 unalias gss

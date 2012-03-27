@@ -1,0 +1,4 @@
+CMD=$(which virtualenvwrapper.sh)
+if [ -n "$CMD" ]; then
+    source "$CMD"
+fi

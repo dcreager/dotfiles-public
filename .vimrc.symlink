@@ -12,6 +12,7 @@ set tw=72
 set number
 syntax enable
 filetype plugin indent on
+colorscheme solarized
 
 " Disable CMake build directories
 set wildignore+=*/.build/*

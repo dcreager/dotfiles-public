@@ -3,7 +3,6 @@ set lines=55
 syntax enable
 set background=dark
 let g:solarized_visibility="low"
-colorscheme solarized
 set guioptions-=T   " no toolbar
 
 set keymodel=

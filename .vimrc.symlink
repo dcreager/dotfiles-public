@@ -13,6 +13,7 @@ set number
 syntax enable
 filetype plugin indent on
 colorscheme solarized
+set colorcolumn=+1
 
 " Disable CMake build directories
 set wildignore+=*/.build/*

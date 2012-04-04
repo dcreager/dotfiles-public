@@ -9,4 +9,4 @@ plugins=(path redjack git git-flow)
 
 typeset -U path
 source $ZSH/oh-my-zsh.sh
-source $HOME/zsh/themes/configurable-blinks.zsh-theme
+source $HOME/zsh/themes/dcreager.zsh-theme

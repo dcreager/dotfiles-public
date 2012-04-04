@@ -3,6 +3,7 @@ call pathogen#infect()
 
 set hidden
 map <silent> <C-n> :noh<CR>
+nmap <leader>6 <C-^>
 set hls is ic scs
 set ts=8 sw=4 sts=4 et
 nmap <leader>il :set sw=8 sts=8 noet<CR>

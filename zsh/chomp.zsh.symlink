@@ -1,0 +1,1 @@
+alias chomp="perl -pe 'chomp if eof'"

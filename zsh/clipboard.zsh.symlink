@@ -5,3 +5,5 @@ if [ $(uname -s) = Linux ]; then
         function pbcopy() { echo "Did you forget to install xsel?"; return 1 }
     fi
 fi
+
+alias pbc="chomp | pbcopy"

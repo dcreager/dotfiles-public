@@ -1,0 +1,7 @@
+if [ $(uname -s) = Linux ]; then
+    if which xsel >/dev/null 2>/dev/null; then
+        alias pbcopy="xsel -ib"
+    else
+        function pbcopy() { echo "Did you forget to install xsel?"; return 1 }
+    fi
+fi

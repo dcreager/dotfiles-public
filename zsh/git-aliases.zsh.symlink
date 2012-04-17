@@ -1,5 +1,6 @@
 # Override some oh-my-zsh aliases
 alias gca="git commit -v --amend"
+alias gd="git describe"
 alias gdc="git diff --cached -C -M"
 alias gdi="git diff -C -M"
 alias gf="git fetch"
@@ -13,11 +14,11 @@ alias grff="git flow release finish -s"
 alias grfs="git flow release start"
 alias grv="git remote -v"
 alias gs="git status --short"
+alias gss="git log -n 1 --format=%H"
 alias gx="git log --graph --oneline --decorate --all"
 alias gxx="gitx --all"
 unalias gsd
 unalias gsr
-unalias gss
 
 # Use the hub command for interacting with github.  (There's a copy in
 # this repo's bin directory, so we don't need to check whether it's

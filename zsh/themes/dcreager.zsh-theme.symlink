@@ -1,8 +1,35 @@
 # https://github.com/blinks zsh theme
 
+# This theme works with both the "dark" and "light" variants of the
+# Solarized color schema.  Set the SOLARIZED_THEME variable to one of
+# these two values to choose.  If you don't specify, we'll assume you're
+# using the "dark" variant.
+
+if [ -n "$MONOCHROME_PROMPT" ]; then
+    Fblue=
+    Fcyan=
+    Fgreen=
+    Fred=
+    Fyellow=
+    Kbkg=
+    reset="%b"
+else
+    Fblue="%F{blue}"
+    Fcyan="%F{cyan}"
+    Fgreen="%F{green}"
+    Fred="%F{red}"
+    Fyellow="%F{yellow}"
+    reset="%f%k%b"
+
+    case ${SOLARIZED_THEME:-dark} in
+        light) Kbkg="%K{white}";;
+        *)     Kbkg="%K{black}";;
+    esac
+fi
+
 function _prompt_char() {
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-    echo "%{%F{blue}%}±%{%f%k%b%}"
+    echo "%{$Fblue%}±%{$reset%}"
   else
     echo ' '
   fi
@@ -13,27 +40,19 @@ function virtualenv_prompt_info() {
     echo "$ZSH_THEME_VIRTUALENV_PROMPT_PREFIX$(basename $VIRTUAL_ENV)$ZSH_THEME_VIRTUALENV_PROMPT_SUFFIX"
 }
 
-# This theme works with both the "dark" and "light" variants of the
-# Solarized color schema.  Set the SOLARIZED_THEME variable to one of
-# these two values to choose.  If you don't specify, we'll assume you're
-# using the "dark" variant.
 
-case ${SOLARIZED_THEME:-dark} in
-    light) bkg=white;;
-    *)     bkg=black;;
-esac
 
-ZSH_THEME_GIT_PROMPT_PREFIX=" [%{%B%F{blue}%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{%f%k%b%K{${bkg}}%B%F{green}%}]"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{%F{red}%}✧%{%f%k%b%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=" [%{%B$Fblue%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset$Kbkg%B$Fgreen%}]"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$Fred%}✧%{$reset%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 VIRTUALENV_DISABLE_PROMPT=1
-ZSH_THEME_VIRTUALENV_PROMPT_PREFIX=" %{%b%F{red}%K{${bkg}}%}✦"
-ZSH_THEME_VIRTUALENV_PROMPT_SUFFIX="%{%f%k%b%K{${bkg}}%B%F{green}%}"
+ZSH_THEME_VIRTUALENV_PROMPT_PREFIX=" %{%b$Fred$Kbkg%}✦"
+ZSH_THEME_VIRTUALENV_PROMPT_SUFFIX="%{$reset$Kbkg%B$Fgreen%}"
 
-PROMPT='%{%f%k%b%}
-%{%K{${bkg}}%B%F{cyan}%}%m%{%B%F{green}%} %{%b%F{yellow}%K{${bkg}}%}%~%{%B%F{green}%}$(git_prompt_info)$(virtualenv_prompt_info)%E%{%f%k%b%}
-%{%K{${bkg}}%}$(_prompt_char)%{%K{${bkg}}%} %(!.#.$)%{%f%k%b%} '
+PROMPT='%{$reset%}
+%{$Kbkg%B$Fcyan%}%m%{%B$Fgreen%} %{%b$Fyellow$Kbkg%}%~%{%B$Fgreen%}$(git_prompt_info)$(virtualenv_prompt_info)%E%{$reset%}
+%{$Kbkg%}$(_prompt_char)%{$Kbkg%} %(!.#.$)%{$reset%} '
 
 unset RPROMPT

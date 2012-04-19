@@ -1,6 +1,6 @@
-if $(gls &>/dev/null); then
+if gls &>/dev/null; then
     LS="gls --color"
-elif $(ls --color &>/dev/null); then
+elif ls --color &>/dev/null; then
     LS="ls --color"
 else
     LS="ls -G"

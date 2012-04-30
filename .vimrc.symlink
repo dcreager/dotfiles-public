@@ -81,6 +81,7 @@ au BufRead,BufNewFile *.do        set ft=sh
 au BufRead,BufNewFile *.json      set ft=javascript
 au BufRead,BufNewFile *.rockspec  set ft=lua
 au BufRead,BufNewFile *.wfd       set ft=lua
+au BufRead,BufNewFile *.wfd.error set ft=lua
 
 " Remember last location in file, but not for commit messages.
 " see :help last-position-jump

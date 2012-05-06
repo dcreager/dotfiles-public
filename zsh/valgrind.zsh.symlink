@@ -1,4 +1,5 @@
-VALGRIND_OPTS=
+VALGRIND_OPTS=--suppressions=$HOME/.valgrind/libcork.supp
+
 if [ $(uname -s) = Darwin ]; then
     case $(uname -r) in
         11.*)

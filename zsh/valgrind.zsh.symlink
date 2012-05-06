@@ -1,0 +1,8 @@
+VALGRIND_OPTS=
+if [ $(uname -s) = Darwin ]; then
+    case $(uname -r) in
+        11.*)
+            export VALGRIND_OPTS="$VALGRIND_OPTS --suppressions=$HOME/.valgrind/darwin11.supp"
+            ;;
+    esac
+fi

@@ -24,3 +24,15 @@
    fun:fwrite
    fun:srunner_send_evt
 }
+
+{
+   check-04
+   Memcheck:Leak
+   fun:malloc
+   fun:__smakebuf
+   fun:__swsetup
+   fun:__sfvwrite
+   fun:fwrite
+   fun:stdout_lfun
+   fun:srunner_send_evt
+}

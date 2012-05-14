@@ -10,3 +10,7 @@ if [ $(uname -s) = Darwin ]; then
             ;;
     esac
 fi
+
+if [ $(uname -s) = Linux ]; then
+    export VALGRIND_OPTS="$VALGRIND_OPTS --suppressions=$HOME/.valgrind/linux.supp"
+fi

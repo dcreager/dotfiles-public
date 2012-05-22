@@ -1,6 +1,7 @@
 VALGRIND_OPTS="
     --suppressions=$HOME/.valgrind/libcork.supp
     --suppressions=$HOME/.valgrind/check.supp
+    --suppressions=$HOME/.valgrind/lj.supp
 "
 
 if [ $(uname -s) = Darwin ]; then

@@ -1,5 +1,6 @@
 # Override some oh-my-zsh aliases
 alias gca="git commit -v --amend"
+alias gcb="git current-branch"
 alias gd="git describe"
 alias gdc="git diff --cached -C -M"
 alias gdi="git diff -C -M"

@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Prints out the name of the current branch.
+
+git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'

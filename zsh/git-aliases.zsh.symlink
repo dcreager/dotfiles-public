@@ -17,6 +17,7 @@ alias grv="git remote -v"
 alias gs="git status --short"
 alias gsc="git log -n 1 --format=%H | pbc"
 alias gss="git log -n 1 --format=%H"
+alias gup="git upstream"
 alias gx="git log --graph --oneline --decorate --all"
 alias gxx="gitx --all"
 unalias gsd

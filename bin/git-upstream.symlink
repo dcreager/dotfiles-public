@@ -1,0 +1,8 @@
+#!/bin/bash
+
+remote_name="$1"
+: ${remote_name:=origin}
+
+curr_branch=$(git current-branch)
+
+git branch --set-upstream "${curr_branch}" "${remote_name}/${curr_branch}"

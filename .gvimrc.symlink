@@ -13,5 +13,5 @@ if has("gui_macvim")
   set fuopt=maxvert,maxhorz
   map <D-F> :set fu!<CR>
 elseif has("gui_gtk2")
-  set guifont=Menlo\ 10
+  set guifont=Menlo\ 10.5
 endif

@@ -1,1 +1,1 @@
-au BufNewFile,BufRead *.t set filetype=cram
+au BufNewFile,BufRead *.t,*.t.in set filetype=cram

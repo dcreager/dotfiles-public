@@ -36,8 +36,9 @@ function quit()
    awful.util.spawn("gnome-session-quit --no-prompt")
 end
 
-theme_path = "/usr/share/awesome/themes/default/theme.lua"
+theme_path = awful.util.getdir("config") .. "/themes/default/theme.lua"
 beautiful.init(theme_path)
+awesome.font = beautiful.font
 
 browser = "chromium"
 im = "pidgin"
@@ -309,7 +310,7 @@ for s = 1, screen.count() do
    mytasklist.buttons)
 
    -- Create the wibox
-   mywibox[s] = awful.wibox({position = "top", screen = s})
+   mywibox[s] = awful.wibox({position = "top", screen = s, height = 24})
    -- Add widgets to the wibox - order matters
    mywibox[s].widgets = {
       {

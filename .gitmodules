@@ -25,3 +25,9 @@
 [submodule ".vim/bundle/solarized.symlink"]
 	path = .vim/bundle/solarized.symlink
 	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule ".config/awesome/shifty.symlink"]
+	path = .config/awesome/shifty.symlink
+	url = git://github.com/bioe007/awesome-shifty.git
+[submodule ".config/awesome/vicious.symlink"]
+	path = .config/awesome/vicious.symlink
+	url = http://git.sysphere.org/vicious

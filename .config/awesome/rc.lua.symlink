@@ -172,6 +172,11 @@ shifty.config.apps = {
       slave = true,
    },
    {
+      match = {"Gorilla"},
+      sticky = true,
+      float = true,
+   },
+   {
       match = {""},
       buttons = awful.util.table.join(
       awful.button({}, 1, function (c) client.focus = c; c:raise() end),

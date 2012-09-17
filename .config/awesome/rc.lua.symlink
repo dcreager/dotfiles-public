@@ -31,6 +31,11 @@ do
       end)
 end
 
+-- Log out of the gnome session when quitting Awesome
+function quit()
+   awful.util.spawn("gnome-session-quit --no-prompt")
+end
+
 theme_path = "/usr/share/awesome/themes/default/theme.lua"
 beautiful.init(theme_path)
 
@@ -208,7 +213,7 @@ myawesomemenu = {
    {"edit config",
    editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua"},
    {"restart", awesome.restart},
-   {"quit", awesome.quit}
+   {"quit", quit}
 }
 
 mymainmenu = awful.menu {
@@ -386,7 +391,7 @@ end),
 -- Standard program
 awful.key({modkey,}, "Return", function() awful.util.spawn(terminal) end),
 awful.key({modkey, "Control"}, "r", awesome.restart),
-awful.key({modkey, "Shift"}, "q", awesome.quit),
+awful.key({modkey, "Shift"}, "q", quit),
 
 awful.key({modkey,}, "l", function() awful.tag.incmwfact(0.05) end),
 awful.key({modkey,}, "h", function() awful.tag.incmwfact(-0.05) end),

@@ -4,6 +4,10 @@ syntax enable
 set background=dark
 let g:solarized_visibility="low"
 set guioptions-=T   " no toolbar
+set guioptions-=l   " no scrollbars
+set guioptions-=r
+set guioptions-=L
+set guioptions-=R
 
 set keymodel=
 set gcr=n:blinkon0

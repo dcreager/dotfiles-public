@@ -65,6 +65,8 @@ layouts = {
 -- Define if we want to use titlebar on all applications.
 use_titlebar = false
 
+shifty.config.sloppy = false
+
 -- Shifty configured tags.
 shifty.config.tags = {
    w1 = {

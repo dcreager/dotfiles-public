@@ -87,12 +87,14 @@ shifty.config.tags = {
       spawn       = im,
    },
    ["7:web"] = {
-      layout      = awful.layout.suit.tile.bottom,
+      layout      = awful.layout.suit.tile,
       mwfact      = 0.65,
-      exclusive   = true,
-      max_clients = 1,
+      ncol        = 2,
       position    = 7,
-      spawn       = browser,
+      run         = function (t)
+         awful.util.spawn(browser)
+         awful.util.spawn(terminal)
+      end,
    },
    ["8:mail"] = {
       layout    = awful.layout.suit.tile,
@@ -176,6 +178,7 @@ shifty.config.apps = {
       match = {"Gorilla"},
       sticky = true,
       float = true,
+      intrusive = true,
    },
    {
       match = {""},
@@ -200,7 +203,7 @@ shifty.config.apps = {
 --  * run : function to exec when shifty creates a new tag
 --  * all other parameters (e.g. layout, mwfact) follow awesome's tag API
 shifty.config.defaults = {
-   layout = awful.layout.suit.tile.bottom,
+   layout = awful.layout.suit.tile,
    ncol = 1,
    mwfact = 0.60,
    floatBars = true,

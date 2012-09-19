@@ -219,7 +219,7 @@ end
 
 -- Create a textbox widget
 add_widget {
-   awful.widget.textclock({align = "right"}, "  %a %b %d <b>%H:%M:%S</b>  ", 1)
+   awful.widget.textclock({align = "right"}, "  %a %b %d <b>%H:%M</b>  ", 1)
 }
 
 -- CPU widget

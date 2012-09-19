@@ -231,6 +231,21 @@ end
 tm:start()
 tm:emit_signal("timeout")
 
+-- Battery widget
+batwidget = widget { type = "textbox" }
+batfmt = " $1$2% $3 "
+tm = timer { timeout = 1 }
+do
+   local helpers = require "vicious.helpers"
+   local bat = require "vicious.widgets.bat"
+   tm:add_signal("timeout", function ()
+      local values = bat(nil, "BAT0")
+      batwidget.text = helpers.format(batfmt, values)
+   end)
+end
+tm:start()
+tm:emit_signal("timeout")
+
 -- Create a laucher widget and a main menu
 myawesomemenu = {
    {"manual", terminal .. " -e man awesome"},
@@ -339,6 +354,7 @@ for s = 1, screen.count() do
       mytextclock,
       s == 1 and mysystray or nil,
       netwidget,
+      batwidget,
       mytasklist[s],
       layout = awful.widget.layout.horizontal.rightleft,
    }

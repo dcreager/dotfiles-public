@@ -267,7 +267,7 @@ add_widget { netwidget }
 
 -- Battery widget
 batwidget = widget { type = "textbox" }
-batfmt = " $1$2% $3 "
+batfmt = " <b>$1</b>$2% $3 "
 tm = timer { timeout = 1 }
 do
    local helpers = require "vicious.helpers"

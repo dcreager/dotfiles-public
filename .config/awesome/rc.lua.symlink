@@ -213,7 +213,8 @@ shifty.config.defaults = {
 
 --  Wibox
 -- Create a textbox widget
-mytextclock = awful.widget.textclock({align = "right"})
+mytextclock = awful.widget.textclock({align = "right"},
+   " %a %b %d <b>%H:%M:%S</b>  ", 1)
 
 -- Network monitor widget
 netwidget = widget({ type = "textbox" })

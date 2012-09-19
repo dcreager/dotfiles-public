@@ -217,7 +217,19 @@ mytextclock = awful.widget.textclock({align = "right"},
    " %a %b %d <b>%H:%M:%S</b>  ", 1)
 
 -- Network monitor widget
-netwidget = widget({ type = "textbox" })
+netwidget = widget { type = "textbox" }
+netfmt = " <b>↓</b>${total down_kb}kb <b>↑</b>${total up_kb}kb  "
+tm = timer { timeout = 1 }
+do
+   local helpers = require "vicious.helpers"
+   local net = require "vicious.contrib.net"
+   tm:add_signal("timeout", function ()
+      local values = net(nil)
+      netwidget.text = helpers.format(netfmt, values)
+   end)
+end
+tm:start()
+tm:emit_signal("timeout")
 
 -- Create a laucher widget and a main menu
 myawesomemenu = {
@@ -325,8 +337,8 @@ for s = 1, screen.count() do
       },
       mylayoutbox[s],
       mytextclock,
-      netwidget,
       s == 1 and mysystray or nil,
+      netwidget,
       mytasklist[s],
       layout = awful.widget.layout.horizontal.rightleft,
    }

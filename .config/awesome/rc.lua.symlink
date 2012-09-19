@@ -212,9 +212,42 @@ shifty.config.defaults = {
 }
 
 --  Wibox
+widgets = { layout=awful.widget.layout.horizontal.rightleft }
+function add_widget(w)
+   widgets[#widgets+1] = w[1]
+end
+
 -- Create a textbox widget
-mytextclock = awful.widget.textclock({align = "right"},
-   " %a %b %d <b>%H:%M:%S</b>  ", 1)
+add_widget {
+   awful.widget.textclock({align = "right"}, "  %a %b %d <b>%H:%M:%S</b>  ", 1)
+}
+
+-- CPU widget
+local cpu = require "vicious.widgets.cpu"
+cpuwidgets = {}
+cpu_count = #cpu(nil) - 1
+for i = cpu_count, 1, -1 do
+   cpuwidgets[i] = awful.widget.progressbar()
+   cpuwidgets[i]:set_width(6)
+   cpuwidgets[i]:set_vertical(true)
+   cpuwidgets[i]:set_background_color('#494B4F')
+   cpuwidgets[i]:set_color('#AECF96')
+   cpuwidgets[i]:set_gradient_colors({ '#AECF96', '#88A175', '#FF5656' })
+   add_widget { cpuwidgets[i].widget }
+end
+
+tm = timer { timeout = 1 }
+do
+   local helpers = require "vicious.helpers"
+   tm:add_signal("timeout", function ()
+      local values = cpu(nil)
+      for i = 1, cpu_count do
+         cpuwidgets[i]:set_value(values[i+1] / 100)
+      end
+   end)
+end
+tm:start()
+tm:emit_signal("timeout")
 
 -- Network monitor widget
 netwidget = widget { type = "textbox" }
@@ -230,6 +263,7 @@ do
 end
 tm:start()
 tm:emit_signal("timeout")
+add_widget { netwidget }
 
 -- Battery widget
 batwidget = widget { type = "textbox" }
@@ -245,6 +279,7 @@ do
 end
 tm:start()
 tm:emit_signal("timeout")
+add_widget { batwidget }
 
 -- Create a laucher widget and a main menu
 myawesomemenu = {
@@ -351,10 +386,8 @@ for s = 1, screen.count() do
          layout = awful.widget.layout.horizontal.leftright
       },
       mylayoutbox[s],
-      mytextclock,
       s == 1 and mysystray or nil,
-      netwidget,
-      batwidget,
+      widgets,
       mytasklist[s],
       layout = awful.widget.layout.horizontal.rightleft,
    }

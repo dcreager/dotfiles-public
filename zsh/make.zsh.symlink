@@ -1,0 +1,4 @@
+if [ $(uname -s) = Linux ]; then
+    cpus=$(cat /proc/cpuinfo | grep '^processor' | wc -l)
+    export MAKEFLAGS="$MAKEFLAGS -j$((cpus * 2))"
+fi

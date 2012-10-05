@@ -1,1 +1,2 @@
---dir=/usr/local/stow
+--dir=/stow
+--target=/

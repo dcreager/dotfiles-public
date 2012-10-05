@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# If we're in a CMake build directory, the default package name is the name of
+# the parent directory.  Otherwise it's the name of the current directory.
+
+if [ -z "$PKG" ]; then
+    if [ -f CMakeCache.txt ]; then
+        PKG=$(basename $(dirname "$PWD"))
+    else
+        PKG=$(basename "$PWD")
+    fi
+fi
+
+case "$1" in
+    install)
+        DESTDIR="/stow/$PKG" make install
+        stow "$PKG"
+        ;;
+
+    uninstall)
+        stow -D "$PKG"
+        rm -rf "/stow/$PKG"
+        ;;
+
+    *)
+        echo "Unknown command $1"
+        exit 1
+        ;;
+esac

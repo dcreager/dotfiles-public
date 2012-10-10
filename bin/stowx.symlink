@@ -1,13 +1,14 @@
 #!/bin/bash
 
 # If we're in a CMake build directory, the default package name is the name of
-# the parent directory.  Otherwise it's the name of the current directory.
+# the parent directory.  Otherwise it's the name of the current directory, with
+# any version suffix removed.
 
 if [ -z "$PKG" ]; then
     if [ -f CMakeCache.txt ]; then
         PKG=$(basename $(dirname "$PWD"))
     else
-        PKG=$(basename "$PWD")
+        PKG=$(basename "$PWD" | sed -e 's/-[0-9.]*//')
     fi
 fi
 

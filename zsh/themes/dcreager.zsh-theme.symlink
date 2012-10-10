@@ -51,8 +51,11 @@ VIRTUAL_ENV_DISABLE_PROMPT=1
 ZSH_THEME_VIRTUALENV_PROMPT_PREFIX=" %{%b$Fred$Kbkg%}✦"
 ZSH_THEME_VIRTUALENV_PROMPT_SUFFIX="%{$reset$Kbkg%B$Fgreen%}"
 
+ZSH_THEME_AWS_PROMPT_PREFIX=" %{%b$Fred$Kbkg%}‡"
+ZSH_THEME_AWS_PROMPT_SUFFIX="%{$reset$Kbkg%B$Fgreen%}"
+
 PROMPT='%{$reset%}
-%{$Kbkg%B$Fcyan%}%m%{%B$Fgreen%} %{%b$Fyellow$Kbkg%}%~%{%B$Fgreen%}$(git_prompt_info)$(virtualenv_prompt_info)%E%{$reset%}
+%{$Kbkg%B$Fcyan%}%m%{%B$Fgreen%} %{%b$Fyellow$Kbkg%}%~%{%B$Fgreen%}$(git_prompt_info)$(aws_prompt_info)$(virtualenv_prompt_info)%E%{$reset%}
 %{$Kbkg%}$(_prompt_char)%{$Kbkg%} %(!.#.$)%{$reset%} '
 
 unset RPROMPT

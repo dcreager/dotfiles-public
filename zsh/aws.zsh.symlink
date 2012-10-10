@@ -1,0 +1,33 @@
+aws () {
+    local PERSONA="$1"
+    local PERSONA_FILE="$HOME/.aws/$PERSONA"
+
+    if [ -z "$PERSONA" ]; then
+        echo "Must specify a persona"
+        return 1
+    fi
+
+    if [ "$PERSONA" = none ]; then
+        unset AWS_PERSONA
+        unset AWS_ACCESS_KEY
+        unset AWS_SECRET_KEY
+        return
+    fi
+
+    if [ ! -e "$PERSONA_FILE" ]; then
+        echo "Persona $PERSONA doesn't exist"
+        return 1
+    fi
+
+    source "$PERSONA_FILE"
+    AWS_PERSONA="$PERSONA"
+}
+
+aws_prompt_info () {
+    [ -n "$AWS_PERSONA" ] || return
+    echo "$ZSH_THEME_AWS_PROMPT_PREFIX$AWS_PERSONA$ZSH_THEME_AWS_PROMPT_SUFFIX"
+}
+
+ZSH_THEME_AWS_PROMPT_PREFIX=
+ZSH_THEME_AWS_PROMPT_SUFFIX=
+aws none

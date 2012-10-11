@@ -81,6 +81,7 @@ au FileType html    setlocal sw=2 sts=2
 au FileType lua     setlocal formatoptions-=t sw=3 sts=3
 au FileType python  setlocal formatoptions-=t
 au FileType ragel   setlocal formatoptions-=t
+au FileType yaml    setlocal sw=2 sts=2
 
 au BufRead,BufNewFile PKGBUILD    set ft=sh
 au BufRead,BufNewFile *.do        set ft=sh

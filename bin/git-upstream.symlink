@@ -5,4 +5,4 @@ remote_name="$1"
 
 curr_branch=$(git current-branch)
 
-git branch --set-upstream "${curr_branch}" "${remote_name}/${curr_branch}"
+git branch -u "${remote_name}/${curr_branch}"

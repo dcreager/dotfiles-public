@@ -31,3 +31,6 @@
 [submodule ".config/awesome/vicious.symlink"]
 	path = .config/awesome/vicious.symlink
 	url = http://git.sysphere.org/vicious
+[submodule ".vim/bundle/puppet.symlink"]
+	path = .vim/bundle/puppet.symlink
+	url = git://github.com/rodjek/vim-puppet.git

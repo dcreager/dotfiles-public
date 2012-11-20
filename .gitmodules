@@ -33,4 +33,4 @@
 	url = http://git.sysphere.org/vicious
 [submodule ".vim/bundle/puppet.symlink"]
 	path = .vim/bundle/puppet.symlink
-	url = git://github.com/rodjek/vim-puppet.git
+	url = git@github.com:dcreager/vim-puppet.git

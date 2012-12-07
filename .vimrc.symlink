@@ -22,6 +22,9 @@ endif
 " Disable CMake build directories
 set wildignore+=*/.build/*
 
+" Disable Python build directories
+set wildignore+=*/build/lib/*
+
 " Disable cached Python modules
 set wildignore+=*/__pycache__/*,*.pyc,*.pyo
 

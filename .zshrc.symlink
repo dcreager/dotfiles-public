@@ -15,3 +15,4 @@ plugins=(path redjack git git-flow gitfast)
 typeset -U path
 source $ZSH/oh-my-zsh.sh
 source $HOME/zsh/themes/dcreager.zsh-theme
+unsetopt correct_all

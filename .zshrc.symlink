@@ -4,6 +4,7 @@ CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 SOLARIZED_THEME=light
+GITFAST_USE_OHMYZSH_PROMPT=1
 
 autoload -U is-at-least
 if ! is-at-least 4.3.9; then

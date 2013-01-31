@@ -13,7 +13,7 @@ alias gg="git grep"
 alias gmn="git merge --no-ff"
 alias glg="git log --stat"
 alias glgg="git log --graph"
-alias gpr="git pull-request"
+alias gpr="hub pull-request"
 alias grv="git remote -v"
 alias gs="git status --short"
 alias gsc="git log -n 1 --format=%H | pbc"
@@ -23,12 +23,3 @@ alias gx="git log --graph --oneline --decorate --all"
 alias gxx="gitx --all"
 unalias gsd
 unalias gsr
-
-# Use the hub command for interacting with github.  (There's a copy in
-# this repo's bin directory, so we don't need to check whether it's
-# installed in any system paths.)
-if which ruby >/dev/null 2>&1; then
-    unalias g
-    function g() {hub "$@"}
-    function git() {hub "$@"}
-fi

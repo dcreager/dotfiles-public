@@ -11,7 +11,7 @@ if ! is-at-least 4.3.9; then
     MONOCHROME_PROMPT=1
 fi
 
-plugins=(path redjack git git-flow gitfast)
+plugins=(path gempath redjack git git-flow gitfast)
 
 typeset -U path
 source $ZSH/oh-my-zsh.sh

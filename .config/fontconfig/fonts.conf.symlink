@@ -5,18 +5,15 @@
   <edit mode="assign" name="rgba">
    <const>none</const>
   </edit>
- </match>
- <match target="font">
+  <edit mode="assign" name="autohint">
+   <bool>true</bool>
+  </edit>
   <edit mode="assign" name="hinting">
    <bool>true</bool>
   </edit>
- </match>
- <match target="font">
   <edit mode="assign" name="hintstyle">
    <const>hintslight</const>
   </edit>
- </match>
- <match target="font">
   <edit mode="assign" name="antialias">
    <bool>true</bool>
   </edit>

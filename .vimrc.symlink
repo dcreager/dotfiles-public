@@ -19,6 +19,9 @@ if exists('+colorcolumn')
     set colorcolumn=+1
 endif
 
+" Disable nanoc output directory
+set wildignore+=*/.output/*
+
 " Disable CMake build directories
 set wildignore+=*/.build/*
 

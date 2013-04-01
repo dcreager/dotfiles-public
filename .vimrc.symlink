@@ -28,9 +28,6 @@ set wildignore+=*/build/lib/*
 " Disable cached Python modules
 set wildignore+=*/__pycache__/*,*.pyc,*.pyo
 
-" Disable buzzy build directories
-set wildignore+=*/.buzzy/*
-
 " Disable output and VCS files
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem
 
@@ -85,6 +82,7 @@ au FileType htmldjango  setlocal sw=2 sts=2
 au FileType lua     setlocal formatoptions-=t sw=3 sts=3
 au FileType python  setlocal formatoptions-=t
 au FileType ragel   setlocal formatoptions-=t
+au FileType ruby    setlocal sw=2 sts=2
 au FileType yaml    setlocal sw=2 sts=2
 
 au BufRead,BufNewFile PKGBUILD    set ft=sh

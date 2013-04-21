@@ -4,6 +4,8 @@
 # the parent directory.  Otherwise it's the name of the current directory, with
 # any version suffix removed.
 
+PKG="$2"
+
 if [ -z "$PKG" ]; then
     if [ -f CMakeCache.txt ]; then
         PKG=$(basename $(dirname "$PWD"))

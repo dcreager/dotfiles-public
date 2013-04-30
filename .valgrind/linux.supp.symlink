@@ -3,6 +3,34 @@
 {
    linux/dlerror
    Memcheck:Leak
-   fun:calloc
-   fun:_dlerror_run
+   ...
+   fun:dlopen
+}
+
+{
+   linux/dlerror
+   Memcheck:Leak
+   ...
+   fun:_dl_open
+}
+
+{
+   linux/dlerror
+   Memcheck:Leak
+   ...
+   fun:dlclose
+}
+
+{
+   linux/dlerror
+   Memcheck:Leak
+   ...
+   fun:_dl_close
+}
+
+{
+   linux/dlerror
+   Memcheck:Leak
+   ...
+   fun:dlsym
 }

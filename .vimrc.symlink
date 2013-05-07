@@ -46,7 +46,7 @@ set wildignore+=*.swp,*~,._*
 set wildmode=longest,list,full
 set wildmenu
 
-set list listchars=tab:··,trail:•
+set list listchars=tab:··,trail:◃,nbsp:•
 
 set laststatus=2
 set statusline=%f\ %m\ %r%{fugitive#statusline()}\ L%l/%L\ C%v\ [%b][0x%B]

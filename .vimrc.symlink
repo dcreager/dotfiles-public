@@ -91,7 +91,9 @@ au FileType yaml    setlocal sw=2 sts=2
 au BufRead,BufNewFile PKGBUILD    set ft=sh
 au BufRead,BufNewFile *.do        set ft=sh
 au BufRead,BufNewFile *.json      set ft=javascript
+au BufRead,BufNewFile *.pandoc    set ft=markdown
 au BufRead,BufNewFile *.rockspec  set ft=lua
+au BufRead,BufNewFile *.ronn      set ft=markdown
 au BufRead,BufNewFile *.wfd       set ft=lua
 au BufRead,BufNewFile *.wfd.error set ft=lua
 au BufRead,BufNewFile *.lua.symlink  set ft=lua

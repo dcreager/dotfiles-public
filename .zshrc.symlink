@@ -17,3 +17,4 @@ typeset -U path
 source $ZSH/oh-my-zsh.sh
 source $HOME/zsh/themes/dcreager.zsh-theme
 unsetopt correct_all
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*'

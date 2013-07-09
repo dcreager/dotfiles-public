@@ -8,6 +8,7 @@ set guioptions-=l   " no scrollbars
 set guioptions-=r
 set guioptions-=L
 set guioptions-=R
+colorscheme solarized
 
 set keymodel=
 set gcr=n:blinkon0

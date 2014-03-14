@@ -48,7 +48,7 @@ set wildmenu
 set list listchars=tab:··,trail:◃,nbsp:•
 
 set laststatus=2
-set statusline=%f\ %m\ %r%{fugitive#statusline()}\ L%l/%L\ C%v\ [%b][0x%B]
+let g:airline_powerline_fonts=1
 
 let macvim_hig_shift_movement = 0
 
@@ -105,3 +105,31 @@ au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= l
 set backupdir=~/.vim/_backup/
 set directory=~/.vim/_temp/
 set viminfo='50,\"1000,n~/var/viminfo
+
+" GUI stuff
+
+if has("gui_running")
+    set columns=175
+    set lines=55
+    set background=dark
+    let g:solarized_visibility="low"
+    set guioptions-=T   " no toolbar
+    set guioptions-=l   " no scrollbars
+    set guioptions-=r
+    set guioptions-=L
+    set guioptions-=R
+    colorscheme solarized
+
+    set keymodel=
+    set gcr=n:blinkon0
+else
+    set t_Co=256
+endif
+
+if has("gui_macvim")
+  set guifont=Menlo:h14
+  set fuopt=maxvert,maxhorz
+  map <D-F> :set fu!<CR>
+elseif has("gui_gtk2")
+  set guifont=Menlo\ 10.5
+endif

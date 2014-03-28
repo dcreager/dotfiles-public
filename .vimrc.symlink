@@ -127,9 +127,9 @@ else
 endif
 
 if has("gui_macvim")
-  set guifont=Menlo:h14
+  set guifont=Ubuntu\ Mono\ derivative\ Powerline:h16
   set fuopt=maxvert,maxhorz
   map <D-F> :set fu!<CR>
 elseif has("gui_gtk2")
-  set guifont=Menlo\ 10.5
+  set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
 endif

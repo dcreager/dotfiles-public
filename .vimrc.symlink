@@ -24,6 +24,9 @@ set wildignore+=*/.output/*
 " Disable CMake build directories
 set wildignore+=*/.build/*
 
+" Disable Node.js package directories
+set wildignore+=*/node_modules/*
+
 " Disable Python build directories
 set wildignore+=*/build/lib/*
 

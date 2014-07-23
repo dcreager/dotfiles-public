@@ -12,7 +12,7 @@ kernel.msgmax = 65536
 kernel.msgmnb = 65536
 # allow up to 999999 processes with corresponding pids
 # this looks nice and rarely rolls over - I've never had a problem with it.
-kernel.pid_max = 999999 # unnecessary, but I like it
+kernel.pid_max = 999999
 # seconds to delay after a kernel panic and before rebooting automatically
 kernel.panic = 300
 

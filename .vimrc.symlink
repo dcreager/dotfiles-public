@@ -56,6 +56,26 @@ set wildmenu
 
 set list listchars=tab:··,trail:◃,nbsp:•
 
+" j and k should move within lines as they're wrapped
+" from http://statico.github.io/vim.html
+:nnoremap j gj
+:nnoremap k gk
+
+" Emacs bindings in command line
+" from http://statico.github.io/vim.html
+:cnoremap <C-a>  <Home>
+:cnoremap <C-b>  <Left>
+:cnoremap <C-f>  <Right>
+:cnoremap <C-d>  <Delete>
+:cnoremap <M-b>  <S-Left>
+:cnoremap <M-f>  <S-Right>
+:cnoremap <M-d>  <S-right><Delete>
+:cnoremap <Esc>b <S-Left>
+:cnoremap <Esc>f <S-Right>
+:cnoremap <Esc>d <S-right><Delete>
+:cnoremap <C-g>  <C-c>
+
+" Airline configuration
 set laststatus=2
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -86,10 +106,12 @@ map <leader>et :tabe %%
 " find merge conflict markers
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
+" Ctrl-P stuffs
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_open_multi = 'vr'
 let g:ctrlp_jump_to_buffer = 2
 let g:ctrlp_root_markers = ['.hg/']
+nmap Q :CtrlPBuffer<CR>
 
 au FileType c       setlocal formatoptions-=t
 au FileType css     setlocal sw=4 sts=4

@@ -56,11 +56,6 @@ set wildmenu
 
 set list listchars=tab:··,trail:◃,nbsp:•
 
-" j and k should move within lines as they're wrapped
-" from http://statico.github.io/vim.html
-:nnoremap j gj
-:nnoremap k gk
-
 " Emacs bindings in command line
 " from http://statico.github.io/vim.html
 :cnoremap <C-a>  <Home>

@@ -1,1 +1,11 @@
-alias tm='tmux -2 attach || tmux -2 new'
+tma () {
+    local SESSION
+    [ -z "$1" ] && SESSION=default || SESSION=$1
+    tmux -2 attach -t "$SESSION"
+}
+
+tmn () {
+    local SESSION
+    [ -z "$1" ] && SESSION=default || SESSION=$1
+    tmux -2 new -s "$SESSION"
+}

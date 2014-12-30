@@ -15,6 +15,7 @@ alias glg="git log --stat"
 alias glgg="git log --graph"
 alias gpr="hub pull-request"
 alias gra="hub remote add"
+alias grb="git rebase"
 alias grp="git remote prune"
 alias grrm="git remote rm"
 alias grv="git remote -v"
@@ -26,3 +27,7 @@ alias gx="git log --graph --oneline --decorate --all"
 alias gxx="gitx --all"
 unalias gsd
 unalias gsr
+
+grbo () {
+    git rebase --onto "$2" HEAD~"$1"
+}

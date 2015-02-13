@@ -9,8 +9,8 @@ aws () {
 
     if [ "$PERSONA" = none ]; then
         unset AWS_PERSONA
-        unset AWS_ACCESS_KEY
-        unset AWS_SECRET_KEY
+        unset AWS_ACCESS_KEY_ID
+        unset AWS_SECRET_ACCESS_KEY
         unset AWS_USER_ID
         return
     fi

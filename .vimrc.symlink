@@ -45,6 +45,9 @@ set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
 " Disable temp and backup files
 set wildignore+=*.swp,*~,._*
 
+" Ignore virtualenvs
+set wildignore+=*/.venv/*
+
 " Ignore tox and htmlcov results
 set wildignore+=*/.tox/*,*/htmlcov/*
 

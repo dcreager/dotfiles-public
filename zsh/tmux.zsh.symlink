@@ -1,11 +1,17 @@
+# vim: ft=sh
+
 tma () {
-    local SESSION
-    [ -z "$1" ] && SESSION=default || SESSION=$1
-    tmux -2 attach -t "$SESSION"
+    if [ -z "$1" ]; then
+        tmux -2 attach
+    else
+        tmux -2 attach -t "$1"
+    fi
 }
 
 tmn () {
-    local SESSION
-    [ -z "$1" ] && SESSION=default || SESSION=$1
-    tmux -2 new -s "$SESSION"
+    if [ -z "$1" ]; then
+        echo "Missing session name" >&2
+        return 1
+    fi
+    tmux -2 new -s "$1"
 }

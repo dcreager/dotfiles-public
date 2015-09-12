@@ -12,3 +12,5 @@
 
 [include]
     path = ~/.gitconfig.private
+[pass]
+	signcommits = true

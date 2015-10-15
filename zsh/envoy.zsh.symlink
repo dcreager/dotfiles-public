@@ -1,0 +1,3 @@
+if which envoy >/dev/null 2>/dev/null; then
+    source <(envoy -p)
+fi

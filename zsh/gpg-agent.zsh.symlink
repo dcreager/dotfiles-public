@@ -15,5 +15,13 @@ fi
 # Set GPG TTY
 export GPG_TTY=$(tty)
 
-# Refresh gpg-agent tty in case user switches into an X session
-gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
+# Always refresh the gpg-agent tty when ssh-ing somewhere from a terminal.
+# (Most online sources run the gpg-connect-agent command directly here, once at
+# the beginning of each login, but that doesn't work for long-running tmux
+# sessions.)
+ssh () {
+    if tty -s; then
+        gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
+    fi
+    /usr/bin/ssh "$@"
+}

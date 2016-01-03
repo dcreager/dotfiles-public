@@ -8,6 +8,8 @@ tma () {
     fi
 }
 
+alias tml='tmux ls'
+
 tmn () {
     if [ -z "$1" ]; then
         echo "Missing session name" >&2

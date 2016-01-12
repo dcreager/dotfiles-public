@@ -31,3 +31,6 @@
 [submodule ".vim/bundle/vim-airline.symlink"]
 	path = .vim/bundle/vim-airline.symlink
 	url = https://github.com/bling/vim-airline.git
+[submodule ".vim/bundle/rust.vim.symlink"]
+	path = .vim/bundle/rust.vim.symlink
+	url = https://github.com/rust-lang/rust.vim.git

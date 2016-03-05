@@ -1,7 +1,7 @@
 # Windows key
 set $mod Mod4
 
-font pango:Menlo 10
+font pango:Menlo 18
 
 # I like my Compose key
 exec --no-startup-id setxkbmap -option compose:caps
@@ -11,10 +11,6 @@ floating_modifier $mod
 
 # No mouse focus nonsense
 focus_follows_mouse no
-
-# My screens
-workspace 1 output DVI-I-1
-workspace 2 output DP-1
 
 # Startup applications
 
@@ -110,7 +106,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exit
+bindsym $mod+Shift+e exec --no-startup-id gnome-session-quit --logout --no-prompt
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

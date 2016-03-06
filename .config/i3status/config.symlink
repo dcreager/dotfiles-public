@@ -3,6 +3,7 @@ order += "wireless wlp4s0"
 order += "ipv6"
 order += "load"
 order += "battery 0"
+order += "volume master"
 order += "tztime utc"
 order += "tztime local"
 
@@ -34,6 +35,12 @@ battery 0 {
   status_bat = "◐"
   status_chr = "⚡"
   status_full = "●"
+}
+
+volume master {
+  device = "pulse"
+  format = " ♪ %volume "
+  format_muted = " ♪ OFF "
 }
 
 tztime utc {

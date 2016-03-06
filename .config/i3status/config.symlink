@@ -4,7 +4,6 @@ order += "ipv6"
 order += "load"
 order += "battery 0"
 order += "volume master"
-order += "tztime utc"
 order += "tztime local"
 
 ethernet enp0s31f6 {
@@ -44,10 +43,10 @@ volume master {
 }
 
 tztime utc {
-  format = " %Z %H:%M:%S "
+  format = " %Z %H:%M "
   timezone = "UTC"
 }
 
 tztime local {
-  format = " %Y-%m-%d %H:%M:%S "
+  format = " %Y-%m-%d %H:%M "
 }

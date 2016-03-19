@@ -3,6 +3,7 @@ order += "wireless wlp4s0"
 order += "ipv6"
 order += "load"
 order += "battery 0"
+order += "battery 1"
 order += "volume master"
 order += "tztime local"
 
@@ -26,6 +27,17 @@ load {
 }
 
 battery 0 {
+  format = " %status %percentage %remaining "
+  hide_seconds = true
+  integer_battery_capacity = true
+  low_threshold = 20
+  threshold_type = percentage
+  status_bat = "◐"
+  status_chr = "⚡"
+  status_full = "●"
+}
+
+battery 1 {
   format = " %status %percentage %remaining "
   hide_seconds = true
   integer_battery_capacity = true

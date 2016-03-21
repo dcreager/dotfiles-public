@@ -1,36 +1,36 @@
-[submodule ".vim/bundle/vim-pathogen.symlink"]
-	path = .vim/bundle/vim-pathogen.symlink
+[submodule ".config/nvim/bundle/vim-pathogen.symlink"]
+	path = .config/nvim/bundle/vim-pathogen.symlink
 	url = git://github.com/tpope/vim-pathogen.git
-[submodule ".vim/bundle/vim-fugitive.symlink"]
-	path = .vim/bundle/vim-fugitive.symlink
+[submodule ".config/nvim/bundle/vim-fugitive.symlink"]
+	path = .config/nvim/bundle/vim-fugitive.symlink
 	url = git://github.com/tpope/vim-fugitive.git
-[submodule ".vim/bundle/css-color.symlink"]
-	path = .vim/bundle/css-color.symlink
+[submodule ".config/nvim/bundle/css-color.symlink"]
+	path = .config/nvim/bundle/css-color.symlink
 	url = git://github.com/ap/vim-css-color.git
-[submodule ".vim/bundle/ctrlp.symlink"]
-	path = .vim/bundle/ctrlp.symlink
+[submodule ".config/nvim/bundle/ctrlp.symlink"]
+	path = .config/nvim/bundle/ctrlp.symlink
 	url = git://github.com/kien/ctrlp.vim.git
-[submodule ".vim/bundle/easymotion.symlink"]
-	path = .vim/bundle/easymotion.symlink
+[submodule ".config/nvim/bundle/easymotion.symlink"]
+	path = .config/nvim/bundle/easymotion.symlink
 	url = git://github.com/Lokaltog/vim-easymotion.git
-[submodule ".vim/bundle/javascript.symlink"]
-	path = .vim/bundle/javascript.symlink
+[submodule ".config/nvim/bundle/javascript.symlink"]
+	path = .config/nvim/bundle/javascript.symlink
 	url = git://github.com/pangloss/vim-javascript.git
-[submodule ".vim/bundle/markdown.symlink"]
-	path = .vim/bundle/markdown.symlink
+[submodule ".config/nvim/bundle/markdown.symlink"]
+	path = .config/nvim/bundle/markdown.symlink
 	url = git://github.com/tpope/vim-markdown.git
-[submodule ".vim/bundle/scss.symlink"]
-	path = .vim/bundle/scss.symlink
+[submodule ".config/nvim/bundle/scss.symlink"]
+	path = .config/nvim/bundle/scss.symlink
 	url = git://github.com/cakebaker/scss-syntax.vim.git
-[submodule ".vim/bundle/solarized.symlink"]
-	path = .vim/bundle/solarized.symlink
+[submodule ".config/nvim/bundle/solarized.symlink"]
+	path = .config/nvim/bundle/solarized.symlink
 	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule ".vim/bundle/puppet.symlink"]
-	path = .vim/bundle/puppet.symlink
+[submodule ".config/nvim/bundle/puppet.symlink"]
+	path = .config/nvim/bundle/puppet.symlink
 	url = git@github.com:dcreager/vim-puppet.git
-[submodule ".vim/bundle/vim-airline.symlink"]
-	path = .vim/bundle/vim-airline.symlink
+[submodule ".config/nvim/bundle/vim-airline.symlink"]
+	path = .config/nvim/bundle/vim-airline.symlink
 	url = https://github.com/bling/vim-airline.git
-[submodule ".vim/bundle/rust.vim.symlink"]
-	path = .vim/bundle/rust.vim.symlink
+[submodule ".config/nvim/bundle/rust.vim.symlink"]
+	path = .config/nvim/bundle/rust.vim.symlink
 	url = https://github.com/rust-lang/rust.vim.git

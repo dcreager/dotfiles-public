@@ -1,3 +1,7 @@
-if which vim &>/dev/null; then
+if which nvim &>/dev/null; then
+    export EDITOR=$(which nvim)
+elif which vim &>/dev/null; then
     export EDITOR=$(which vim)
 fi
+
+alias v=$EDITOR

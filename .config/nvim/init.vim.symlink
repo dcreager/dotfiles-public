@@ -157,8 +157,6 @@ if has("gui_running")
 
     set keymodel=
     set gcr=n:blinkon0
-else
-    set t_Co=256
 endif
 
 if has("gui_macvim")

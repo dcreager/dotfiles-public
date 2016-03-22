@@ -1,4 +1,6 @@
 unbind C-b
+set -s escape-time 0
+set -g default-terminal "screen-256color"
 set-option -g prefix `
 bind ` send-prefix
 

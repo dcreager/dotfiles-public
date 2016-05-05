@@ -13,13 +13,13 @@ ethernet enp0s31f6 {
 }
 
 wireless wlp4s0 {
-  format_up = " ≋ %essid %bitrate %frequency %ip "
+  format_up = " ≋ %essid %bitrate %ip "
   format_down = ""
 }
 
 ipv6 {
   format_up = " ➅ %ip "
-  format_down = " ➏ "
+  format_down = ""
 }
 
 load {

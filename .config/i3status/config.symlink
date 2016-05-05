@@ -23,7 +23,7 @@ ipv6 {
 }
 
 load {
-  format = " ⏣ %5min "
+  format = " ⏣ %1min "
 }
 
 battery 0 {

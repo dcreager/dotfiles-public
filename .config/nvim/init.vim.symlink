@@ -34,7 +34,7 @@ set wildignore+=*/build/lib/*
 set wildignore+=*/__pycache__/*,*.pyc,*.pyo
 
 " Disable output and VCS files
-set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem
+set wildignore+=*.a,*.o,*.la,*.lo,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem
 
 " Disable archive files
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
@@ -105,6 +105,7 @@ map <leader>et :tabe %%
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 " Ctrl-P stuffs
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_open_multi = 'vr'
 let g:ctrlp_jump_to_buffer = 2

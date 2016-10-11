@@ -1,4 +1,5 @@
 order += "ethernet enp0s31f6"
+order += "ethernet tether0"
 order += "wireless wlp4s0"
 order += "ipv6"
 order += "cpu_usage"
@@ -9,6 +10,11 @@ order += "tztime local"
 
 ethernet enp0s31f6 {
   format_up = " ⩫ %ip "
+  format_down = ""
+}
+
+ethernet tether0 {
+  format_up = " ≃ %ip "
   format_down = ""
 }
 

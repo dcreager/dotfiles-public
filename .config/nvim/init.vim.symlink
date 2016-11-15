@@ -73,6 +73,10 @@ set list listchars=tab:··,trail:◃,nbsp:•
 :cnoremap <Esc>d <S-right><Delete>
 :cnoremap <C-g>  <C-c>
 
+" clang-format support
+map <C-I> :pyf /usr/share/clang/clang-format.py<cr>
+imap <C-I> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
+
 " Airline configuration
 set laststatus=2
 if !exists('g:airline_symbols')

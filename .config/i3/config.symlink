@@ -1,7 +1,7 @@
 # Windows key
 set $mod Mod4
 
-font pango:Helvetica Neue 10
+font pango:Helvetica Neue 9
 
 # I like my Compose key
 exec --no-startup-id setxkbmap -option compose:caps

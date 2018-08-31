@@ -77,6 +77,9 @@ set list listchars=tab:··,trail:◃,nbsp:•
 map <C-I> :pyf /usr/share/clang/clang-format.py<cr>
 imap <C-I> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
 
+" Rust stuff
+let g:rustfmt_autosave = 1
+
 " Airline configuration
 set laststatus=2
 if !exists('g:airline_symbols')

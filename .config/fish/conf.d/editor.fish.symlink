@@ -1,0 +1,3 @@
+if command -sq nvim
+  set EDITOR nvim
+end

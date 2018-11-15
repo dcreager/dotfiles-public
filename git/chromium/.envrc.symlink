@@ -1,3 +1,5 @@
 PATH_add depot_tools
 PATH_add bin
+PATH_add /usr/lib/ccache/bin
+export CCACHE_SLOPPINESS=include_file_mtime
 export NINJA_STATUS="%e [%u/%r/%f] "

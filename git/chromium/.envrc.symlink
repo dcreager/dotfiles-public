@@ -1,2 +1,3 @@
 PATH_add depot_tools
 PATH_add bin
+export NINJA_STATUS="%e [%u/%r/%f] "

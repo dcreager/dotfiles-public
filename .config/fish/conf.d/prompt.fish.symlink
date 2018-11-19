@@ -1,0 +1,10 @@
+function fish_prompt
+  printf "\n  "
+  printf "%s%s%s " (set_color -o cyan) (hostname | cut -d . -f 1) (set_color normal)
+  printf "%s%s%s\n" (set_color magenta) (prompt_pwd) (set_color normal)
+  if test (id -u) -eq 0
+    printf "# "
+  else
+    printf "\$ "
+  end
+end

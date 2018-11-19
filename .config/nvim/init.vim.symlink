@@ -149,28 +149,7 @@ set backupdir=~/.vim/_backup/
 set directory=~/.vim/_temp/
 set viminfo='50,\"1000,n~/var/viminfo
 
-" GUI stuff
+" Color stuff
 
-if has("gui_running")
-    set columns=175
-    set lines=55
-    set background=dark
-    let g:solarized_visibility="low"
-    set guioptions-=T   " no toolbar
-    set guioptions-=l   " no scrollbars
-    set guioptions-=r
-    set guioptions-=L
-    set guioptions-=R
-    colorscheme solarized
-
-    set keymodel=
-    set gcr=n:blinkon0
-endif
-
-if has("gui_macvim")
-  set guifont=Ubuntu\ Mono\ derivative\ Powerline:h16
-  set fuopt=maxvert,maxhorz
-  map <D-F> :set fu!<CR>
-elseif has("gui_gtk2")
-  set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
-endif
+set termguicolors
+colorscheme desert

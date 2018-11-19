@@ -1,0 +1,22 @@
+function tma
+  if test -z "$argv[1]"
+    tmux attach
+  else
+    tmux attach -t "$argv[1]"
+  end
+end
+
+abbr tml "tmux ls"
+
+function tmn
+  if test -z "$argv[1]"
+    echo "Missing session name" >&2
+    return 1
+  end
+
+  if test -e "$HOME/.config/tmux/$argv[1].conf"
+    tmux -f "$HOME/.config/tmux/$argv[1].conf" attach -t "$argv[1]"
+  else
+    tmux new -s "$argv[1]"
+  end
+end

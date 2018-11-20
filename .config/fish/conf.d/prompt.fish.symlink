@@ -1,10 +1,47 @@
-function fish_prompt
-  printf "\n  "
-  printf "%s%s%s " (set_color -o cyan) (hostname | cut -d . -f 1) (set_color normal)
-  printf "%s%s%s\n" (set_color magenta) (prompt_pwd) (set_color normal)
-  if test (id -u) -eq 0
-    printf "# "
+function __fish_prompt_git_info
+  set -g __in_git_repo ""
+  set -g __git_branch ""
+  set -g __git_dirty ""
+  set -g __git_ref ""
+
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1
+    set -g __in_git_repo true
   else
-    printf "\$ "
+    return
+  end
+
+  set -g __git_branch (git symbolic-ref HEAD 2>/dev/null | sed -e s+refs/heads/++)
+  set -g __git_ref (git rev-parse --short HEAD 2>/dev/null)
+
+  set -l git_status (git status --porcelain --ignore-submodules -uno)
+  if test -n "$git_status"
+    set -g __git_dirty true
+  end
+end
+
+function fish_prompt
+  __fish_prompt_git_info
+
+  if test -n $__in_git_repo
+    printf "\n%s±%s " (set_color blue) (set_color normal)
+  else
+    printf "\n  "
+  end
+  printf "%s%s%s " (set_color -o cyan) (hostname | cut -d . -f 1) (set_color normal)
+  printf "%s%s%s" (set_color magenta) (prompt_pwd) (set_color normal)
+
+  if test -n "$__git_branch"
+    printf " [%s%s%s]" (set_color -o blue) "$__git_branch" (set_color normal)
+  else if test -n "$__git_ref"
+    printf " [%s%s%s]" (set_color -o yellow) "$__git_ref" (set_color normal)
+  end
+  if test -n $__git_dirty
+    printf "%s✧%s" (set_color red) (set_color normal)
+  end
+
+  if test (id -u) -eq 0
+    printf "\n# "
+  else
+    printf "\n\$ "
   end
 end

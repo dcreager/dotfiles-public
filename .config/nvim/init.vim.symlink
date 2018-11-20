@@ -1,6 +1,11 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
+" Always use /bin/sh for shell processes
+if &shell =~# 'fish$'
+  set shell=sh
+endif
+
 set hidden
 map <silent> <C-n> :noh<CR>
 nmap <leader>6 <C-^>

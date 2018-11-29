@@ -1,2 +1,2 @@
 set PATH $HOME/bin $PATH
-set CDPATH . $HOME/git $HOME $CDPATH
+set CDPATH . $HOME/git $CDPATH

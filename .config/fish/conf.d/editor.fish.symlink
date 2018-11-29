@@ -1,4 +1,4 @@
 if command -sq nvim
-  set EDITOR nvim
+  set -x EDITOR nvim
   abbr v nvim
 end

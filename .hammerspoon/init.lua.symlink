@@ -1,0 +1,35 @@
+local alert = require "hs.alert"
+
+local wm = {"cmd"}
+local wm_shift = {"cmd", "shift"}
+
+function bind_cmd(mods, key, cmd)
+   hs.hotkey.bind(mods, key, function()
+      os.execute(cmd)
+   end)
+end
+
+function bind_wm(mods, key, cmd)
+   bind_cmd(mods, key, "/usr/local/bin/chunkc " .. cmd)
+end
+
+hs.hotkey.bind(wm_shift, "R", function()
+   os.execute("$HOME/.chunkwmrc")
+   hs.reload()
+end)
+
+bind_wm(wm, "H", "tiling::window --focus west")
+bind_wm(wm, "J", "tiling::window --focus south")
+bind_wm(wm, "K", "tiling::window --focus north")
+bind_wm(wm, "L", "tiling::window --focus east")
+
+bind_wm(wm_shift, "H", "tiling::window --swap west")
+bind_wm(wm_shift, "J", "tiling::window --swap south")
+bind_wm(wm_shift, "K", "tiling::window --swap north")
+bind_wm(wm_shift, "L", "tiling::window --swap east")
+
+bind_wm(wm_shift, "Q", "tiling::window --close")
+
+bind_cmd(wm, "return", "open -a Terminal ~")
+
+alert("Configuration reloaded!")

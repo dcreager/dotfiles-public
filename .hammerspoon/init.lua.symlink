@@ -1,7 +1,7 @@
 local alert = require "hs.alert"
 
-local wm = {"cmd"}
-local wm_shift = {"cmd", "shift"}
+local wm = {"alt"}
+local wm_shift = {"alt", "shift"}
 
 function bind_cmd(mods, key, cmd)
    hs.hotkey.bind(mods, key, function()

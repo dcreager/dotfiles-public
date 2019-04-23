@@ -29,7 +29,7 @@ focus_follows_mouse no
 exec --no-startup-id swaymsg 'workspace 1; exec termite'
 
 # lock the screen
-bindsym Mod1+Ctrl+l exec i3lock -c 202020
+bindsym Mod1+Ctrl+l exec swaylock -c 202020
 
 # suspend
 bindsym Mod1+Ctrl+p exec systemctl suspend

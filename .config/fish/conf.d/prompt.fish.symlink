@@ -19,8 +19,23 @@ function __fish_prompt_git_info
   end
 end
 
+function __fish_prompt_venv_info
+  set -g __in_venv ""
+  set -g __venv_name ""
+
+  if test -n "$VIRTUAL_ENV"
+    set -g __in_env true
+    set -g __venv_name (basename "$VIRTUAL_ENV")
+
+    if test "$__venv_name" = ".venv"
+      set -g __venv_name (basename (dirname "$VIRTUAL_ENV"))
+    end
+  end
+end
+
 function fish_prompt
   __fish_prompt_git_info
+  __fish_prompt_venv_info
 
   if test -n $__in_git_repo
     printf "\n%s±%s " (set_color blue) (set_color normal)
@@ -37,6 +52,10 @@ function fish_prompt
   end
   if test -n $__git_dirty
     printf "%s✧%s" (set_color red) (set_color normal)
+  end
+
+  if test -n "$__venv_name"
+    printf " [venv:%s%s%s]" (set_color -o green) "$__venv_name" (set_color normal)
   end
 
   if test (id -u) -eq 0

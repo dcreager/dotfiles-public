@@ -5,6 +5,7 @@ general {
 order += "ethernet enp0s31f6"
 order += "ethernet tether0"
 order += "wireless wlp4s0"
+order += "wireless wlan0"
 order += "ipv6"
 order += "cpu_usage"
 order += "battery 0"
@@ -23,6 +24,11 @@ ethernet tether0 {
 }
 
 wireless wlp4s0 {
+  format_up = " ≋ %essid %bitrate %ip "
+  format_down = ""
+}
+
+wireless wlan0 {
   format_up = " ≋ %essid %bitrate %ip "
   format_down = ""
 }

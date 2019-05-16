@@ -1,0 +1,1 @@
+export POSTGRESQL_SOCKET_DIR=/run/postgresql

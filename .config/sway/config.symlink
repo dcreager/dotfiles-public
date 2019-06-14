@@ -17,6 +17,10 @@ input 1:1:AT_Translated_Set_2_keyboard {
   xkb_options compose:caps
 }
 
+input 1133:16399:Logitech_K750 {
+  xkb_options altwin:swap_alt_win,compose:caps
+}
+
 # Brightness
 bindcode 232 exec brightnessctl set 5%-
 bindcode 233 exec brightnessctl set +5%

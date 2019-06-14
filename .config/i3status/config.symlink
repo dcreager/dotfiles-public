@@ -2,8 +2,8 @@ general {
   interval = 5
 }
 
+order += "ethernet enp6s0"
 order += "ethernet enp0s31f6"
-order += "ethernet tether0"
 order += "wireless wlp4s0"
 order += "wireless wlan0"
 order += "ipv6"
@@ -12,6 +12,11 @@ order += "battery 0"
 order += "battery 1"
 order += "volume master"
 order += "tztime local"
+
+ethernet enp6s0 {
+  format_up = " ⩫ %ip "
+  format_down = ""
+}
 
 ethernet enp0s31f6 {
   format_up = " ⩫ %ip "
@@ -44,6 +49,7 @@ cpu_usage {
 
 battery 0 {
   format = " %status %percentage %remaining "
+  format_down = ""
   hide_seconds = true
   integer_battery_capacity = true
   low_threshold = 20
@@ -55,6 +61,7 @@ battery 0 {
 
 battery 1 {
   format = " %status %percentage %remaining "
+  format_down = ""
   hide_seconds = true
   integer_battery_capacity = true
   low_threshold = 20

@@ -158,7 +158,7 @@ set viminfo='50,\"1000,n~/var/viminfo
 
 set termguicolors
 set background=light
-colorscheme kuroi
+colorscheme Atelier_ForestLight
 
-nmap <leader>d :set background=dark<cr> :colorscheme desert<cr>
-nmap <leader>l :set background=light<cr> :colorscheme kuroi<cr>
+nmap <leader>d :set background=dark<cr> :colorscheme Atelier_LakesideDark<cr>
+nmap <leader>l :set background=light<cr> :colorscheme Atelier_ForestLight<cr>

@@ -34,3 +34,6 @@
 [submodule ".config/nvim/bundle/rust.vim.symlink"]
 	path = .config/nvim/bundle/rust.vim.symlink
 	url = https://github.com/rust-lang/rust.vim.git
+[submodule ".config/nvim/bundle/vim-colors_atelier-schemes.symlink"]
+	path = .config/nvim/bundle/vim-colors_atelier-schemes.symlink
+	url = https://github.com/atelierbram/vim-colors_atelier-schemes

@@ -48,7 +48,7 @@ bindsym Mod1+Ctrl+p exec systemctl suspend
 
 # start a terminal
 bindsym $mod+Return exec termite
-bindsym $mod+Shift+Return exec termite --config ~/.config/termite/config-light
+bindsym $mod+Shift+Return exec termite --config ~/.config/termite/config-dark
 
 # kill focused window
 bindsym $mod+Shift+q kill

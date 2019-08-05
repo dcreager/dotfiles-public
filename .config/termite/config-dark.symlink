@@ -1,5 +1,5 @@
 [options]
-font = Fira Code 9
+font = Iosevka SS08 9
 scrollback_lines = 10000
 
 [colors]

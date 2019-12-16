@@ -12,7 +12,5 @@ set-option -g status-style "fg=colour255,bg=colour235"
 set-option -g status-left "#[fg=colour255,bg=colour33] #h "
 set-option -g status-right "#[fg=colour136]%a %Y-%m-%d %H:%M "
 
-"#[fg=colour255,bg=colour33]#h "
-
 set-option -g window-status-format "#[fg=colour247,bg=colour235] #I:#W "
 set-option -g window-status-current-format "#[fg=colour235,bg=colour247] #I:#W "

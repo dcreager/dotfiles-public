@@ -2,7 +2,7 @@ unbind C-b
 set -sg escape-time 0
 set-option -ga terminal-overrides ",xterm-termite:Tc"
 set-option -g prefix `
-bind ` send-prefix
+bind -r ` send-prefix
 
 set-option -g status on
 set-option -g status-interval 2

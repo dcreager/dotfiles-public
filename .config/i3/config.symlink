@@ -4,9 +4,6 @@ set $mod Mod4
 font pango:Helvetica Neue 11
 for_window [class=".*"] title_format "<span size='smaller'>%title</span>"
 
-# I like my Compose key
-exec --no-startup-id setxkbmap -option compose:caps
-
 # Brightness
 bindcode 232 exec --no-startup-id xbacklight -dec 5
 bindcode 233 exec --no-startup-id xbacklight -inc 5

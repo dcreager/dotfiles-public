@@ -1,0 +1,5 @@
+#!/bin/sh
+KB_ID=`xinput --list --short | grep 'keyboard' | grep 'Logitech K750' | grep -Eo 'id=[0-9]+' | grep -Eo '[0-9]+'`
+if [ -n "$KB_ID" ]; then
+  setxkbmap -device "$KB_ID" -option altwin:swap_alt_win,compose:caps
+fi

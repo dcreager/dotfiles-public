@@ -1,7 +1,0 @@
-
-[Default Applications]
-text/html=firefox-wayland.desktop
-x-scheme-handler/http=firefox-wayland.desktop
-x-scheme-handler/https=firefox-wayland.desktop
-x-scheme-handler/about=firefox-wayland.desktop
-x-scheme-handler/unknown=firefox-wayland.desktop

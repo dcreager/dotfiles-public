@@ -5,8 +5,8 @@ font pango:Helvetica Neue 11
 for_window [class=".*"] title_format "<span size='smaller'>%title</span>"
 
 # Brightness
-bindcode 232 exec --no-startup-id xbacklight -dec 5
-bindcode 233 exec --no-startup-id xbacklight -inc 5
+bindcode 232 exec brightnessctl set 5%-
+bindcode 233 exec brightnessctl set +5%
 
 # Sound
 bindcode 121 exec --no-startup-id pactl set-sink-mute 0 toggle

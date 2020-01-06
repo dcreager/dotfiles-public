@@ -1,3 +1,8 @@
 if status --is-interactive; and command -sq rbenv
   source (rbenv init -|psub)
 end
+
+if status --is-interactive; and command -sq ruby
+  set -l __gem_home (ruby -e 'puts Gem.user_dir')
+  set PATH $__gem_home/bin $PATH
+end

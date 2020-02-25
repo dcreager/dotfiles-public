@@ -1,0 +1,8 @@
+#!/bin/sh
+TZ=`curl --silent https://ipapi.co/timezone`
+if [ -z "$TZ" ]; then
+    exit 1
+fi
+
+echo "Setting time zone to $TZ"
+sudo timedatectl set-timezone "$TZ"

@@ -9,6 +9,8 @@
     summary = true
 [push]
     default = matching
+[sendemail]
+    annotate = true
 
 [include]
     path = ~/.gitconfig.private

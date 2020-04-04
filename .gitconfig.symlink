@@ -11,6 +11,7 @@
     default = matching
 [sendemail]
     annotate = true
+    confirm = auto
 
 [include]
     path = ~/.gitconfig.private

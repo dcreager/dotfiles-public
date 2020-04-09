@@ -79,8 +79,8 @@ set list listchars=tab:··,trail:◃,nbsp:•
 :cnoremap <C-g>  <C-c>
 
 " clang-format support
-au FileType c,cpp   map <C-I> :pyf /usr/share/clang/clang-format.py<cr>
-au FileType c,cpp   imap <C-I> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
+au FileType c,cpp   map <C-I> :py3f ~/.local/share/clang/clang-format-py3.py<cr>
+au FileType c,cpp   imap <C-I> <c-o>:py3f ~/.local/share/clang/clang-format-py3.py<cr>
 
 " Rust stuff
 let g:rustfmt_autosave = 1

@@ -21,7 +21,7 @@ focus_follows_mouse no
 
 # Startup applications
 
-exec --no-startup-id i3-msg 'workspace 1; exec kitty'
+exec --no-startup-id i3-msg 'workspace 1; exec qterminal'
 
 # lock the screen
 bindsym Mod1+Ctrl+l exec i3lock -c 202020
@@ -30,8 +30,8 @@ bindsym Mod1+Ctrl+l exec i3lock -c 202020
 bindsym Mod1+Ctrl+p exec systemctl suspend
 
 # start a terminal
-bindsym $mod+Return exec kitty
-bindsym $mod+Shift+Return exec kitty --config ~/.config/kitty/kitty-dark.conf
+bindsym $mod+Return exec qterminal
+bindsym $mod+Shift+Return exec qterminal -p qterminal-dark
 
 # kill focused window
 bindsym $mod+Shift+q kill

@@ -156,9 +156,26 @@ set viminfo='50,\"1000,n~/var/viminfo
 
 " Color stuff
 
+set guicursor=n-v-c-sm:block
+set guicursor+=i-ci-ve:ver25
+set guicursor+=r-cr-o:hor20
+set guicursor+=a:blinkwait500-blinkoff500-blinkon500
+
 set termguicolors
 set background=light
-colorscheme Atelier_ForestLight
 
-nmap <leader>d :set background=dark<cr> :colorscheme Atelier_LakesideDark<cr>
-nmap <leader>l :set background=light<cr> :colorscheme Atelier_ForestLight<cr>
+function DarkColors()
+    colorscheme Atelier_LakesideDark
+    hi clear MatchParen
+    hi MatchParen ctermfg=161 cterm=bold guifg=#d22d72 gui=bold
+endfunction
+
+function LightColors()
+    colorscheme Atelier_ForestLight
+    hi clear MatchParen
+    hi MatchParen ctermfg=100 cterm=bold guifg=#f22c40 gui=bold
+endfunction
+
+call LightColors()
+nmap <leader>d :call DarkColors()<cr>
+nmap <leader>l :call LightColors()<cr>

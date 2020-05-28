@@ -8,6 +8,9 @@ for_window [class=".*"] title_format "<span size='smaller'>%title</span>"
 bindcode 232 exec brightnessctl set 5%-
 bindcode 233 exec brightnessctl set +5%
 
+# No screensave, por favor
+exec xset s off -dpms
+
 # Sound
 bindcode 121 exec --no-startup-id pactl set-sink-mute 0 toggle
 bindcode 122 exec --no-startup-id pactl set-sink-mute 0 false ; exec --no-startup-id pactl set-sink-volume 0 -5% ; exec --no-startup-id paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga

@@ -12,9 +12,9 @@ bindcode 233 exec brightnessctl set +5%
 exec xset s off -dpms
 
 # Sound
-bindcode 121 exec --no-startup-id pactl set-sink-mute 0 toggle
-bindcode 122 exec --no-startup-id pactl set-sink-mute 0 false ; exec --no-startup-id pactl set-sink-volume 0 -5% ; exec --no-startup-id paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
-bindcode 123 exec --no-startup-id pactl set-sink-mute 0 false ; exec --no-startup-id pactl set-sink-volume 0 +5% ; exec --no-startup-id paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+bindcode 121 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindcode 122 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ false ; exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% ; exec --no-startup-id paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+bindcode 123 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ false ; exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% ; exec --no-startup-id paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

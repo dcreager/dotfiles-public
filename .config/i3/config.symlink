@@ -126,5 +126,5 @@ bindsym $mod+Shift+e exit
 # finds out, if available)
 bar {
     font pango:Helvetica Neue 9
-    status_command i3status
+    status_command /bin/sh "$HOME/bin/wrap-i3status"
 }

@@ -1,5 +1,6 @@
 general {
   interval = 5
+  markup = "pango"
 }
 
 order += "ethernet enp6s0"
@@ -11,6 +12,7 @@ order += "ipv6"
 order += "cpu_usage"
 order += "battery 0"
 order += "battery 1"
+order += "volume icon"
 order += "volume master"
 order += "tztime local"
 
@@ -77,10 +79,18 @@ battery 1 {
   status_full = "●"
 }
 
+volume icon {
+  device = "pulse"
+  format = " ♪"
+  format_muted = " ♪"
+  separator = false
+  separator_block_width = 3
+}
+
 volume master {
   device = "pulse"
-  format = " ♪ %volume "
-  format_muted = " ♪ OFF "
+  format = " %volume "
+  format_muted = " OFF "
 }
 
 tztime utc {

@@ -1,0 +1,15 @@
+#!/bin/sh
+i3status | while :
+do
+    read line
+    DEFAULT_SINK=`pacmd list-sinks | grep '\* index' | cut -d ' ' -f 5`
+    if [ -n "$DEFAULT_SINK" ]; then
+        DEFAULT_SINK_NAME=`pactl list short sinks | grep "^$DEFAULT_SINK" | cut -f 2`
+        if echo "$DEFAULT_SINK_NAME" | grep -qs hdmi; then
+            line=`echo "$line" | sed -e "s+♪+<span rise='-12000'>🖵</span>+"`
+        elif echo "$DEFAULT_SINK_NAME" | grep -qs Yeti; then
+            line=`echo "$line" | sed -e "s+♪+<span rise='-12000'>🎙</span>+"`
+        fi
+    fi
+    echo "$line"
+done

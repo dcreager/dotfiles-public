@@ -10,6 +10,7 @@ order += "wireless wlp7s0"
 order += "wireless wlan0"
 order += "ipv6"
 order += "cpu_usage"
+order += "battery all"
 order += "battery 0"
 order += "battery 1"
 order += "volume icon"
@@ -55,28 +56,41 @@ cpu_usage {
   format = " ⏣ %usage "
 }
 
-battery 0 {
-  format = " %status %percentage %remaining "
+battery all {
+  format = " 🔋%remaining"
   format_down = ""
   hide_seconds = true
   integer_battery_capacity = true
   low_threshold = 20
   threshold_type = percentage
-  status_bat = "◐"
-  status_chr = "⚡"
-  status_full = "●"
+  separator = false
+}
+
+battery 0 {
+  format = "<span size='smaller' rise='2000' foreground='#aaaaaa'>0</span>%status%percentage"
+  format_down = ""
+  hide_seconds = true
+  integer_battery_capacity = true
+  low_threshold = 20
+  threshold_type = percentage
+  status_bat = " ⚡ "
+  status_chr = "🔌"
+  status_full = " ⚡ "
+  status_unk = " · "
+  separator = false
 }
 
 battery 1 {
-  format = " %status %percentage %remaining "
+  format = "<span size='smaller' rise='2000' foreground='#aaaaaa'>1</span>%status%percentage "
   format_down = ""
   hide_seconds = true
   integer_battery_capacity = true
   low_threshold = 20
   threshold_type = percentage
-  status_bat = "◐"
-  status_chr = "⚡"
-  status_full = "●"
+  status_bat = " ⚡ "
+  status_chr = "🔌"
+  status_full = " ⚡ "
+  status_unk = " · "
 }
 
 volume icon {

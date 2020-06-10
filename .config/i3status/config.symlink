@@ -8,6 +8,7 @@ order += "ethernet enp0s31f6"
 order += "wireless wlp4s0"
 order += "wireless wlp7s0"
 order += "wireless wlan0"
+order += "tztime net_utilization"
 order += "ipv6"
 order += "cpu_usage"
 order += "battery all"
@@ -45,6 +46,10 @@ wireless wlp7s0 {
 wireless wlan0 {
   format_up = " ≋ %essid %bitrate %ip "
   format_down = ""
+}
+
+tztime net_utilization {
+  format = " REPLACE_NETWORK_UTILIZATION"
 }
 
 ipv6 {

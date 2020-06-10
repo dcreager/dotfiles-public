@@ -1,7 +1,72 @@
 #!/bin/sh
+
+# The code for including network utilization is derived from [1].  We don't
+# assume that i3status is using the i3bar output format.  Instead, you should
+# place the string "REPLACE_NET_UTILIZATION" somewhere in some stanza, and we
+# will substitute in the actual network utilization each time i3status generates
+# any output.  This works well:
+#
+#   tztime net_utilization {
+#     format = "REPLACE_NETWORK_UTILIZATION"
+#   }
+#
+# [1] http://code.stapelberg.de/git/i3status/tree/contrib/net-speed.sh
+
+
+# Auto detect interfaces
+ifaces=$(ls /sys/class/net | grep -E '^(eno|enp|ens|enx|eth|wlan|wlp)')
+
+last_time=0
+last_rx=0
+last_tx=0
+rate=""
+
+readable() {
+    local bytes=$1
+    local kib=$(( bytes >> 10 ))
+    if [ $kib -lt 0 ]; then
+        echo "<span color='#aaaaaa'>??</span>"
+    elif [ $kib -eq 0 ]; then
+        echo "<span color='#aaaaaa'>—</span>"
+    elif [ $kib -gt 1024 ]; then
+        local mib_int=$(( kib >> 10 ))
+        local mib_dec=$(( kib % 1024 * 976 / 10000 ))
+        if [ "$mib_dec" -lt 10 ]; then
+            mib_dec="0${mib_dec}"
+        fi
+        echo "${mib_int}.${mib_dec}M"
+    else
+        echo "${kib}K"
+    fi
+}
+
+update_rate() {
+    local time=$(date +%s)
+    local rx=0 tx=0 tmp_rx tmp_tx
+
+    for iface in $ifaces; do
+        read tmp_rx < "/sys/class/net/${iface}/statistics/rx_bytes"
+        read tmp_tx < "/sys/class/net/${iface}/statistics/tx_bytes"
+        rx=$(( rx + tmp_rx ))
+        tx=$(( tx + tmp_tx ))
+    done
+
+    local interval=$(( $time - $last_time ))
+    if [ $interval -gt 0 ]; then
+        rate="$(readable $(( (rx - last_rx) / interval )))↓ $(readable $(( (tx - last_tx) / interval )))↑"
+    else
+        rate="$(readable -1)↓ $(readable -1)↑"
+    fi
+
+    last_time=$time
+    last_rx=$rx
+    last_tx=$tx
+}
+
 i3status | while :
 do
     read line
+
     DEFAULT_SINK=`pacmd list-sinks | grep '\* index' | cut -d ' ' -f 5`
     DEFAULT_SINK_NAME=`pactl list short sinks | grep "^$DEFAULT_SINK" | cut -f 2`
     ACTIVE_PORT=`pactl list sinks | perl -000ne 'if(/Sink #'"$DEFAULT_SINK"'/){/Active Port: (.*)/; print "$1\n";}'`
@@ -12,5 +77,9 @@ do
     elif echo "$DEFAULT_SINK_NAME" | grep -qs Yeti; then
         line=`echo "$line" | sed -e "s+♪+<span rise='-12000'>🎙</span>+"`
     fi
+
+    update_rate
+    line=`echo "$line" | sed -e "s+REPLACE_NETWORK_UTILIZATION+$rate+"`
+
     echo "$line"
 done

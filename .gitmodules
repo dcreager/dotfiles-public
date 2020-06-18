@@ -41,3 +41,7 @@
 	path = .config/nvim/bundle/lalrpop.vim.symlink
 	url = https://github.com/qnighy/lalrpop.vim.git
 	branch = master
+[submodule ".config/nvim/bundle/zig.vim.symlink"]
+	path = .config/nvim/bundle/zig.vim.symlink
+	url = https://github.com/ziglang/zig.vim
+	branch = master

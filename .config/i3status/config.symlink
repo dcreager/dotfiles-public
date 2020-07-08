@@ -1,5 +1,5 @@
 general {
-  interval = 5
+  interval = 1
   markup = "pango"
 }
 

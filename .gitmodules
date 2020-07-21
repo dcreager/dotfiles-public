@@ -7,9 +7,9 @@
 [submodule ".config/nvim/bundle/css-color.symlink"]
 	path = .config/nvim/bundle/css-color.symlink
 	url = git://github.com/ap/vim-css-color.git
-[submodule ".config/nvim/bundle/ctrlp.symlink"]
-	path = .config/nvim/bundle/ctrlp.symlink
-	url = git://github.com/kien/ctrlp.vim.git
+[submodule ".local/share/nvim/site/pack/ctrlp/start/ctrlp.symlink"]
+	path = .local/share/nvim/site/pack/ctrlp/start/ctrlp.symlink
+	url = https://github.com/ctrlpvim/ctrlp.vim
 [submodule ".config/nvim/bundle/easymotion.symlink"]
 	path = .config/nvim/bundle/easymotion.symlink
 	url = git://github.com/Lokaltog/vim-easymotion.git

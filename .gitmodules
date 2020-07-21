@@ -22,8 +22,8 @@
 [submodule ".local/share/nvim/site/pack/rust.vim/start/rust.vim.symlink"]
 	path = .local/share/nvim/site/pack/rust.vim/start/rust.vim.symlink
 	url = https://github.com/rust-lang/rust.vim.git
-[submodule ".config/nvim/bundle/vim-colors_atelier-schemes.symlink"]
-	path = .config/nvim/bundle/vim-colors_atelier-schemes.symlink
+[submodule ".local/share/nvim/site/pack/vim-colors_atelier-schemes/start/vim-colors_atelier-schemes.symlink"]
+	path = .local/share/nvim/site/pack/vim-colors_atelier-schemes/start/vim-colors_atelier-schemes.symlink
 	url = https://github.com/atelierbram/vim-colors_atelier-schemes
 [submodule ".config/nvim/bundle/zig.vim.symlink"]
 	path = .config/nvim/bundle/zig.vim.symlink

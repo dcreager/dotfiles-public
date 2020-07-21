@@ -19,9 +19,6 @@
 [submodule ".local/share/nvim/site/pack/markdown/start/markdown.symlink"]
 	path = .local/share/nvim/site/pack/markdown/start/markdown.symlink
 	url = git://github.com/tpope/vim-markdown.git
-[submodule ".config/nvim/bundle/scss.symlink"]
-	path = .config/nvim/bundle/scss.symlink
-	url = git://github.com/cakebaker/scss-syntax.vim.git
 [submodule ".local/share/nvim/site/pack/rust.vim/start/rust.vim.symlink"]
 	path = .local/share/nvim/site/pack/rust.vim/start/rust.vim.symlink
 	url = https://github.com/rust-lang/rust.vim.git

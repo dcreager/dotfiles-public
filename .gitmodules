@@ -28,10 +28,6 @@
 [submodule ".config/nvim/bundle/vim-colors_atelier-schemes.symlink"]
 	path = .config/nvim/bundle/vim-colors_atelier-schemes.symlink
 	url = https://github.com/atelierbram/vim-colors_atelier-schemes
-[submodule ".config/nvim/bundle/lalrpop.vim.symlink"]
-	path = .config/nvim/bundle/lalrpop.vim.symlink
-	url = https://github.com/qnighy/lalrpop.vim.git
-	branch = master
 [submodule ".config/nvim/bundle/zig.vim.symlink"]
 	path = .config/nvim/bundle/zig.vim.symlink
 	url = https://github.com/ziglang/zig.vim

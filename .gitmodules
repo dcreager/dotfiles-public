@@ -4,8 +4,8 @@
 [submodule ".config/nvim/bundle/vim-fugitive.symlink"]
 	path = .config/nvim/bundle/vim-fugitive.symlink
 	url = git://github.com/tpope/vim-fugitive.git
-[submodule ".config/nvim/bundle/css-color.symlink"]
-	path = .config/nvim/bundle/css-color.symlink
+[submodule ".local/share/nvim/site/pack/css-color/start/css-color.symlink"]
+	path = .local/share/nvim/site/pack/css-color/start/css-color.symlink
 	url = git://github.com/ap/vim-css-color.git
 [submodule ".local/share/nvim/site/pack/ctrlp/start/ctrlp.symlink"]
 	path = .local/share/nvim/site/pack/ctrlp/start/ctrlp.symlink

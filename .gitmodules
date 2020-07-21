@@ -16,8 +16,8 @@
 [submodule ".local/share/nvim/site/pack/javascript/start/javascript.symlink"]
 	path = .local/share/nvim/site/pack/javascript/start/javascript.symlink
 	url = git://github.com/pangloss/vim-javascript.git
-[submodule ".config/nvim/bundle/markdown.symlink"]
-	path = .config/nvim/bundle/markdown.symlink
+[submodule ".local/share/nvim/site/pack/markdown/start/markdown.symlink"]
+	path = .local/share/nvim/site/pack/markdown/start/markdown.symlink
 	url = git://github.com/tpope/vim-markdown.git
 [submodule ".config/nvim/bundle/scss.symlink"]
 	path = .config/nvim/bundle/scss.symlink

@@ -22,8 +22,8 @@
 [submodule ".config/nvim/bundle/scss.symlink"]
 	path = .config/nvim/bundle/scss.symlink
 	url = git://github.com/cakebaker/scss-syntax.vim.git
-[submodule ".config/nvim/bundle/rust.vim.symlink"]
-	path = .config/nvim/bundle/rust.vim.symlink
+[submodule ".local/share/nvim/site/pack/rust.vim/start/rust.vim.symlink"]
+	path = .local/share/nvim/site/pack/rust.vim/start/rust.vim.symlink
 	url = https://github.com/rust-lang/rust.vim.git
 [submodule ".config/nvim/bundle/vim-colors_atelier-schemes.symlink"]
 	path = .config/nvim/bundle/vim-colors_atelier-schemes.symlink

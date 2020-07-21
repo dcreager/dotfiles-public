@@ -22,15 +22,6 @@
 [submodule ".config/nvim/bundle/scss.symlink"]
 	path = .config/nvim/bundle/scss.symlink
 	url = git://github.com/cakebaker/scss-syntax.vim.git
-[submodule ".config/nvim/bundle/solarized.symlink"]
-	path = .config/nvim/bundle/solarized.symlink
-	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule ".config/nvim/bundle/puppet.symlink"]
-	path = .config/nvim/bundle/puppet.symlink
-	url = git@github.com:dcreager/vim-puppet.git
-[submodule ".config/nvim/bundle/vim-airline.symlink"]
-	path = .config/nvim/bundle/vim-airline.symlink
-	url = https://github.com/bling/vim-airline.git
 [submodule ".config/nvim/bundle/rust.vim.symlink"]
 	path = .config/nvim/bundle/rust.vim.symlink
 	url = https://github.com/rust-lang/rust.vim.git

@@ -16,6 +16,8 @@ order += "battery 0"
 order += "battery 1"
 order += "volume icon"
 order += "volume master"
+order += "tztime sf"
+order += "tztime london"
 order += "tztime local"
 
 ethernet enp6s0 {
@@ -115,6 +117,16 @@ volume master {
 tztime utc {
   format = " %Z %H:%M "
   timezone = "UTC"
+}
+
+tztime sf {
+  format = " %Z %H:%M "
+  timezone = "America/Los_Angeles"
+}
+
+tztime london {
+  format = " %Z %H:%M "
+  timezone = "Europe/London"
 }
 
 tztime local {

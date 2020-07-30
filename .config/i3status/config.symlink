@@ -64,7 +64,7 @@ cpu_usage {
 }
 
 battery all {
-  format = " 🔋%remaining"
+  format = " ⏚ %remaining"
   format_down = ""
   hide_seconds = true
   integer_battery_capacity = true

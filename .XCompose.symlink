@@ -6,3 +6,7 @@ include "%L"
 <Multi_key> <e> <equal>          : "∈" U2208   # Member of
 <Multi_key> <u> <equal>          : "⊆" U2286   # Subset of
 <Multi_key> <u> <u>              : "⊂" U2282   # Strict Subset of
+<Multi_key> <ampersand> <ampersand>  : "∧" U2227   # Logical and
+<Multi_key> <bar> <bar>          : "∨" U2228   # Logical or
+<Multi_key> <i> <n>              : "∩" U2229   # Intersection
+<Multi_key> <u> <n>              : "∪" U222A   # Union

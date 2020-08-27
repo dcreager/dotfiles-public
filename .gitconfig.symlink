@@ -3,8 +3,13 @@
     diff = true
     status = true
 [core]
+    commitGraph = true
     excludesfile = ~/.gitignore.global
     pager = less -FRSX
+[fetch]
+    writeCommitGraph = true
+[gc]
+    writeCommitGraph = true
 [merge]
     summary = true
 [push]

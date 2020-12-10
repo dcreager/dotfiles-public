@@ -123,6 +123,7 @@ nmap Q :CtrlPBuffer<CR>
 
 au FileType c       setlocal formatoptions-=t
 au FileType css     setlocal sw=4 sts=4
+au FileType gemtext setlocal tw=0 wrap linebreak
 au FileType gitcommit setlocal tw=72
 au FileType go      setlocal ts=4
 au FileType html    setlocal sw=2 sts=2

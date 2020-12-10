@@ -172,6 +172,8 @@ function LightColors()
     colorscheme Atelier_ForestLight
     hi clear MatchParen
     hi MatchParen ctermfg=100 cterm=bold guifg=#f22c40 gui=bold
+    hi htmlTag ctermfg=247 guifg=#a8a19f
+    hi htmlEndTag ctermfg=247 guifg=#a8a19f
 endfunction
 
 call LightColors()

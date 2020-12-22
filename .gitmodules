@@ -25,3 +25,7 @@
 	path = .local/share/nvim/site/pack/vim-fugitive/start/vim-fugitive.symlink
 	url = https://github.com/tpope/vim-fugitive/
 	branch = master
+[submodule ".local/share/nvim/site/pack/vim-go/start/vim-go.symlink"]
+	path = .local/share/nvim/site/pack/vim-go/start/vim-go.symlink
+	url = https://github.com/fatih/vim-go/
+	branch = master

@@ -16,9 +16,6 @@
 [submodule ".local/share/nvim/site/pack/rust.vim/start/rust.vim.symlink"]
 	path = .local/share/nvim/site/pack/rust.vim/start/rust.vim.symlink
 	url = https://github.com/rust-lang/rust.vim.git
-[submodule ".local/share/nvim/site/pack/vim-colors_atelier-schemes/start/vim-colors_atelier-schemes.symlink"]
-	path = .local/share/nvim/site/pack/vim-colors_atelier-schemes/start/vim-colors_atelier-schemes.symlink
-	url = https://github.com/atelierbram/vim-colors_atelier-schemes
 [submodule ".local/share/nvim/site/pack/vim-fugitive/start/vim-fugitive.symlink"]
 	path = .local/share/nvim/site/pack/vim-fugitive/start/vim-fugitive.symlink
 	url = git://github.com/tpope/vim-fugitive.git
@@ -33,3 +30,7 @@
 [submodule ".local/share/nvim/site/pack/vim-syntax-gemtext/start/vim-syntax-gemtext.symlink"]
 	path = .local/share/nvim/site/pack/vim-syntax-gemtext/start/vim-syntax-gemtext.symlink
 	url = https://github.com/kconner/vim-syntax-gemtext
+[submodule ".local/share/nvim/site/pack/vim-one/start/vim-one.symlink"]
+	path = .local/share/nvim/site/pack/vim-one/start/vim-one.symlink
+	url = https://github.com/rakr/vim-one
+	branch = master

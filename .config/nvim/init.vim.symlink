@@ -164,17 +164,13 @@ set termguicolors
 set background=light
 
 function DarkColors()
-    set background=dark
     colorscheme anderson
+    set background=dark
 endfunction
 
 function LightColors()
+    colorscheme one
     set background=light
-    colorscheme kuroi
-    hi clear MatchParen
-    hi MatchParen ctermfg=100 cterm=bold guifg=#f22c40 gui=bold
-    hi htmlTag ctermfg=247 guifg=#a8a19f
-    hi htmlEndTag ctermfg=247 guifg=#a8a19f
 endfunction
 
 call DarkColors()

@@ -38,7 +38,7 @@ focus_follows_mouse no
 
 # Startup applications
 
-exec --no-startup-id swaymsg 'workspace 1; exec qterminal'
+exec --no-startup-id swaymsg 'workspace 1; exec wezterm'
 
 # lock the screen
 bindsym Mod1+Ctrl+l exec swaylock -c 202020
@@ -47,8 +47,8 @@ bindsym Mod1+Ctrl+l exec swaylock -c 202020
 bindsym Mod1+Ctrl+p exec systemctl suspend
 
 # start a terminal
-bindsym $mod+Return exec qterminal
-bindsym $mod+Shift+Return exec qterminal -p qterminal-dark
+bindsym $mod+Return exec wezterm
+bindsym $mod+Shift+Return exec wezterm
 
 # kill focused window
 bindsym $mod+Shift+q kill

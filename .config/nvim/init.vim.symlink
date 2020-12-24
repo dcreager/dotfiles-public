@@ -16,6 +16,17 @@ set number
 syntax enable
 filetype plugin indent on
 
+" Filetype detection for *.symlink files
+" If a file begins with '#!/', let vim autodetect the filetype. Otherwise
+" read 'linguist-language' from .gitattributes.
+augroup symlink
+  autocmd!
+  autocmd BufRead,BufNewFile *.symlink
+        \ if getline(1) !~ '#!/' |
+        \ let &ft=split(system('git check-attr linguist-language '.shellescape(expand('%:p'))))[-1] |
+        \ endif
+augroup END
+
 if exists('+colorcolumn')
     set colorcolumn=+1
 endif

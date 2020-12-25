@@ -1,0 +1,3 @@
+#!/bin/sh
+shift # remove -e
+exec /usr/bin/wezterm start -- "$@"

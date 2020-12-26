@@ -1,6 +1,7 @@
 local wezterm = require 'wezterm';
 return {
    color_scheme = "Broadcast Dim",
+   disable_default_key_bindings = true,
    dpi = 192.0,
    enable_tab_bar = false,
    font = wezterm.font("Iosevka Term"),

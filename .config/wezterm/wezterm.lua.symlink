@@ -6,4 +6,7 @@ return {
    enable_tab_bar = false,
    font = wezterm.font("Iosevka Term"),
    font_size = 10.0,
+   keys = {
+      {key="6", mods="CTRL", action=wezterm.action{SendString=""}}
+   },
 }

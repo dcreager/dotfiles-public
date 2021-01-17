@@ -184,6 +184,10 @@ function LightColors()
     set background=light
 endfunction
 
-call DarkColors()
+if empty($DARK)
+    call LightColors()
+else
+    call DarkColors()
+endif
 nmap <leader>d :call DarkColors()<cr>
 nmap <leader>l :call LightColors()<cr>

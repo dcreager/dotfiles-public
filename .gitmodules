@@ -1,9 +1,6 @@
 [submodule ".local/share/nvim/site/pack/css-color/start/css-color.symlink"]
 	path = .local/share/nvim/site/pack/css-color/start/css-color.symlink
 	url = git://github.com/ap/vim-css-color.git
-[submodule ".local/share/nvim/site/pack/ctrlp/start/ctrlp.symlink"]
-	path = .local/share/nvim/site/pack/ctrlp/start/ctrlp.symlink
-	url = https://github.com/ctrlpvim/ctrlp.vim
 [submodule ".local/share/nvim/site/pack/easymotion/start/easymotion.symlink"]
 	path = .local/share/nvim/site/pack/easymotion/start/easymotion.symlink
 	url = https://github.com/easymotion/vim-easymotion

@@ -1,4 +1,4 @@
 xrdb -merge $HOME/.Xresources
 setxkbmap -option compose:caps
 $HOME/bin/setup-logitech-k750.sh
-export TERMINAL="$HOME/bin/wezterm-launch"
+export TERMINAL=/usr/bin/qterminal

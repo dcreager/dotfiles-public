@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if [ $(hostname -s) = heron ]; then
+    xrandr --output DP-2 --below HDMI-2
+fi

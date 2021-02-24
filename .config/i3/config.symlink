@@ -1,6 +1,8 @@
 # Windows key
 set $mod Mod4
 
+exec --no-startup-id sh "$HOME/bin/setup-monitors.sh"
+
 font pango:Helvetica Neue 11
 for_window [class=".*"] title_format "<span size='smaller'>%title</span>"
 

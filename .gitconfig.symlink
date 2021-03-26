@@ -17,6 +17,8 @@
 [sendemail]
     annotate = true
     confirm = auto
+[init]
+    defaultBranch = main
 
 [include]
     path = ~/.gitconfig.private

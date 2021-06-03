@@ -1,3 +1,3 @@
 set -l cpus (cat /proc/cpuinfo | grep '^processor' | wc -l)
-set -l jobs (math $cpus x 2)
+set -l jobs (math "$cpus * 2")
 set -x MAKEFLAGS "-j$jobs"

@@ -19,6 +19,7 @@ order += "volume icon"
 order += "volume master"
 order += "tztime sf"
 order += "tztime london"
+order += "tztime nl"
 order += "tztime local"
 
 ethernet enp6s0 {
@@ -128,6 +129,11 @@ tztime sf {
 tztime london {
   format = " %Z %H:%M "
   timezone = "Europe/London"
+}
+
+tztime nl {
+  format = " %Z %H:%M "
+  timezone = "Europe/Amsterdam"
 }
 
 tztime local {

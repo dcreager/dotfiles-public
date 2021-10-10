@@ -67,8 +67,8 @@ i3status | while :
 do
     read line
 
-    DEFAULT_SINK=`pacmd list-sinks | grep '\* index' | cut -d ' ' -f 5`
-    DEFAULT_SINK_NAME=`pactl list short sinks | grep "^$DEFAULT_SINK" | cut -f 2`
+    DEFAULT_SINK_NAME=`pactl info | grep 'Default Sink' | cut -d ':' -f 2`
+    DEFAULT_SINK=`pactl list short sinks | grep "$DEFAULT_SINK_NAME" | cut -f 1`
     ACTIVE_PORT=`pactl list sinks | perl -000ne 'if(/Sink #'"$DEFAULT_SINK"'/){/Active Port: (.*)/; print "$1\n";}'`
     if echo "$ACTIVE_PORT" | grep -qs headphones; then
         line=`echo "$line" | sed -e "s+♪+<span rise='-12000'>🎧</span>+"`

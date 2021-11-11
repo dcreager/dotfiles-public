@@ -10,3 +10,8 @@ include "%L"
 <Multi_key> <bar> <bar>          : "∨" U2228   # Logical or
 <Multi_key> <i> <n>              : "∩" U2229   # Intersection
 <Multi_key> <u> <n>              : "∪" U222A   # Union
+
+<Multi_key> <less> <period>         : "⟨" U27E8   # Left angle bracket
+<Multi_key> <greater> <period>      : "⟩" U27E9   # Right angle bracket
+<Multi_key> <parenleft> <period>    : "⟮" U27EE   # Left flattened paren
+<Multi_key> <parenright> <period>   : "⟯" U27EF   # Right flattened paren

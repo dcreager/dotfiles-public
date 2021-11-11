@@ -14,7 +14,7 @@
 
 
 # Auto detect interfaces
-ifaces=$(ls /sys/class/net | grep -E '^(eno|enp|ens|enx|eth|wlan|wlp)')
+ifaces=$(ls /sys/class/net | grep -E '^(eno|enp|ens|enx|eth|wlan|wlp|wwan|wwp)')
 
 last_time=0
 last_rx=0
@@ -67,11 +67,13 @@ i3status | while :
 do
     read line
 
-    DEFAULT_SINK=`pacmd list-sinks | grep '\* index' | cut -d ' ' -f 5`
-    DEFAULT_SINK_NAME=`pactl list short sinks | grep "^$DEFAULT_SINK" | cut -f 2`
+    DEFAULT_SINK_NAME=`pactl info | grep 'Default Sink' | cut -d ':' -f 2`
+    DEFAULT_SINK=`pactl list short sinks | grep "$DEFAULT_SINK_NAME" | cut -f 1`
     ACTIVE_PORT=`pactl list sinks | perl -000ne 'if(/Sink #'"$DEFAULT_SINK"'/){/Active Port: (.*)/; print "$1\n";}'`
     if echo "$ACTIVE_PORT" | grep -qs headphones; then
         line=`echo "$line" | sed -e "s+♪+<span rise='-12000'>🎧</span>+"`
+    elif echo "$ACTIVE_PORT" | grep -qs headset; then
+        line=`echo "$line" | sed -e "s+♪+ᛒ+"`
     elif echo "$DEFAULT_SINK_NAME" | grep -qs hdmi; then
         line=`echo "$line" | sed -e "s+♪+<span rise='-12000'>🖵</span>+"`
     elif echo "$DEFAULT_SINK_NAME" | grep -qs Yeti; then

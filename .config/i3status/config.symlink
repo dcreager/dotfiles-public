@@ -3,11 +3,11 @@ general {
   markup = "pango"
 }
 
-order += "ethernet enp6s0"
+order += "ethernet bond0"
 order += "ethernet enp0s31f6"
 order += "ethernet enp0s20f0u1c4i2"
+order += "ethernet wwp0s20f0u2i12"
 order += "wireless wlp4s0"
-order += "wireless wlp7s0"
 order += "wireless wlan0"
 order += "tztime net_utilization"
 order += "ipv6"
@@ -19,9 +19,10 @@ order += "volume icon"
 order += "volume master"
 order += "tztime sf"
 order += "tztime london"
+order += "tztime nl"
 order += "tztime local"
 
-ethernet enp6s0 {
+ethernet bond0 {
   format_up = " ⩫ %ip "
   format_down = ""
 }
@@ -36,12 +37,12 @@ ethernet enp0s20f0u1c4i2 {
   format_down = ""
 }
 
-wireless wlp4s0 {
-  format_up = " ≋ %essid %bitrate %ip "
+ethernet wwp0s20f0u2i12 {
+  format_up = " 🗼 %ip "
   format_down = ""
 }
 
-wireless wlp7s0 {
+wireless wlp4s0 {
   format_up = " ≋ %essid %bitrate %ip "
   format_down = ""
 }
@@ -128,6 +129,11 @@ tztime sf {
 tztime london {
   format = " %Z %H:%M "
   timezone = "Europe/London"
+}
+
+tztime nl {
+  format = " %Z %H:%M "
+  timezone = "Europe/Amsterdam"
 }
 
 tztime local {

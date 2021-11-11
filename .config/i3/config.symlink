@@ -2,6 +2,7 @@
 set $mod Mod4
 
 exec --no-startup-id sh "$HOME/bin/setup-monitors.sh"
+exec --no-startup-id xmodmap -e "keycode 191 = dead_greek dead_greek dead_greek dead_greek"
 
 font pango:Helvetica Neue 11
 for_window [class=".*"] title_format "<span size='smaller'>%title</span>"

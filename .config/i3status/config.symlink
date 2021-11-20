@@ -84,7 +84,7 @@ battery 0 {
   threshold_type = percentage
   status_bat = " ⚡ "
   status_chr = "🔌"
-  status_full = " <span size='x-small' rise='5000'>●</span> "
+  status_full = " ● "
   status_unk = " · "
   separator = false
 }
@@ -98,7 +98,7 @@ battery 1 {
   threshold_type = percentage
   status_bat = " ⚡ "
   status_chr = "🔌"
-  status_full = " <span size='x-small' rise='5000'>●</span> "
+  status_full = " ● "
   status_unk = " · "
 }
 

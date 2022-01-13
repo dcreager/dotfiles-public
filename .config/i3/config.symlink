@@ -128,6 +128,6 @@ bindsym $mod+Shift+e exit
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    font pango:Helvetica Neue 9
+    font pango:Helvetica Neue 11
     status_command /bin/sh "$HOME/bin/wrap-i3status"
 }

@@ -35,6 +35,9 @@ bindsym Mod1+Ctrl+l exec i3lock -c 202020
 # suspend
 bindsym Mod1+Ctrl+p exec systemctl suspend
 
+# autoconfigure monitors
+bindsym Mod1+Ctrl+c exec autorandr --change
+
 # start a terminal
 bindsym $mod+Return exec env LIGHT=1 qterminal
 bindsym $mod+Shift+Return exec env DARK=1 qterminal -p qterminal-dark

@@ -29,6 +29,10 @@ focus_follows_mouse no
 
 exec --no-startup-id i3-msg 'workspace 1; exec env LIGHT=1 qterminal'
 
+# Special window handling
+
+for_window [window_role=GtkFileChooserDialog] floating disable
+
 # lock the screen
 bindsym Mod1+Ctrl+l exec i3lock -c 202020
 

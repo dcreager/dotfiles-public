@@ -1,0 +1,14 @@
+#!/bin/sh
+
+case $1 in
+    dp)    VALUE=15 ;;
+    hdmi1) VALUE=17 ;;
+    hdmi2) VALUE=18 ;;
+    usb)   VALUE=27 ;;
+    *)
+        echo "Usage: switch-monitor-source [usb|dp|hdmi1|hdmi2]"
+        exit 1
+        ;;
+esac
+
+/usr/bin/ddccontrol dev:/dev/i2c-9 -r 0x60 -w $VALUE

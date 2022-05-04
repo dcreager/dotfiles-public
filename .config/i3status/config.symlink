@@ -6,6 +6,7 @@ general {
 order += "ethernet bond0"
 order += "ethernet enp0s31f6"
 order += "ethernet enp0s20f0u1c4i2"
+order += "ethernet enp89s0"
 order += "ethernet wwp0s20f0u2i12"
 order += "wireless wlp4s0"
 order += "wireless wlan0"
@@ -33,6 +34,11 @@ ethernet enp0s31f6 {
 }
 
 ethernet enp0s20f0u1c4i2 {
+  format_up = " 📱 %ip "
+  format_down = ""
+}
+
+ethernet enp89s0 {
   format_up = " 📱 %ip "
   format_down = ""
 }
@@ -84,7 +90,7 @@ battery 0 {
   threshold_type = percentage
   status_bat = " ⚡ "
   status_chr = "🔌"
-  status_full = " <span size='x-small' rise='5000'>●</span> "
+  status_full = " ● "
   status_unk = " · "
   separator = false
 }
@@ -98,7 +104,7 @@ battery 1 {
   threshold_type = percentage
   status_bat = " ⚡ "
   status_chr = "🔌"
-  status_full = " <span size='x-small' rise='5000'>●</span> "
+  status_full = " ● "
   status_unk = " · "
 }
 

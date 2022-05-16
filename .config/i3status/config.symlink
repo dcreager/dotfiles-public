@@ -33,12 +33,12 @@ ethernet enp0s31f6 {
   format_down = ""
 }
 
-ethernet enp0s20f0u1c4i2 {
-  format_up = " 📱 %ip "
+ethernet enp89s0 {
+  format_up = " ⩫ %ip "
   format_down = ""
 }
 
-ethernet enp89s0 {
+ethernet enp0s20f0u1c4i2 {
   format_up = " 📱 %ip "
   format_down = ""
 }

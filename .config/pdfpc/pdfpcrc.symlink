@@ -1,0 +1,7 @@
+option prerender-slides -1
+option cache-expiration -1
+option cache-max-usize 4096
+
+option current-size 20
+option next-height 10
+option switch-screens true

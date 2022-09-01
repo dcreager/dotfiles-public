@@ -26,6 +26,8 @@ include "%L"
 <Multi_key> <less> <bar>            : "◃" U25C3   # White left-pointing small triangle
 <Multi_key> <bar> <greater>         : "▹" U25B9   # White right-pointing small triangle
 
+<Multi_key> <l> <r>                 : "↔" U2194   # left right arrow
+
 # GREEK CAPITAL LETTERS
 <Multi_key> <G> <A> : "Α"      U0391    # GREEK CAPITAL LETTER ALPHA
 <Multi_key> <G> <B> : "Β"      U0392    # GREEK CAPITAL LETTER BETA

@@ -4,6 +4,7 @@ include "%L"
 <Multi_key> <p> <i>                 : "π" U03C0   # PI
 <Multi_key> <s> <u> <m>             : "∑" U2211   # Sum
 <Multi_key> <e> <equal>             : "∈" U2208   # Member of
+<Multi_key> <equal> <e>             : "∋" U220B   # Contains
 <Multi_key> <u> <equal>             : "⊆" U2286   # Subset of
 <Multi_key> <u> <u>                 : "⊂" U2282   # Strict Subset of
 <Multi_key> <ampersand> <ampersand> : "∧" U2227   # Logical and

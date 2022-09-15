@@ -76,6 +76,13 @@ bindsym $mod+Shift+Ctrl+j resize grow width 10px or 10ppt
 bindsym $mod+Shift+Ctrl+k resize shrink height 10px or 10ppt
 bindsym $mod+Shift+Ctrl+l resize grow height 10px or 10ppt
 
+bindsym $mod+Ctrl+2 resize set width 50ppt
+bindsym $mod+Ctrl+3 resize set width 33ppt
+bindsym $mod+Ctrl+4 resize set width 25ppt
+
+# This happens to be a good width to show a full page in Zathura
+bindsym $mod+Shift+p resize set width 36ppt
+
 # split in horizontal orientation
 bindsym $mod+z split h
 

@@ -32,6 +32,10 @@ include "%L"
 <Multi_key> <less> <colon>          : "↤" U21A4   # left arrow from bar
 <Multi_key> <colon> <greater>       : "↦" U21A6   # right arrow from bar
 
+# Emoji
+<Multi_key> <0> <0> : "💯"     U1F4AF   # 100
+<Multi_key> <u> <p> : "👍"     U1F44D   # thumbs up
+
 # GREEK CAPITAL LETTERS
 <Multi_key> <G> <A> : "Α"      U0391    # GREEK CAPITAL LETTER ALPHA
 <Multi_key> <G> <B> : "Β"      U0392    # GREEK CAPITAL LETTER BETA

@@ -16,6 +16,8 @@ set number
 syntax enable
 filetype plugin indent on
 
+lua require('leap').add_default_mappings()
+
 " Filetype detection for *.symlink files
 " If a file begins with '#!/', let vim autodetect the filetype. Otherwise
 " read 'linguist-language' from .gitattributes.

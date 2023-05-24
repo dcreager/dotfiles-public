@@ -2,3 +2,7 @@ if command -sq nvim
   set -x EDITOR nvim
   abbr v nvim
 end
+
+if command -sq helix
+  abbr h helix
+end

@@ -1,21 +1,21 @@
 [submodule ".local/share/nvim/site/pack/css-color/start/css-color.symlink"]
 	path = .local/share/nvim/site/pack/css-color/start/css-color.symlink
-	url = git://github.com/ap/vim-css-color.git
+	url = https://github.com/ap/vim-css-color
 [submodule ".local/share/nvim/site/pack/easymotion/start/easymotion.symlink"]
 	path = .local/share/nvim/site/pack/easymotion/start/easymotion.symlink
 	url = https://github.com/easymotion/vim-easymotion
 [submodule ".local/share/nvim/site/pack/javascript/start/javascript.symlink"]
 	path = .local/share/nvim/site/pack/javascript/start/javascript.symlink
-	url = git://github.com/pangloss/vim-javascript.git
+	url = https://github.com/pangloss/vim-javascript
 [submodule ".local/share/nvim/site/pack/markdown/start/markdown.symlink"]
 	path = .local/share/nvim/site/pack/markdown/start/markdown.symlink
-	url = git://github.com/tpope/vim-markdown.git
+	url = https://github.com/tpope/vim-markdown
 [submodule ".local/share/nvim/site/pack/rust.vim/start/rust.vim.symlink"]
 	path = .local/share/nvim/site/pack/rust.vim/start/rust.vim.symlink
 	url = https://github.com/rust-lang/rust.vim.git
 [submodule ".local/share/nvim/site/pack/vim-fugitive/start/vim-fugitive.symlink"]
 	path = .local/share/nvim/site/pack/vim-fugitive/start/vim-fugitive.symlink
-	url = git://github.com/tpope/vim-fugitive.git
+	url = https://github.com/tpope/vim-fugitive
 [submodule ".local/share/nvim/site/pack/zig.vim/start/zig.vim.symlink"]
 	path = .local/share/nvim/site/pack/zig.vim/start/zig.vim.symlink
 	url = https://github.com/ziglang/zig.vim
@@ -35,3 +35,7 @@
 	path = .local/share/nvim/site/pack/fzf.vim/start/fzf.vim.symlink
 	url = https://github.com/junegunn/fzf.vim
 	branch = master
+[submodule ".local/share/nvim/site/pack/leap.nvim/start/leap.nvim.symlink"]
+	path = .local/share/nvim/site/pack/leap.nvim/start/leap.nvim.symlink
+	url = https://github.com/ggandor/leap.nvim
+	branch = main

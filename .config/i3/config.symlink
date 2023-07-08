@@ -29,11 +29,19 @@ focus_follows_mouse no
 
 exec --no-startup-id i3-msg 'workspace 1; exec env LIGHT=1 qterminal'
 
+# Special window handling
+
+for_window [window_role=GtkFileChooserDialog] floating disable
+for_window [class="^zoom $" title="^zoom $"] floating enable
+
 # lock the screen
 bindsym Mod1+Ctrl+l exec i3lock -c 202020
 
 # suspend
 bindsym Mod1+Ctrl+p exec systemctl suspend
+
+# autoconfigure monitors
+bindsym Mod1+Ctrl+c exec autorandr --change
 
 # start a terminal
 bindsym $mod+Return exec env LIGHT=1 qterminal
@@ -67,6 +75,13 @@ bindsym $mod+Shift+Ctrl+h resize shrink width 10px or 10ppt
 bindsym $mod+Shift+Ctrl+j resize grow width 10px or 10ppt
 bindsym $mod+Shift+Ctrl+k resize shrink height 10px or 10ppt
 bindsym $mod+Shift+Ctrl+l resize grow height 10px or 10ppt
+
+bindsym $mod+Ctrl+2 resize set width 50ppt
+bindsym $mod+Ctrl+3 resize set width 33ppt
+bindsym $mod+Ctrl+4 resize set width 25ppt
+
+# This happens to be a good width to show a full page in Zathura
+bindsym $mod+Shift+p resize set width 36ppt
 
 # split in horizontal orientation
 bindsym $mod+z split h

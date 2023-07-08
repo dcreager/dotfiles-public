@@ -16,6 +16,8 @@ set number
 syntax enable
 filetype plugin indent on
 
+lua require('leap').add_default_mappings()
+
 " Filetype detection for *.symlink files
 " If a file begins with '#!/', let vim autodetect the filetype. Otherwise
 " read 'linguist-language' from .gitattributes.
@@ -87,8 +89,8 @@ set list listchars=tab:··,trail:◃,nbsp:•
 :cnoremap <C-g>  <C-c>
 
 " clang-format support
-au FileType c,cpp   map <C-I> :py3f ~/.local/share/clang/clang-format-py3.py<cr>
-au FileType c,cpp   imap <C-I> <c-o>:py3f ~/.local/share/clang/clang-format-py3.py<cr>
+au FileType c,cpp   map <Tab> :py3f ~/.local/share/clang/clang-format-py3.py<cr>
+au FileType c,cpp   imap <Tab> <c-o>:py3f ~/.local/share/clang/clang-format-py3.py<cr>
 
 " Rust stuff
 let g:rustfmt_autosave = 1

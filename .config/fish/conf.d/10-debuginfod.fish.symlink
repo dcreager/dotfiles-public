@@ -1,3 +1,5 @@
 # Largely copied from /etc/profile.d/debuginfod.sh
-set -x DEBUGINFOD_URLS (cat "/etc/debuginfod"/*.urls 2>/dev/null | tr '\n' ' ')
-[ -z "$DEBUGINFOD_URLS" ] && set -e DEBUGINFOD_URLS
+if count "/etc/debuginfod"/*.urls >/dev/null
+    set -x DEBUGINFOD_URLS (cat /dev/null "/etc/debuginfod"/*.urls 2>/dev/null | tr '\n' ' ')
+    [ -z "$DEBUGINFOD_URLS" ] && set -e DEBUGINFOD_URLS
+end

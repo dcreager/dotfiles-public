@@ -1,23 +1,5 @@
 # vim: ft=sh
 
-tma () {
-    if [ -z "$1" ]; then
-        tmux -2 attach
-    else
-        tmux -2 attach -t "$1"
-    fi
-}
-
+alias tmn='tmux new -s'
+alias tma='tmux attach'
 alias tml='tmux ls'
-
-tmn () {
-    if [ -z "$1" ]; then
-        echo "Missing session name" >&2
-        return 1
-    fi
-    if [ -e "$HOME/.config/tmux/$1.conf" ]; then
-        tmux -2 -f "$HOME/.config/tmux/$1.conf" attach -t "$1"
-    else
-        tmux -2 new -s "$1"
-    fi
-}

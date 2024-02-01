@@ -4,7 +4,7 @@
     status = true
 [core]
     commitGraph = true
-    excludesfile = ~/.gitignore.global
+    excludesfile = gitignore.global
 [delta]
     color-only = true
     line-numbers = true
@@ -32,6 +32,6 @@
     defaultBranch = main
 
 [include]
-    path = ~/.gitconfig.private
+    path = config.private
 [pass]
 	signcommits = true

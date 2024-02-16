@@ -5,18 +5,6 @@
 [core]
     commitGraph = true
     excludesfile = gitignore.global
-[delta]
-    color-only = true
-    line-numbers = true
-    syntax-theme = none
-[delta "light"]
-    light = true
-[delta "dark"]
-    dark = true
-    minus-style = "auto #490303"
-    minus-emph-style = "auto #6c3232"
-    plus-style = "auto #0f3900"
-    plus-emph-style = "auto #416c32"
 [fetch]
     writeCommitGraph = true
 [gc]

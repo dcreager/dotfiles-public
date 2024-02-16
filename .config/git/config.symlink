@@ -35,3 +35,5 @@
     path = config.private
 [pass]
 	signcommits = true
+[rerere]
+	enabled = true

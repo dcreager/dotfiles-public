@@ -67,18 +67,9 @@ i3status | while :
 do
     read line
 
-    DEFAULT_SINK_NAME=`pactl info | grep 'Default Sink' | cut -d ':' -f 2`
-    DEFAULT_SINK=`pactl list short sinks | grep "$DEFAULT_SINK_NAME" | cut -f 1`
-    ACTIVE_PORT=`pactl list sinks | perl -000ne 'if(/Sink #'"$DEFAULT_SINK"'/){/Active Port: (.*)/; print "$1\n";}'`
-    if echo "$ACTIVE_PORT" | grep -qs headphones; then
-        line=`echo "$line" | sed -e "s+♪+<span rise='-12000'>🎧</span>+"`
-    elif echo "$ACTIVE_PORT" | grep -qs headset; then
-        line=`echo "$line" | sed -e "s+♪+ᛒ+"`
-    elif echo "$DEFAULT_SINK_NAME" | grep -qs hdmi; then
-        line=`echo "$line" | sed -e "s+♪+<span rise='-12000'>🖵</span>+"`
-    elif echo "$DEFAULT_SINK_NAME" | grep -qs Yeti; then
-        line=`echo "$line" | sed -e "s+♪+<span rise='-12000'>🎙</span>+"`
-    fi
+    audio_icon=`$HOME/go/bin/audio-controls icon`
+    #line=`echo "$line" | sed -e "s+AUDIO_OUTPUT_ICON+<span rise='-12000'>🎙</span>+"`
+    line=`echo "$line" | sed -e "s+AUDIO_OUTPUT_ICON+$audio_icon+"`
 
     update_rate
     line=`echo "$line" | sed -e "s+REPLACE_NETWORK_UTILIZATION+$rate+"`

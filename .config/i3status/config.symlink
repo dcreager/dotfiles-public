@@ -110,8 +110,8 @@ battery 1 {
 
 volume icon {
   device = "pulse"
-  format = " ♪"
-  format_muted = " ♪"
+  format = " AUDIO_OUTPUT_ICON"
+  format_muted = " AUDIO_OUTPUT_ICON"
   separator = false
   separator_block_width = 3
 }

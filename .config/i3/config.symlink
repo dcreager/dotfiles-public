@@ -15,6 +15,7 @@ bindcode 233 exec brightnessctl set +5%
 exec xset s off -dpms
 
 # Sound
+bindcode 107 exec --no-startup-id $HOME/go/bin/audio-controls toggle
 bindcode 121 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindcode 122 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ false ; exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% ; exec --no-startup-id paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 bindcode 123 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ false ; exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% ; exec --no-startup-id paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga

@@ -1,0 +1,31 @@
+[color]
+    branch = true
+    diff = true
+    status = true
+[core]
+    commitGraph = true
+    excludesfile = gitignore.global
+[diff]
+    algorithm = histogram
+[fetch]
+    writeCommitGraph = true
+[gc]
+    writeCommitGraph = true
+[merge]
+    summary = true
+[push]
+    default = matching
+[sendemail]
+    annotate = true
+    confirm = auto
+[init]
+    defaultBranch = main
+
+[include]
+    path = config.private
+[pass]
+	signcommits = true
+[rerere]
+	enabled = true
+[rebase]
+	updateRefs = true

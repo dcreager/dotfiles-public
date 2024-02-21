@@ -4,7 +4,6 @@
     status = true
 [core]
     commitGraph = true
-    excludesfile = gitignore.global
 [diff]
     algorithm = histogram
 [fetch]

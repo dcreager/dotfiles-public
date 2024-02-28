@@ -5,7 +5,6 @@ bind -r ` send-prefix
 
 # Nicer colors
 set-option -sa terminal-overrides ",xterm*:Tc"
-set -g mouse on
 
 # Vim style pane selection
 bind h select-pane -L

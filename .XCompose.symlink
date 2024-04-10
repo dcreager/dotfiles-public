@@ -4,6 +4,7 @@ include "%L"
 <Multi_key> <p> <i>                 : "π" U03C0   # PI
 <Multi_key> <s> <u> <m>             : "∑" U2211   # Sum
 <Multi_key> <e> <equal>             : "∈" U2208   # Member of
+<Multi_key> <e> <slash>             : "∉" U2209   # Not member of
 <Multi_key> <equal> <e>             : "∋" U220B   # Contains
 <Multi_key> <u> <equal>             : "⊆" U2286   # Subset of
 <Multi_key> <u> <u>                 : "⊂" U2282   # Strict Subset of
@@ -12,6 +13,7 @@ include "%L"
 <Multi_key> <i> <n>                 : "∩" U2229   # Intersection
 <Multi_key> <u> <n>                 : "∪" U222A   # Union
 <Multi_key> <asciicircum> <equal>   : "≜" U225C   # Triangle over equals (defeq)
+<Multi_key> <t> <k>                 : "✔" U2714   # Check mark
 
 <Multi_key> <bracketleft> <bar>     : "⟦" U27E6   # Left double bracket
 <Multi_key> <bar> <bracketright>    : "⟧" U27E7   # Right double bracket

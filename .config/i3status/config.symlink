@@ -6,6 +6,7 @@ general {
 order += "ethernet bond0"
 order += "ethernet enp0s31f6"
 order += "ethernet enp0s20f0u1c4i2"
+order += "ethernet enp0s20f0u3c4i2"
 order += "ethernet enp89s0"
 order += "ethernet wwp0s20f0u2i12"
 order += "wireless wlp4s0"
@@ -39,6 +40,11 @@ ethernet enp89s0 {
 }
 
 ethernet enp0s20f0u1c4i2 {
+  format_up = " 📱 %ip "
+  format_down = ""
+}
+
+ethernet enp0s20f0u3c4i2 {
   format_up = " 📱 %ip "
   format_down = ""
 }
@@ -110,8 +116,8 @@ battery 1 {
 
 volume icon {
   device = "pulse"
-  format = " ♪"
-  format_muted = " ♪"
+  format = " AUDIO_OUTPUT_ICON"
+  format_muted = " AUDIO_OUTPUT_ICON"
   separator = false
   separator_block_width = 3
 }

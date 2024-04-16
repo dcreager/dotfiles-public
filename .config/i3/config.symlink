@@ -28,7 +28,7 @@ focus_follows_mouse no
 
 # Startup applications
 
-exec --no-startup-id i3-msg 'workspace 1; exec env LIGHT=1 qterminal -e $HOME/bin/start-and-attach-tmux default'
+exec --no-startup-id i3-msg 'workspace 1; exec env LIGHT=1 qterminal
 
 # Special window handling
 
@@ -46,8 +46,8 @@ bindsym Mod1+Ctrl+p exec systemctl suspend
 bindsym Mod1+Ctrl+c exec autorandr --change
 
 # start a terminal
-bindsym $mod+Return exec env LIGHT=1 qterminal -e $HOME/bin/start-and-attach-tmux default
-bindsym $mod+Shift+Return exec env DARK=1 qterminal -p qterminal-dark -e $HOME/bin/start-and-attach-tmux default
+bindsym $mod+Return exec env LIGHT=1 qterminal
+bindsym $mod+Shift+Return exec env DARK=1 qterminal -p qterminal-dark
 
 # kill focused window
 bindsym $mod+Shift+q kill

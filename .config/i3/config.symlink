@@ -47,7 +47,9 @@ bindsym Mod1+Ctrl+c exec autorandr --change
 
 # start a terminal
 bindsym $mod+Return exec env LIGHT=1 qterminal
+bindsym $mod+Ctrl+Return exec $HOME/bin/dmenu-ssh env LIGHT=1 SKIP_TMUX=1 qterminal -e
 bindsym $mod+Shift+Return exec env DARK=1 qterminal -p qterminal-dark
+bindsym $mod+Shift+Ctrl+Return exec $HOME/bin/dmenu-ssh env DARK=1 SKIP_TMUX=1 qterminal -p qterminal-dark -e
 
 # kill focused window
 bindsym $mod+Shift+q kill

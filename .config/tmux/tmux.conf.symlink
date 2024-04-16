@@ -7,7 +7,7 @@ bind -r ` send-prefix
 set-option -sa terminal-overrides ",xterm*:Tc"
 
 # New session
-bind S command-prompt -I "new-session -d -s "
+bind S command-prompt -I "new-session -s "
 set -g detach-on-destroy off
 
 # Vim style pane selection

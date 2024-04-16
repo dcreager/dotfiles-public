@@ -6,6 +6,10 @@ bind -r ` send-prefix
 # Nicer colors
 set-option -sa terminal-overrides ",xterm*:Tc"
 
+# New session
+bind S command-prompt -I "new-session -d -s "
+set -g detach-on-destroy off
+
 # Vim style pane selection
 bind h select-pane -L
 bind j select-pane -D
@@ -48,7 +52,8 @@ set-option -g status-interval 2
 set-option -g status-justify "centre"
 set-option -g status-style "fg=colour255,bg=colour235"
 
-set-option -g status-left "#[fg=colour255,bg=colour33] #h "
+set-option -g status-left "#[fg=colour255,bg=colour33] #h:#S "
+set-option -g status-left-length 40
 set-option -g status-right "#[fg=colour136]%a %Y-%m-%d %H:%M "
 
 set-option -g window-status-format "#[fg=colour247,bg=colour235] #I:#W "

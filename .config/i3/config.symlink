@@ -28,7 +28,7 @@ focus_follows_mouse no
 
 # Startup applications
 
-exec --no-startup-id i3-msg 'workspace 1; exec env LIGHT=1 qterminal
+exec --no-startup-id i3-msg 'workspace 1; exec env LIGHT=1 qterminal'
 
 # Special window handling
 

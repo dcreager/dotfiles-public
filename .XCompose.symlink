@@ -27,6 +27,7 @@ include "%L"
 <Multi_key> <c> <a>                 : "⊓" U2293   # Cap
 <Multi_key> <bar> <minus>           : "⊢" U22A2   # Right tack
 <Multi_key> <asterisk> <asterisk>   : "⋅" U22C5   # Middle dot
+<Multi_key> <at> <at>               : "∘" U2218   # Ring operator
 <Multi_key> <less> <bar>            : "◃" U25C3   # White left-pointing small triangle
 <Multi_key> <bar> <greater>         : "▹" U25B9   # White right-pointing small triangle
 

@@ -19,6 +19,8 @@ include "%L"
 <Multi_key> <bar> <bracketright>    : "⟧" U27E7   # Right double bracket
 <Multi_key> <less> <period>         : "⟨" U27E8   # Left angle bracket
 <Multi_key> <greater> <period>      : "⟩" U27E9   # Right angle bracket
+<Multi_key> <less> <slash>          : "⟪" U27EA   # Left double angle bracket
+<Multi_key> <greater> <slash>       : "⟫" U27EB   # Right double angle bracket
 <Multi_key> <parenleft> <period>    : "⟮" U27EE   # Left flattened paren
 <Multi_key> <parenright> <period>   : "⟯" U27EF   # Right flattened paren
 <Multi_key> <parenleft> <bar>       : "⦇" U2987   # Left banana bracket

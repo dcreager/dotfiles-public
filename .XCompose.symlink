@@ -30,8 +30,10 @@ include "%L"
 <Multi_key> <bar> <minus>           : "⊢" U22A2   # Right tack
 <Multi_key> <asterisk> <asterisk>   : "⋅" U22C5   # Middle dot
 <Multi_key> <at> <at>               : "∘" U2218   # Ring operator
-<Multi_key> <less> <bar>            : "◃" U25C3   # White left-pointing small triangle
-<Multi_key> <bar> <greater>         : "▹" U25B9   # White right-pointing small triangle
+<Multi_key> <comma> <bar>           : "◃" U25C3   # White left-pointing small triangle
+<Multi_key> <bar> <period>          : "▹" U25B9   # White right-pointing small triangle
+<Multi_key> <less> <bar>            : "◁" U25C1   # White left-pointing triangle
+<Multi_key> <bar> <greater>         : "▷" U25B7   # White right-pointing triangle
 
 <Multi_key> <l> <r>                 : "↔" U2194   # left right arrow
 <Multi_key> <less> <colon>          : "↤" U21A4   # left arrow from bar

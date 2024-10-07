@@ -5,7 +5,7 @@ set $laptop_screen eDP-1
 set $dell "Dell Inc. DELL U3818DW 97F8P8A10N2L"
 
 font pango:Helvetica Neue 9
-output $laptop_screen scale 2
+output $laptop_screen scale 1.7
 output $dell scale 2
 
 # This should work once sway 1.1 is available
@@ -26,9 +26,10 @@ bindcode 232 exec brightnessctl set 5%-
 bindcode 233 exec brightnessctl set +5%
 
 # Sound
-bindcode 121 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindcode 122 exec pactl set-sink-mute @DEFAULT_SINK@ false ; exec pactl set-sink-volume @DEFAULT_SINK@ -5% ; exec paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
-bindcode 123 exec pactl set-sink-mute @DEFAULT_SINK@ false ; exec pactl set-sink-volume @DEFAULT_SINK@ +5% ; exec paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+bindcode 107 exec --no-startup-id $HOME/go/bin/audio-controls toggle
+bindcode 121 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindcode 122 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ false ; exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% ; exec --no-startup-id paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+bindcode 123 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ false ; exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% ; exec --no-startup-id paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -38,7 +39,7 @@ focus_follows_mouse no
 
 # Startup applications
 
-exec --no-startup-id swaymsg 'workspace 1; exec qterminal'
+exec --no-startup-id swaymsg 'workspace 1; exec env LIGHT=1 qterminal'
 
 # lock the screen
 bindsym Mod1+Ctrl+l exec swaylock -c 202020
@@ -47,14 +48,14 @@ bindsym Mod1+Ctrl+l exec swaylock -c 202020
 bindsym Mod1+Ctrl+p exec systemctl suspend
 
 # start a terminal
-bindsym $mod+Return exec qterminal
-bindsym $mod+Shift+Return exec qterminal -p qterminal-dark
+bindsym $mod+Return exec env LIGHT=1 qterminal
+bindsym $mod+Shift+Return exec env DARK=1 qterminal -p qterminal-dark
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -modi drun -show-icons -location 2 -padding 10 -show drun
+bindsym $mod+d exec i3-dmenu-desktop --dmenu="wmenu -i"
 
 # change focus
 bindsym $mod+h focus left
@@ -78,6 +79,13 @@ bindsym $mod+Shift+Ctrl+h resize shrink width 10px or 10ppt
 bindsym $mod+Shift+Ctrl+j resize grow width 10px or 10ppt
 bindsym $mod+Shift+Ctrl+k resize shrink height 10px or 10ppt
 bindsym $mod+Shift+Ctrl+l resize grow height 10px or 10ppt
+
+bindsym $mod+Ctrl+2 resize set width 50ppt
+bindsym $mod+Ctrl+3 resize set width 33ppt
+bindsym $mod+Ctrl+4 resize set width 25ppt
+
+# This happens to be a good width to show a full page in Zathura
+bindsym $mod+Shift+p resize set width 36ppt
 
 # split in horizontal orientation
 bindsym $mod+z split h

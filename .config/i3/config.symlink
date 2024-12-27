@@ -28,7 +28,7 @@ focus_follows_mouse no
 
 # Startup applications
 
-exec --no-startup-id i3-msg 'workspace 1; exec env LIGHT=1 qterminal'
+exec --no-startup-id i3-msg 'workspace 1; exec ghostty'
 
 # Special window handling
 
@@ -46,10 +46,10 @@ bindsym Mod1+Ctrl+p exec systemctl suspend
 bindsym Mod1+Ctrl+c exec autorandr --change
 
 # start a terminal
-bindsym $mod+Return exec env LIGHT=1 qterminal
-bindsym $mod+Shift+Return exec $HOME/bin/dmenu-ssh env LIGHT=1 SKIP_TMUX=1 qterminal -e
-bindsym $mod+Ctrl+Return exec env DARK=1 qterminal -p qterminal-dark
-bindsym $mod+Ctrl+Shift+Return exec $HOME/bin/dmenu-ssh env DARK=1 SKIP_TMUX=1 qterminal -p qterminal-dark -e
+bindsym $mod+Return exec env LIGHT=1 ghostty
+bindsym $mod+Shift+Return exec $HOME/bin/dmenu-ssh env LIGHT=1 SKIP_TMUX=1 ghostty -e
+bindsym $mod+Ctrl+Return exec env DARK=1 ghostty --theme=Desert
+bindsym $mod+Ctrl+Shift+Return exec $HOME/bin/dmenu-ssh env DARK=1 SKIP_TMUX=1 ghostty --theme=Desert -e
 
 # kill focused window
 bindsym $mod+Shift+q kill

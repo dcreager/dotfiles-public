@@ -1,0 +1,8 @@
+cursor-style = block
+font-family = "Iosevka Term Slab"
+font-size = 9
+gtk-adwaita = false
+gtk-single-instance = false
+gtk-titlebar = false
+shell-integration-features = no-cursor
+theme = flexoki-light

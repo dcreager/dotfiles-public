@@ -72,7 +72,7 @@ set wildignore+=*/*.egg-info/*
 set wildmode=longest,list,full
 set wildmenu
 
-set list listchars=tab:··,trail:◃,nbsp:•
+set list listchars=tab:··,trail:◃,nbsp:•,precedes:‹,extends:›
 
 " Emacs bindings in command line
 " from http://statico.github.io/vim.html
@@ -139,7 +139,7 @@ au FileType c       setlocal formatoptions-=t
 au FileType css     setlocal sw=4 sts=4
 au FileType gemtext setlocal tw=0 wrap linebreak
 au FileType gitcommit setlocal tw=72
-au FileType go      setlocal ts=4
+au FileType go      setlocal ts=4 tw=0 nowrap
 au FileType html    setlocal sw=2 sts=2
 au FileType htmldjango  setlocal sw=2 sts=2
 au FileType lua     setlocal formatoptions-=t sw=3 sts=3

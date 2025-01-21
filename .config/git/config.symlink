@@ -6,6 +6,8 @@
     commitGraph = true
 [diff]
     algorithm = histogram
+    colorMoved = zebra
+    colorMovedWS = ignore-all-space
 [fetch]
     writeCommitGraph = true
 [gc]

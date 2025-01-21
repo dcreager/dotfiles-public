@@ -39,3 +39,6 @@
 	path = .local/share/nvim/site/pack/leap.nvim/start/leap.nvim.symlink
 	url = https://github.com/ggandor/leap.nvim
 	branch = main
+[submodule ".local/share/nvim/site/pack/templ.vim/start/templ.vim.symlink"]
+	path = .local/share/nvim/site/pack/templ.vim/start/templ.vim.symlink
+	url = https://github.com/joerdav/templ.vim

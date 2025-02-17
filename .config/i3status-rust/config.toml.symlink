@@ -1,0 +1,63 @@
+[theme]
+theme = "semi-native"
+
+[theme.overrides]
+idle_fg = "#dddddd"
+good_fg = "#dddddd"
+start_separator = ""
+separator = "native"
+separator_fg = "#aaaaaa"
+
+[icons]
+icons = "awesome6"
+
+[icons.overrides]
+net_down = "\uf175"
+net_up = "\uf176"
+
+[[block]]
+block = "net"
+format = " $icon $ssid $bitrate "
+
+[block.theme_overrides]
+idle_fg = "#00ff00"
+
+[[block]]
+block = "net"
+device = "tailscale0"
+format = " ^icon_net_bridge {$ip|down} "
+
+[[block]]
+block = "net"
+format = " ^icon_net_down\u200b$speed_down.eng(prefix:K)  ^icon_net_up\u200b$speed_up.eng(prefix:K) "
+
+[[block]]
+block = "cpu"
+format = " $icon $utilization "
+
+[[block]]
+block = "battery"
+format = " $icon $time_remaining $percentage "
+
+[[block]]
+block = "sound"
+format = " $icon {$volume.eng(w:2) |}"
+
+[[block]]
+block = "time"
+timezone = "America/Los_Angeles"
+format = " $timestamp.datetime(f:'%Z %H:%M') "
+
+[[block]]
+block = "time"
+timezone = "Europe/London"
+format = " $timestamp.datetime(f:'%Z %H:%M') "
+
+[[block]]
+block = "time"
+timezone = "Europe/Amsterdam"
+format = " $timestamp.datetime(f:'%Z %H:%M') "
+
+[[block]]
+block = "time"
+format = " $timestamp.datetime(f:'%Y-%m-%d %H:%M') "

@@ -1,4 +1,0 @@
-local dark_configfile = os.getenv("HOME") .. "/.config/wezterm/wezterm.lua";
-local config = loadfile(dark_configfile)();
-config.color_scheme = "Broadcast Dim";
-return config

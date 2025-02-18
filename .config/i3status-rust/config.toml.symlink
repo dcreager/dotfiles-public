@@ -18,26 +18,39 @@ net_up = "\uf176"
 [[block]]
 block = "net"
 format = " $icon $ssid $bitrate "
-
+interval = 2
 [block.theme_overrides]
 idle_fg = "#00ff00"
 
 [[block]]
-block = "net"
-device = "tailscale0"
-format = " ^icon_net_bridge {$ip|down} "
+block = "custom"
+json = true
+shell = "/bin/bash"
+interval = 2
+command = '''
+if tailscale status --self --peers=false >/dev/null 2>&1; then
+   echo '{"state": "Good", "text": ""}'
+else
+   echo '{"state": "Critical", "text": " tailscale down "}'
+fi
+'''
+format = " ^icon_net_bridge$text"
+merge_with_next = true
 
 [[block]]
 block = "net"
 format = " ^icon_net_down\u200b$speed_down.eng(prefix:K)  ^icon_net_up\u200b$speed_up.eng(prefix:K) "
+interval = 2
 
 [[block]]
 block = "cpu"
 format = " $icon $utilization "
+interval = 2
 
 [[block]]
 block = "battery"
 format = " $icon $time_remaining $percentage "
+interval = 2
 
 [[block]]
 block = "sound"
@@ -47,16 +60,22 @@ format = " $icon {$volume.eng(w:2) |}"
 block = "time"
 timezone = "America/Los_Angeles"
 format = " $timestamp.datetime(f:'%Z %H:%M') "
+[block.theme_overrides]
+idle_fg = "#888888"
 
 [[block]]
 block = "time"
 timezone = "Europe/London"
 format = " $timestamp.datetime(f:'%Z %H:%M') "
+[block.theme_overrides]
+idle_fg = "#888888"
 
 [[block]]
 block = "time"
 timezone = "Europe/Amsterdam"
 format = " $timestamp.datetime(f:'%Z %H:%M') "
+[block.theme_overrides]
+idle_fg = "#888888"
 
 [[block]]
 block = "time"

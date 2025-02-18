@@ -21,6 +21,9 @@ input 1133:16399:Logitech_K750 {
   xkb_options altwin:swap_alt_win,compose:caps
 }
 
+# Don't show a title bar for ghostty
+for_window [app_id="com.mitchellh.ghostty"] border pixel 2
+
 # Brightness
 bindcode 232 exec brightnessctl set 5%-
 bindcode 233 exec brightnessctl set +5%
@@ -39,7 +42,7 @@ focus_follows_mouse no
 
 # Startup applications
 
-exec --no-startup-id swaymsg 'workspace 1; exec env LIGHT=1 qterminal'
+exec --no-startup-id swaymsg 'workspace 1; exec ghostty'
 
 # lock the screen
 bindsym Mod1+Ctrl+l exec swaylock -c 202020
@@ -48,8 +51,8 @@ bindsym Mod1+Ctrl+l exec swaylock -c 202020
 bindsym Mod1+Ctrl+p exec systemctl suspend
 
 # start a terminal
-bindsym $mod+Return exec env LIGHT=1 qterminal
-bindsym $mod+Shift+Return exec env DARK=1 qterminal -p qterminal-dark
+bindsym $mod+Return exec env LIGHT=1 ghostty
+bindsym $mod+Ctrl+Return exec env DARK=1 ghostty --theme=Desert
 
 # kill focused window
 bindsym $mod+Shift+q kill

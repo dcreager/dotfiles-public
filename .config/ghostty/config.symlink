@@ -1,7 +1,7 @@
 cursor-style = block
 font-family = "Iosevka Term Slab"
 font-size = 9
-gtk-adwaita = false
+gtk-adwaita = true
 gtk-single-instance = false
 gtk-titlebar = false
 shell-integration-features = no-cursor

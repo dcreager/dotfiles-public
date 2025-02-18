@@ -18,6 +18,7 @@ net_up = "\uf176"
 [[block]]
 block = "net"
 format = " $icon $ssid $bitrate "
+interval = 2
 [block.theme_overrides]
 idle_fg = "#00ff00"
 
@@ -39,14 +40,17 @@ merge_with_next = true
 [[block]]
 block = "net"
 format = " ^icon_net_down\u200b$speed_down.eng(prefix:K)  ^icon_net_up\u200b$speed_up.eng(prefix:K) "
+interval = 2
 
 [[block]]
 block = "cpu"
 format = " $icon $utilization "
+interval = 2
 
 [[block]]
 block = "battery"
 format = " $icon $time_remaining $percentage "
+interval = 2
 
 [[block]]
 block = "sound"

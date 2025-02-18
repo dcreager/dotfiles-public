@@ -2,10 +2,10 @@
 set $mod Mod4
 
 set $laptop_screen eDP-1
-set $dell "Dell Inc. DELL U3818DW 97F8P8A10N2L"
+set $dell "Dell Inc. DELL U3818DW 97F8P0740Y9L"
 
 font pango:Helvetica Neue 9
-output $laptop_screen scale 1.7
+output $laptop_screen scale 1.5
 output $dell scale 2
 
 # This should work once sway 1.1 is available

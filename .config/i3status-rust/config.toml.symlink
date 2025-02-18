@@ -18,7 +18,6 @@ net_up = "\uf176"
 [[block]]
 block = "net"
 format = " $icon $ssid $bitrate "
-
 [block.theme_overrides]
 idle_fg = "#00ff00"
 
@@ -57,16 +56,22 @@ format = " $icon {$volume.eng(w:2) |}"
 block = "time"
 timezone = "America/Los_Angeles"
 format = " $timestamp.datetime(f:'%Z %H:%M') "
+[block.theme_overrides]
+idle_fg = "#888888"
 
 [[block]]
 block = "time"
 timezone = "Europe/London"
 format = " $timestamp.datetime(f:'%Z %H:%M') "
+[block.theme_overrides]
+idle_fg = "#888888"
 
 [[block]]
 block = "time"
 timezone = "Europe/Amsterdam"
 format = " $timestamp.datetime(f:'%Z %H:%M') "
+[block.theme_overrides]
+idle_fg = "#888888"
 
 [[block]]
 block = "time"

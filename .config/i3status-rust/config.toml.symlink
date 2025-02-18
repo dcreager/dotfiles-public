@@ -54,7 +54,11 @@ interval = 2
 
 [[block]]
 block = "sound"
-format = " $icon {$volume.eng(w:2) |}"
+format = " $output_name $icon {$volume.eng(w:2) |}"
+[block.mappings]
+".*hdmi-stereo.*" = "\uf390"
+".*Yeti_Stereo_Microphone.*" = "\uf3c9"
+".*Jabra.*" = "\uf590"
 
 [[block]]
 block = "time"

@@ -17,7 +17,7 @@ net_up = "\uf176"
 
 [[block]]
 block = "net"
-format = " $icon $ssid $bitrate "
+format = " $icon{ $ssid $bitrate|} $ip "
 interval = 2
 [block.theme_overrides]
 idle_fg = "#00ff00"

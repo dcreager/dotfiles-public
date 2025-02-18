@@ -1,12 +1,0 @@
-local wezterm = require 'wezterm';
-return {
-   color_scheme = "OneHalfLight",
-   disable_default_key_bindings = true,
-   dpi = 192.0,
-   enable_tab_bar = false,
-   font = wezterm.font("Iosevka Term"),
-   font_size = 11.0,
-   keys = {
-      {key="6", mods="CTRL", action=wezterm.action{SendString=""}}
-   },
-}

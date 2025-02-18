@@ -60,7 +60,7 @@ bindsym $mod+Ctrl+Shift+Return exec $HOME/bin/dmenu-ssh env DARK=1 SKIP_TMUX=1 g
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec i3-dmenu-desktop --dmenu="wmenu -i"
+bindsym $mod+d exec j4-dmenu-desktop --i3-ipc --dmenu="bemenu -i -p '' --hp 10 --hf '#769efe'"
 
 # change focus
 bindsym $mod+h focus left

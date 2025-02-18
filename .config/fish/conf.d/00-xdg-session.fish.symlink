@@ -1,3 +1,0 @@
-if test "$XDG_SESSION_TYPE" = wayland
-    set -x ELECTRON_OZONE_PLATFORM_HINT auto
-end

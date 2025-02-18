@@ -23,9 +23,19 @@ format = " $icon $ssid $bitrate "
 idle_fg = "#00ff00"
 
 [[block]]
-block = "net"
-device = "tailscale0"
-format = " ^icon_net_bridge {$ip|down} "
+block = "custom"
+json = true
+shell = "/bin/bash"
+interval = 2
+command = '''
+if tailscale status --self --peers=false >/dev/null 2>&1; then
+   echo '{"state": "Good", "text": ""}'
+else
+   echo '{"state": "Critical", "text": " tailscale down "}'
+fi
+'''
+format = " ^icon_net_bridge$text"
+merge_with_next = true
 
 [[block]]
 block = "net"

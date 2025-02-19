@@ -17,7 +17,7 @@ net_up = "\uf176"
 
 [[block]]
 block = "net"
-format = " $icon $ssid $bitrate "
+format = " $icon{ $ssid $bitrate|} $ip "
 interval = 2
 [block.theme_overrides]
 idle_fg = "#00ff00"
@@ -54,7 +54,12 @@ interval = 2
 
 [[block]]
 block = "sound"
-format = " $icon {$volume.eng(w:2) |}"
+format = " $output_name $icon {$volume.eng(w:2) |}"
+[block.mappings]
+".*hdmi-stereo.*" = "\uf390"
+".*HiFi__Speaker__.*" = "\uf001"
+".*Yeti_Stereo_Microphone.*" = "\uf3c9"
+".*Jabra.*" = "\uf590"
 
 [[block]]
 block = "time"

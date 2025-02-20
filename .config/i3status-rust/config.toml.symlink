@@ -49,8 +49,8 @@ interval = 2
 
 [[block]]
 block = "battery"
-format = " $icon $time_remaining $percentage "
-interval = 2
+format = " $icon{ $time_remaining|} $percentage "
+interval = 10
 
 [[block]]
 block = "sound"

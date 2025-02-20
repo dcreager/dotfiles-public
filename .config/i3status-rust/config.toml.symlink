@@ -57,6 +57,7 @@ block = "sound"
 format = " $output_name $icon {$volume.eng(w:2) |}"
 [block.mappings]
 ".*hdmi-stereo.*" = "\uf390"
+".*HiFi__Headphones__.*" = "\uf58f"
 ".*HiFi__Speaker__.*" = "\uf001"
 ".*Yeti_Stereo_Microphone.*" = "\uf3c9"
 ".*Jabra.*" = "\uf590"

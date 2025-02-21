@@ -13,7 +13,7 @@ output $dell scale 2
 #bindswitch lid:on  output $laptop_screen enable
 
 # I like my Compose key
-input 1:1:AT_Translated_Set_2_keyboard {
+input * {
   xkb_options compose:caps
 }
 

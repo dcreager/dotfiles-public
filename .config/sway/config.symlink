@@ -1,3 +1,5 @@
+include /etc/sway/config.d/*
+
 # Windows key
 set $mod Mod4
 

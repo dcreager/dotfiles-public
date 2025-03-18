@@ -52,6 +52,10 @@ output "eDP-1" {
   scale 1.8
 }
 
+output "Dell Inc. DELL U3818DW 97F8P0740Y9L" {
+  scale 2
+}
+
 layout {
     gaps 12
     center-focused-column "never"

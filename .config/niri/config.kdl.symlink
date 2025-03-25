@@ -107,6 +107,9 @@ binds {
       spawn "sh" "-c" "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
     }
 
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "set" "5%+"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "5%-"; }
+
     Mod+Shift+Q { close-window; }
 
     Mod+H     { focus-column-left; }

@@ -56,6 +56,10 @@ output "Dell Inc. DELL U3818DW 97F8P0740Y9L" {
   scale 2
 }
 
+output "Dell Inc. DELL U3818DW 97F8P8A10N2L" {
+  scale 2
+}
+
 layout {
     gaps 12
     center-focused-column "never"

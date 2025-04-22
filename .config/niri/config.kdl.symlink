@@ -3,6 +3,10 @@ spawn-at-startup "waybar"
 spawn-at-startup "ghostty"
 spawn-at-startup "xwayland-satellite"
 
+hotkey-overlay {
+    skip-at-startup
+}
+
 environment {
     DISPLAY ":0"
 }

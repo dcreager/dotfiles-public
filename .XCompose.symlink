@@ -21,6 +21,7 @@ include "%L"
 <Multi_key> <I> <N>                 : "⋂" U22C2   # Distributed intersection
 <Multi_key> <u> <n>                 : "∪" U222A   # Union
 <Multi_key> <U> <N>                 : "⋃" U22C3   # Distributed union
+<Multi_key> <slash> <asciitilde>    : "≁" U2241   # Not tilde
 <Multi_key> <asciicircum> <equal>   : "≜" U225C   # Triangle over equals (defeq)
 <Multi_key> <t> <k>                 : "✔" U2714   # Check mark
 
@@ -48,6 +49,11 @@ include "%L"
 <Multi_key> <l> <r>                 : "↔" U2194   # left right arrow
 <Multi_key> <less> <colon>          : "↤" U21A4   # left arrow from bar
 <Multi_key> <colon> <greater>       : "↦" U21A6   # right arrow from bar
+
+# Boxes
+<Multi_key> <slash> <slash>         : "╱" U2571   # fill diagonal forwards
+<Multi_key> <backslash> <backslash> : "╲" U2572   # fill diagonal backwards
+<Multi_key> <slash> <backslash>     : "╳" U2573   # fill diagonal both
 
 # Subscripts
 <Multi_key> <underscore> <s> : "ₛ"     U209B      # subscript lowercase s

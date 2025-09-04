@@ -4,14 +4,23 @@ include "%L"
 <Multi_key> <p> <i>                 : "π" U03C0   # PI
 <Multi_key> <s> <u> <m>             : "∑" U2211   # Sum
 <Multi_key> <e> <equal>             : "∈" U2208   # Member of
-<Multi_key> <e> <slash>             : "∉" U2209   # Not member of
+<Multi_key> <slash> <e> <equal>     : "∉" U2209   # Not member of
 <Multi_key> <equal> <e>             : "∋" U220B   # Contains
+<Multi_key> <slash> <equal> <e>     : "∌" U220C   # Does not contain
 <Multi_key> <u> <equal>             : "⊆" U2286   # Subset of
-<Multi_key> <u> <u>                 : "⊂" U2282   # Strict Subset of
+<Multi_key> <u> <u>                 : "⊂" U2282   # Strict subset of
+<Multi_key> <slash> <u> <equal>     : "⊈" U2288   # Not subset of
+<Multi_key> <slash> <u> <u>         : "⊄" U2284   # Not strict subset of
+<Multi_key> <U> <equal>             : "⊇" U2287   # Superset of
+<Multi_key> <U> <U>                 : "⊃" U2283   # Strict superset of
+<Multi_key> <slash> <U> <equal>     : "⊉" U2289   # Not superset of
+<Multi_key> <slash> <U> <U>         : "⊅" U2285   # Not strict superset of
 <Multi_key> <ampersand> <ampersand> : "∧" U2227   # Logical and
 <Multi_key> <bar> <bar>             : "∨" U2228   # Logical or
 <Multi_key> <i> <n>                 : "∩" U2229   # Intersection
+<Multi_key> <I> <N>                 : "⋂" U22C2   # Distributed intersection
 <Multi_key> <u> <n>                 : "∪" U222A   # Union
+<Multi_key> <U> <N>                 : "⋃" U22C3   # Distributed union
 <Multi_key> <asciicircum> <equal>   : "≜" U225C   # Triangle over equals (defeq)
 <Multi_key> <t> <k>                 : "✔" U2714   # Check mark
 
@@ -27,6 +36,7 @@ include "%L"
 <Multi_key> <bar> <parenright>      : "⦈" U2988   # Right banana bracket
 
 <Multi_key> <c> <a>                 : "⊓" U2293   # Cap
+<Multi_key> <c> <u>                 : "⊔" U2294   # Cup
 <Multi_key> <bar> <minus>           : "⊢" U22A2   # Right tack
 <Multi_key> <asterisk> <asterisk>   : "⋅" U22C5   # Middle dot
 <Multi_key> <at> <at>               : "∘" U2218   # Ring operator

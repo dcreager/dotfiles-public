@@ -1,4 +1,5 @@
 include "%L"
+<Multi_key> <slash> <equal> <equal> : "≠" U2260   # Not equal to
 <Multi_key> <8> <a>                 : "∞" U221E   # infinity
 <Multi_key> <m> <u>                 : "µ" U221B   # Micro or mu
 <Multi_key> <p> <i>                 : "π" U03C0   # PI

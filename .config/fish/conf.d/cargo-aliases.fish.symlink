@@ -1,0 +1,6 @@
+abbr ck "cargo check --tests --message-format=short"
+abbr ckl "cargo check --tests"
+
+# ty-specific stuff
+abbr mdt --set-cursor "cargo test --tests -p py_python_semantic -- mdtest%"
+abbr mdf --set-cursor "env MDTEST_TEST_FILTER=fwomp cargo test --tests -p py_python_semantic -- mdtest%"

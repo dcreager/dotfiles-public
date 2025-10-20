@@ -55,4 +55,4 @@ if [ ! -d "$PROFILE_DIR" ]; then
     exit 1
 fi
 
-exec "$PROFILE_DIR/ty" check "$OUTPUT_FORMAT" "$@"
+exec "$PROFILE_DIR/ty" check $OUTPUT_FORMAT "$@"

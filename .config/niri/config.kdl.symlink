@@ -1,6 +1,6 @@
 prefer-no-csd
 spawn-at-startup "waybar"
-spawn-at-startup "ghostty"
+spawn-at-startup "env" "GTK_IM_MODULE=simple" "ghostty"
 spawn-at-startup "xwayland-satellite"
 
 hotkey-overlay {
@@ -95,8 +95,8 @@ window-rule {
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Return { spawn "ghostty"; }
-    Mod+Shift+Return { spawn "~/bin/dmenu-ssh" "env" "LIGHT=1" "SKIP_TMUX=1" "ghostty" "-e"; }
+    Mod+Return { spawn "env" "GTK_IM_MODULE=simple" "ghostty"; }
+    Mod+Shift+Return { spawn "~/bin/dmenu-ssh" "env" "GTK_IM_MODULE=simple" "LIGHT=1" "SKIP_TMUX=1" "ghostty" "-e"; }
     Mod+D { spawn "fuzzel"; }
     Super+Ctrl+L { spawn "swaylock" "-c" "202020"; }
 

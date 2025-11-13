@@ -1,4 +1,5 @@
 prefer-no-csd
+spawn-at-startup "kanshi"
 spawn-at-startup "waybar"
 spawn-at-startup "env" "GTK_IM_MODULE=simple" "ghostty"
 spawn-at-startup "xwayland-satellite"
@@ -50,18 +51,6 @@ input {
         // scroll-button 273
         // middle-emulation
     }
-}
-
-output "eDP-1" {
-  scale 1.8
-}
-
-output "Dell Inc. DELL U3818DW 97F8P0740Y9L" {
-  scale 2
-}
-
-output "Dell Inc. DELL U3818DW 97F8P8A10N2L" {
-  scale 2
 }
 
 layout {

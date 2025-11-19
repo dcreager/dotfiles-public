@@ -6,6 +6,10 @@ output "Dell Inc. DELL U3818DW *" {
     scale 2
 }
 
+profile laptop {
+    output eDP-1
+}
+
 profile dual {
     output eDP-1 position 0,0
     output "Dell Inc. DELL U3818DW *" position 1920,0

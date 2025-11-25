@@ -26,6 +26,9 @@ include "%L"
 <Multi_key> <asciicircum> <equal>   : "≜" U225C   # Triangle over equals (defeq)
 <Multi_key> <t> <k>                 : "✔" U2714   # Check mark
 
+<Multi_key> <f> <a>                 : "∀" U2200   # for all
+<Multi_key> <t> <e>                 : "∃" U2203   # there exists
+
 <Multi_key> <bracketleft> <bar>     : "⟦" U27E6   # Left double bracket
 <Multi_key> <bar> <bracketright>    : "⟧" U27E7   # Right double bracket
 <Multi_key> <less> <period>         : "⟨" U27E8   # Left angle bracket

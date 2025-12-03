@@ -10,6 +10,10 @@ profile laptop {
     output eDP-1
 }
 
+profile desk {
+    output "Dell Inc. DELL U3818DW *"
+}
+
 profile dual {
     output eDP-1 position 0,0
     output "Dell Inc. DELL U3818DW *" position 1920,0

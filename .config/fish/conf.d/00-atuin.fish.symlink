@@ -1,0 +1,5 @@
+if status is-interactive
+    if command -sq atuin
+        atuin init fish | source
+    end
+end

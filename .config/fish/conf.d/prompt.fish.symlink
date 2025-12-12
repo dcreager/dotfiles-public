@@ -42,8 +42,11 @@ function fish_prompt
   else
     printf "\n  "
   end
-  printf "%s%s%s " (set_color -o cyan) (hostname | cut -d . -f 1) (set_color normal)
-  printf "%s%s%s" (set_color magenta) (prompt_pwd) (set_color normal)
+  printf "%s%s%s" (set_color -o cyan) (hostname | cut -d . -f 1) (set_color normal)
+  if test -n "$ZMX_SESSION"
+    printf ":%s%s%s" (set_color -o brown) "$ZMX_SESSION" (set_color normal)
+  end
+  printf " %s%s%s" (set_color magenta) (prompt_pwd) (set_color normal)
 
   if test -n "$__git_branch"
     printf " [%s%s%s]" (set_color -o blue) "$__git_branch" (set_color normal)

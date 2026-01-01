@@ -1,0 +1,10 @@
+[user]
+name = "Douglas Creager"
+email = "dcreager@dcreager.net"
+
+[ui]
+diff-formatter = ":git"
+
+[colors]
+"diff removed token" = { fg = "bright red", bg = "#fde3e3", underline = false }
+"diff added token" = { fg = "bright green", bg = "#eefeeb", underline = false }

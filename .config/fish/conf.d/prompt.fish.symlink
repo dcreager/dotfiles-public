@@ -1,21 +1,22 @@
 function __fish_prompt_git_info
+  set -g __in_jj_repo ""
+
   set -g __in_git_repo ""
   set -g __git_branch ""
   set -g __git_dirty ""
   set -g __git_ref ""
 
-  if git rev-parse --is-inside-work-tree >/dev/null 2>&1
+  if jj root >/dev/null 2>&1
+    set -g __in_jj_repo true
+  else if git rev-parse --is-inside-work-tree >/dev/null 2>&1
     set -g __in_git_repo true
-  else
-    return
-  end
+    set -g __git_branch (git symbolic-ref HEAD 2>/dev/null | sed -e s+refs/heads/++)
+    set -g __git_ref (git rev-parse --short HEAD 2>/dev/null)
 
-  set -g __git_branch (git symbolic-ref HEAD 2>/dev/null | sed -e s+refs/heads/++)
-  set -g __git_ref (git rev-parse --short HEAD 2>/dev/null)
-
-  set -l git_status (git status --porcelain --ignore-submodules -uno)
-  if test -n "$git_status"
-    set -g __git_dirty true
+    set -l git_status (git status --porcelain --ignore-submodules -uno)
+    if test -n "$git_status"
+      set -g __git_dirty true
+    end
   end
 end
 
@@ -37,7 +38,9 @@ function fish_prompt
   __fish_prompt_git_info
   __fish_prompt_venv_info
 
-  if test -n $__in_git_repo
+  if test -n $__in_jj_repo
+    printf "\n%s○%s " (set_color blue) (set_color normal)
+  else if test -n $__in_git_repo
     printf "\n%s±%s " (set_color blue) (set_color normal)
   else
     printf "\n  "
@@ -47,6 +50,16 @@ function fish_prompt
     printf ":%s%s%s" (set_color -o brown) "$ZMX_SESSION" (set_color normal)
   end
   printf " %s%s%s" (set_color magenta) (prompt_pwd) (set_color normal)
+
+  if test -n $__in_jj_repo
+    jj show --color=always --no-patch --template '
+      surround(" [", "]", separate(" ",
+        change_id.shortest(8).prefix() ++ change_id.shortest(8).rest(),
+        bookmarks,
+        if(conflict, label("conflict", "conflict")),
+      ))
+    '
+  end
 
   if test -n "$__git_branch"
     printf " [%s%s%s]" (set_color -o blue) "$__git_branch" (set_color normal)

@@ -1,6 +1,8 @@
 abbr j "jj log"
+abbr jd "jj describe"
 abbr je "jj edit"
 abbr jgf "jj git fetch"
 abbr jgp "jj git push"
+abbr jn "jj new"
 abbr js "jj show"
 abbr jst "jj status"

@@ -6,6 +6,7 @@ email = "dcreager@dcreager.net"
 diff-formatter = ":git"
 
 [colors]
+"bookmarks name" = { bold = true }
 "diff removed token" = { fg = "bright red", bg = "#fde3e3", underline = false }
 "diff added token" = { fg = "bright green", bg = "#eefeeb", underline = false }
 

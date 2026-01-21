@@ -8,13 +8,14 @@
 WORKTREE=work
 PROFILE=debug
 OUTPUT_FORMAT=--output-format=concise
+QUIET=
 
 usage () {
     echo "Usage: rty [-m] [-p] [-w WORKTREE] [-t PROFILE]" 1>&2
     exit 1
 }
 
-while getopts ":mpw:t:f" opt; do
+while getopts ":mpw:t:fq" opt; do
     case "${opt}" in
         m)
             WORKTREE=main
@@ -30,6 +31,9 @@ while getopts ":mpw:t:f" opt; do
             ;;
         f)
             OUTPUT_FORMAT=
+            ;;
+        q)
+            QUIET=1
             ;;
         :)
             echo "Option -${OPTARG} requires an argument" 1>&2
@@ -53,6 +57,11 @@ PROFILE_DIR="$WORKTREE_DIR/target/$PROFILE"
 if [ ! -d "$PROFILE_DIR" ]; then
     echo "Profile $PROFILE doesn't exist in worktree $WORKTREE" 1>&2
     exit 1
+fi
+
+if [ -n "$QUIET" ]; then
+    exec >/dev/null
+    exec 2>/dev/null
 fi
 
 exec "$PROFILE_DIR/ty" check $OUTPUT_FORMAT "$@"

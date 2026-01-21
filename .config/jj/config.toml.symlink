@@ -11,6 +11,12 @@ diff-formatter = ":git"
 "diff removed token" = { fg = "bright red", bg = "#fde3e3", underline = false }
 "diff added token" = { fg = "bright green", bg = "#eefeeb", underline = false }
 
+"commit_id" = "magenta"
+"change_id" = "blue"
+
+"working_copy commit_id" = "bright magenta"
+"working_copy change_id" = "bright blue"
+
 [revsets]
 log = '(trunk()..@):: | (trunk()..@)-'
 

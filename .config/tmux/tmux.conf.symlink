@@ -34,6 +34,7 @@ bind -n M-L next-window
 bind c new-window -c "#{pane_current_path}"
 bind '"' split-window -v -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
+bind ^ split-window -h -l60 -c "#{pane_current_path}"
 
 # Reload config
 bind R source "~/.config/tmux/tmux.conf"

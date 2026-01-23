@@ -6,7 +6,7 @@ function __fish_prompt_git_info
   set -g __git_dirty ""
   set -g __git_ref ""
 
-  if jj root >/dev/null 2>&1
+  if jj root --ignore-working-copy >/dev/null 2>&1
     set -g __in_jj_repo true
   else if git rev-parse --is-inside-work-tree >/dev/null 2>&1
     set -g __in_git_repo true
@@ -52,7 +52,7 @@ function fish_prompt
   printf " %s%s%s" (set_color magenta) (prompt_pwd) (set_color normal)
 
   if test -n $__in_jj_repo
-    jj show --color=always --no-patch --template '
+    jj show --color=always --no-patch --ignore-working-copy --template '
       surround(" [", "]", separate(" ",
         change_id.shortest(8).prefix() ++ change_id.shortest(8).rest(),
         bookmarks,

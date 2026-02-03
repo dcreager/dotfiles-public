@@ -4,6 +4,7 @@ email = "dcreager@dcreager.net"
 
 [aliases]
 commit-id = ["show", "--color=never", "--no-patch", "--ignore-working-copy", "--template", "commit_id"]
+tug = ["bookmark", "move", "--from", "heads(::@ & bookmarks())", "--to", "closest_pushable(@)"]
 
 [ui]
 default-command = "log"
@@ -24,6 +25,7 @@ diff-formatter = ":git"
 log = '(trunk()..@):: | (trunk()..@)-'
 
 [revset-aliases]
+'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
 'full()' = 'present(@) | ancestors(immutable_heads().., 2) | present(trunk())'
 
 [templates]

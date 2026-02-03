@@ -2,6 +2,9 @@
 name = "Douglas Creager"
 email = "dcreager@dcreager.net"
 
+[aliases]
+commit-id = ["show", "--color=never", "--no-patch", "--ignore-working-copy", "--template", "commit_id"]
+
 [ui]
 default-command = "log"
 diff-formatter = ":git"

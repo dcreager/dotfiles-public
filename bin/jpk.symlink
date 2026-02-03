@@ -6,7 +6,7 @@ if ! jj root --ignore-working-copy >/dev/null 2>&1; then
 fi
 
 export GIT_DIR=$(jj git root --ignore-working-copy)
-TRUNK=$(jj show --color=never --no-patch --ignore-working-copy -r 'trunk()' --template 'commit_id')
-HEAD=$(jj show --color=never --no-patch --ignore-working-copy -r @ --template 'commit_id')
+TRUNK=$(jj commit-id -r 'trunk()')
+HEAD=$(jj commit-id -r @)
 
 exec prek run --from-ref "$TRUNK" --to-ref "$HEAD"

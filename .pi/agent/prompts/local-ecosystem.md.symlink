@@ -1,0 +1,52 @@
+# Ecosystem analyzer (local run)
+
+Goal: run ecosystem-analyzer locally for a single project and collect the JSON output, using a local ty repo/worktree.
+
+## Inputs to gather
+- Project name (e.g., scipy)
+
+The remaining inputs are derived automatically from the current jj worktree:
+- Commit to test (via `jj commit-id`)
+- Path to the ty repo (via `jj git root --ignore-working-copy`)
+- Output JSON path (use /tmp)
+
+## Commands
+1. Get jj git store path (jj worktree):
+   ```sh
+   jj git root --ignore-working-copy
+   ```
+
+2. Get commit ID:
+   - Current commit:
+     ```sh
+     jj commit-id -r @
+     ```
+   - Main branch commit:
+     ```sh
+     jj commit-id -r main@origin
+     ```
+
+3. Run ecosystem-analyzer (no-project to avoid building the repo as a Python package):
+   ```sh
+   uv run --no-project \
+     --with git+https://github.com/astral-sh/ecosystem-analyzer \
+     ecosystem-analyzer \
+     --repository <path-to-ty-repo-or-jj-git-store> \
+     run \
+     --project-name <project> \
+     --commit <commit> \
+     --profile profiling \
+     -o /tmp/<project>-ecosystem.json
+   ```
+
+4. Read timing from the output JSON:
+   ```sh
+   rg -n "time_s" /tmp/<project>-ecosystem.json | tail -n 5
+   ```
+
+## Notes
+- Assumes execution from a jj worktree. If using a git worktree, update the repo-path steps.
+- The `--repository` option is a global option and must appear before `run`.
+- For jj worktrees, use the git store path from `jj git root --ignore-working-copy`.
+- If you hit cache-related errors, clear the ecosystem-analyzer cache and re-run.
+- First run may recompile ty; a second run gives a better steady-state timing.

@@ -1,0 +1,104 @@
+#!/bin/bash
+
+set -e
+
+COMMIT=HEAD
+PROFILE=profiling
+OUTPUT=/tmp/project-diagnostics-feature.json
+ECO_URL="--with git+https://github.com/astral-sh/ecosystem-analyzer"
+TARGET="$HOME/.cache/ecosystem-analyzer/target-feature"
+
+usage () {
+    echo "Usage: eco [-l] [-m] [-o OUTPUT] [-t PROFILE] PROJECT" 1>&2
+    exit 1
+}
+
+while getopts ":lmo:t:" opt; do
+    case "${opt}" in
+        l)
+            ECO_URL="--with-editable $HOME/git/ecosystem-analyzer"
+            ;;
+        m)
+            COMMIT=origin/main
+            OUTPUT=/tmp/project-diagnostics-main.json
+            TARGET="$HOME/.cache/ecosystem-analyzer/target-main"
+            ;;
+        o)
+            OUTPUT=${OPTARG}
+            ;;
+        t)
+            PROFILE=${OPTARG}
+            ;;
+        :)
+            echo "Option -${OPTARG} requires an argument" >&2
+            usage
+            ;;
+        *)
+            echo "Unknown option -${OPTARG}" >&2
+            usage
+            ;;
+    esac
+done
+shift $((OPTIND-1))
+
+PROJECT=$1; shift
+if [ -z "$PROJECT" ]; then
+    echo "Missing project" >&2
+    usage
+fi
+
+if jj root --at-op=@ --ignore-working-copy >/dev/null 2>/dev/null; then
+    JJ_REPO=$(jj git root --at-op=@ --ignore-working-copy)
+    case "$COMMIT" in
+        HEAD)
+            COMMIT=@
+            REPO="$HOME/.cache/ecosystem-analyzer/ty-feature"
+            ;;
+        origin/main)
+            COMMIT="trunk()"
+            REPO="$HOME/.cache/ecosystem-analyzer/ty-main"
+            ;;
+        *)
+            REPO="$JJ_REPO"
+            ;;
+    esac
+
+    COMMIT_SHA=$(jj show --at-op=@ --ignore-working-copy --color=never --no-patch --template commit_id -r "$COMMIT")
+    if [ $? != 0 ]; then
+        echo "Cannot determine SHA of commit $COMMIT" >&2
+        exit 1
+    fi
+
+    if [ "$REPO" != "$JJ_REPO" ]; then
+        if [ ! -d "$REPO" ]; then
+            git clone "$JJ_REPO" "$REPO" >/dev/null 2>/dev/null
+        fi
+        GIT_DIR="$REPO/.git" git fetch origin "$COMMIT_SHA" >/dev/null 2>/dev/null
+    fi
+
+elif git rev-parse --is-inside-work-tree >/dev/null 2>/dev/null; then
+    REPO=$(git rev-parse --show-toplevel)
+    COMMIT_SHA=$(git rev-parse $COMMIT 2>/dev/null)
+    if [ $? != 0 ]; then
+        echo "Cannot determine SHA of commit $COMMIT" >&2
+        exit 1
+    fi
+
+else
+    echo "Must be run from within a jj or git repo" >&2
+    exit 1
+fi
+
+uv run --no-project \
+    $ECO_URL \
+    ecosystem-analyzer \
+    --repository "$REPO" \
+    --target "$TARGET" \
+    run \
+    --project-name "$PROJECT" \
+    --commit "$COMMIT_SHA" \
+    --profile "$PROFILE" \
+    -o "$OUTPUT" \
+    "$@"
+
+jq -r '.outputs.[] | (.project + ": " + (.time_s | tostring))' "$OUTPUT"

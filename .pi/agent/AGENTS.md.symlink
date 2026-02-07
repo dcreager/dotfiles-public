@@ -1,0 +1,8 @@
+# Global instructions for all projects
+
+## Source control
+
+You will typically be operating from within a git or jj worktree. However, I do
+_not_ want you to perform any jj or git commands. Please do not create commits
+to track your progress, and especially do not revert or edit any commits that
+already exist. I will handle all interactions with source control.

@@ -7,13 +7,14 @@ PROFILE=profiling
 OUTPUT=/tmp/project-diagnostics-feature.json
 ECO_URL="--with git+https://github.com/astral-sh/ecosystem-analyzer"
 TARGET="$HOME/.cache/ecosystem-analyzer/target-feature"
+VERBOSE=
 
 usage () {
-    echo "Usage: eco [-l] [-m] [-o OUTPUT] [-t PROFILE] PROJECT" 1>&2
+    echo "Usage: eco [-l] [-m] [-v] [-o OUTPUT] [-t PROFILE] PROJECT" 1>&2
     exit 1
 }
 
-while getopts ":lmo:t:" opt; do
+while getopts ":lmvo:t:" opt; do
     case "${opt}" in
         l)
             ECO_URL="--with-editable $HOME/git/ecosystem-analyzer"
@@ -22,6 +23,9 @@ while getopts ":lmo:t:" opt; do
             COMMIT=origin/main
             OUTPUT=/tmp/project-diagnostics-main.json
             TARGET="$HOME/.cache/ecosystem-analyzer/target-main"
+            ;;
+        v)
+            VERBOSE=--verbose
             ;;
         o)
             OUTPUT=${OPTARG}
@@ -94,6 +98,7 @@ uv run --no-project \
     ecosystem-analyzer \
     --repository "$REPO" \
     --target "$TARGET" \
+    $VERBOSE \
     run \
     --project-name "$PROJECT" \
     --commit "$COMMIT_SHA" \

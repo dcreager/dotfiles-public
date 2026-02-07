@@ -10,12 +10,15 @@ You are reviewing a ty ecosystem diagnostic diff report.
 5. For each repo:
    - Identify patterns (e.g., decorator factories, generic callables, wrapper types like `_Wrapped`, `functools.wraps`, `lru_cache`).
    - Decide if diagnostics look like true positives, false positives, or “existing bug now surfaced.”
-6. For repos available locally under `~/git/ruff/code-nav`, open the referenced files and verify the diagnostics in context.
+6. To verify diagnostics locally, use the `eco` command, as described in the
+   `local-ecosystem` prompt template. (Note that as a side effect, this clones
+   the project repo locally so you can read the project code when tracing
+   through the type checking logic. See the `local-ecosystem` prompt template
+   for details.)
 7. Provide a concise classification:
    - **Likely false positives to fix now**
    - **Likely true positives / real issues**
    - **Existing-bug activations (defer)**
-8. If any repo is missing locally, request the commit SHA (from diff report links) so it can be cloned.
 
 Output format:
 - Summary paragraph

@@ -1,0 +1,35 @@
+---
+description: Review the diff of a PR feature branch
+---
+
+I have checked out the feature branch of a PR locally. You are in a worktree
+with that feature branch cloned. Unless I have said otherwise, you are in a jj
+worktree, and should use `jj` commands, not `git`, to determine the diff and
+otherwise interrogate the history of the feature branch. The builtin `trunk()`
+revset function resolves to the latest revision on `main`, so you can use the
+following to get the diff of the entire PR:
+
+```
+$ jj diff -r 'trunk()..@'
+```
+
+To start, please summarize the changes in the PR:
+
+- Looking at the diff, what changes in behavior do you think are implemented?
+- For a new feature, explain the code flow that is implemented.
+- Provide the best file ordering for me to examine the changes manually, with
+  the files that introduce the core logic or concepts first, and with ancillary
+  or orthogonal changes towards the end.
+
+After summarizing the change, please review the diff:
+
+- Does the new code match the style of nearby code?
+- Are there things that could be implemented more efficiently, without greatly
+  sacrificing readability?
+- Is code organized well? Where possible, smallish items should be defined close
+  to where they're used — certainly within the same file, ideally near other
+  related types. Larger groups of related items might deserve to live in their
+  own file, especially if the alternative is adding more content to truly large
+  (>5000-line) files.
+- Are there superfluous changes that could be extracted into a separate PR?
+- Are there any obvious layering violations?

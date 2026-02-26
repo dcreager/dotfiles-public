@@ -8,5 +8,6 @@ to track your progress, and especially do not revert or edit any commits that
 already exist. I will handle all interactions with source control.
 
 The only exception is that when working in a jj worktree, you have permission to
-run `jj status` to force jj to snapshot the current working copy as a new
-commit.
+run read-only commands that interrogate changes and calculate diffs between
+them. You can also use `jj status` to force jj to snapshot the current working
+copy as a new commit.

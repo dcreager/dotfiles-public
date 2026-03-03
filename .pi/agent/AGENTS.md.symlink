@@ -11,3 +11,17 @@ The only exception is that when working in a jj worktree, you have permission to
 run read-only commands that interrogate changes and calculate diffs between
 them. You can also use `jj status` to force jj to snapshot the current working
 copy as a new commit.
+
+## PLAN.md
+
+When working on a feature, you will typically write an overview and detailed
+plan into a file called `PLAN.md`, stored in the repo. The file must include all
+relevant detail that you have learned. I will often use the file as a handoff
+document, allowing multiple agents to (sequentially) make progress on the plan.
+
+Your proposed plan should have detailed steps, which should be performed in
+order. It should have status markers to clearly indicate which steps and phases
+have already been completed. When resuming a plan that a previous agent created,
+read through other files in the repo as necessary to validate that the status
+markers are accurate. You should include these instructions in the plan even
+though they are also listed here in this AGENTS.md file.

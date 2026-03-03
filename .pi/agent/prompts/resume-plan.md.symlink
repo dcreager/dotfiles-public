@@ -1,4 +1,7 @@
-You are in the middle of a refactoring described in PLAN.md. Please read through
+You are in the middle of feature work described in PLAN.md. Please read through
 that file, and then read any other files in the repo that are needed to
-establish a full understanding of the current status and next steps. Then
-summarize what you think the current status and next steps are.
+establish a full understanding of the current status and next steps. Verify that
+any completion status described in the plan is accurate. Then summarize the
+current status and the next step. Note that the steps should be ordered, so you
+should only plan to make progress on the single next step that is not yet marked
+as complete.

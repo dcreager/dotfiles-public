@@ -19,9 +19,12 @@ plan into a file called `PLAN.md`, stored in the repo. The file must include all
 relevant detail that you have learned. I will often use the file as a handoff
 document, allowing multiple agents to (sequentially) make progress on the plan.
 
-Your proposed plan should have detailed steps, which should be performed in
-order. It should have status markers to clearly indicate which steps and phases
-have already been completed. When resuming a plan that a previous agent created,
-read through other files in the repo as necessary to validate that the status
-markers are accurate. You should include these instructions in the plan even
-though they are also listed here in this AGENTS.md file.
+Your proposed plan should have detailed steps, which should typically be
+performed in order. (Larger changes might have phases or steps that can proceed
+independently. Always use the plan document as the ground truth for ordering and
+dependencies between steps.) The plan should have status markers to clearly
+indicate which steps and phases have already been completed. When resuming a
+plan that a previous agent created, read through other files in the repo as
+necessary to validate that the status markers are accurate. You should include
+these instructions in the plan even though they are also listed here in this
+AGENTS.md file.

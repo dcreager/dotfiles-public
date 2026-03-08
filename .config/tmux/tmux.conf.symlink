@@ -3,6 +3,9 @@ unbind C-b
 set-option -g prefix `
 bind -r ` send-prefix
 
+set -g extended-keys on
+set -g extended-keys-format csi-u
+
 # Nicer colors
 set-option -sa terminal-overrides ",xterm*:Tc"
 

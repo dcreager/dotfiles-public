@@ -1,7 +1,9 @@
 ---
 description: Triage ty ecosystem diagnostic diffs for likely regressions vs expected changes
 ---
-You are reviewing a ty ecosystem diagnostic diff report.
+You are reviewing a ty ecosystem diagnostic diff report. There might be a
+PLAN.md file in your worktree describing the change that this branch introduces
+or fixes.
 
 1. Load the diff report URL provided by the user.
 2. Summarize the scope: total diagnostics changed, and counts per change type (added/removed/changed) if available.

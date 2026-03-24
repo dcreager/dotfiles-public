@@ -2,15 +2,36 @@
 
 ## Source control
 
-You will typically be operating from within a git or jj worktree. However, I do
-_not_ want you to perform any jj or git commands. Please do not create commits
-to track your progress, and especially do not revert or edit any commits that
-already exist. I will handle all interactions with source control.
+You will typically be operating from within a Jujutsu (`jj`) worktree.
+Use `jj` for all source control operations.
+You should never need to invoke `git`.
+If you feel you are in a situation where you _do_ need to invoke `git` directly,
+confirm with me first.
 
-The only exception is that when working in a jj worktree, you have permission to
-run read-only commands that interrogate changes and calculate diffs between
-them. You can also use `jj status` to force jj to snapshot the current working
-copy as a new commit.
+**Never** make edits to the working copy without creating your own jj revision
+to hold those edits.
+Similarly, **never** use `jj edit` to edit an existing revision.
+If you do, jj's aggressive snapshotting can cause local bookmarks
+to diverge needlessly from their remote counterparts.
+Instead, always create a new revision to hold your edits.
+Use `jj describe` to describe what you are trying to accomplish with each revision.
+Prefix your revision descriptions with `[π]` so they are easy to see in the log.
+
+When creating a new revision, always use some variant of `jj new`.
+
+You will typically want downstream revisions
+to incorporate any edits you are about to make.
+In this case, use `jj new -A @` to create a new revision on top of the current one,
+and to rebase all downstream revisions onto the newly created one.
+
+If you are creating a throwaway revision
+that downstream revisions should _not_ incorporate,
+use `jj new`.
+
+When viewing diffs,
+use `jj diff --git` for git-style code diffs,
+or `jj diff --stat` for summary diffs.
+I use a custom diff renderer, which means plain `jj diff` will be misleading.
 
 ## PLAN.md
 

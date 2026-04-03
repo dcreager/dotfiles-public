@@ -1,5 +1,13 @@
 # Global instructions for all projects
 
+## Temporary files and directories
+
+The /tmp partition is a tmpfs virtual memory filesystem,
+and is fairly small in size.
+Use $HOME/.pi/tmp as a temporary directory instead.
+(That will also ensure that any state that you create persists,
+in case I need to pause and resume a session across reboots.)
+
 ## Source control
 
 You will typically be operating from within a Jujutsu (`jj`) worktree.

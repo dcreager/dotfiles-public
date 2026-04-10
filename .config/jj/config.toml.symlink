@@ -7,7 +7,7 @@ commit-id = ["show", "--color=never", "--no-patch", "--ignore-working-copy", "--
 tug = ["bookmark", "move", "--from", "heads(::@ & bookmarks())", "--to", "closest_pushable(@)"]
 
 [ui]
-default-command = "log"
+default-command = "status"
 diff-formatter = "difft"
 
 [merge-tools.difft]

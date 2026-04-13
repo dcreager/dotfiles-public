@@ -1,8 +1,7 @@
 // -*- mode: jsonc -*-
 {
     "position": "bottom",
-    "height": 24, // Waybar height (to be removed for auto height)
-    "spacing": 4, // Gaps between modules (4px)
+    "spacing": 0,
     // Choose the order of the modules
     "modules-left": [
         "niri/workspaces",
@@ -18,29 +17,33 @@
         "temperature",
         "backlight",
         "battery",
+        "clock#pst",
+        "clock#cest",
         "clock",
         "tray",
     ],
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
     "tray": {
         // "icon-size": 21,
         "spacing": 10
     },
     "clock": {
-        // "timezone": "America/New_York",
+        "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "{:%Y-%m-%d %H:%M}"
+    },
+    "clock#pst": {
+        "timezone": "America/Los_Angeles",
+        "tooltip": false,
+        "format": "{:%Z %H:%M}"
+    },
+    "clock#cest": {
+        "timezone": "Europe/Amsterdam",
+        "tooltip": false,
+        "format": "{:%Z %H:%M}"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": " {usage:3}%",
+        "interval": 2,
         "tooltip": false
     },
     "temperature": {
@@ -48,12 +51,12 @@
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
+        "format": "{icon} {temperatureC}°C",
         "format-icons": ["", "", ""]
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
+        "format": "{icon} {percent}%",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
@@ -62,11 +65,11 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
@@ -74,20 +77,20 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-ethernet": " {ipaddr}/{cidr}",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": "⚠ Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format": "{icon} {volume:3}% {format_source}",
+        "format-bluetooth": "{icon} {volume:3}% {format_source}",
+        "format-bluetooth-muted": "{icon}  {format_source}",
+        "format-muted": "   -  {format_source}",
+        "format-source": " {volume:3}%",
+        "format-source-muted": "    ",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -95,8 +98,16 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": "<span font=\"Font Awesome 7 Free\"></span>"
         },
         "on-click": "pavucontrol"
+    },
+    "niri/window": {
+        "format": "{}",
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "🌎 $1",
+            "(.*) - Discord": "💬 $1",
+            "tmux — ([^ ]*) ([^ ]*) (.*)": "🖥️ $1  🪟 $2  $3",
+        }
     },
 }

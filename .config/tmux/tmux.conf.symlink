@@ -62,3 +62,6 @@ set-option -g status-right "#[fg=colour136]%a %Y-%m-%d %H:%M "
 
 set-option -g window-status-format "#[fg=colour247,bg=colour235] #I:#W "
 set-option -g window-status-current-format "#[fg=colour235,bg=colour247] #I:#W "
+
+set-option -g set-titles on
+set-option -g set-titles-string "tmux — #h:#S #I:#W [#T]"

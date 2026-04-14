@@ -11,12 +11,11 @@
         "niri/window"
     ],
     "modules-right": [
-        "pulseaudio",
         "network",
-        "cpu",
-        "temperature",
         "backlight",
         "battery",
+        "cpu",
+        "pulseaudio",
         "clock#pst",
         "clock#cest",
         "clock",
@@ -46,18 +45,8 @@
         "interval": 2,
         "tooltip": false
     },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{icon} {temperatureC}°C",
-        "format-icons": ["", "", ""]
-    },
     "backlight": {
-        // "device": "acpi_video1",
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format": " {percent}%",
     },
     "battery": {
         "states": {
@@ -75,8 +64,7 @@
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": " {essid} {signalStrength}%",
         "format-ethernet": " {ipaddr}/{cidr}",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": " {ifname} (No IP)",
@@ -85,11 +73,11 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{icon} {volume:3}% {format_source}",
-        "format-bluetooth": "{icon} {volume:3}% {format_source}",
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
         "format-bluetooth-muted": "{icon}  {format_source}",
         "format-muted": "   -  {format_source}",
-        "format-source": " {volume:3}%",
+        "format-source": " {volume}%",
         "format-source-muted": "    ",
         "format-icons": {
             "headphone": "",

@@ -14,7 +14,6 @@
         "network",
         "backlight",
         "battery",
-        "cpu",
         "pulseaudio",
         "clock#pst",
         "clock#cest",

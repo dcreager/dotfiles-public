@@ -72,9 +72,9 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": "{icon} {volume}% {format_source}",
-        "format-bluetooth-muted": "{icon}  {format_source}",
+        "format": "<span font=\"Font Awesome 7 Free\">{icon}</span> {volume}% {format_source}",
+        "format-bluetooth": "<span font=\"Font Awesome 7 Free\">{icon}</span> {volume}% {format_source}",
+        "format-bluetooth-muted": "<span font=\"Font Awesome 7 Free\">{icon}</span>  {format_source}",
         "format-muted": "   -  {format_source}",
         "format-source": " {volume}%",
         "format-source-muted": "    ",
@@ -85,7 +85,7 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": "<span font=\"Font Awesome 7 Free\"></span>"
+            "default": ""
         },
         "on-click": "pavucontrol"
     },

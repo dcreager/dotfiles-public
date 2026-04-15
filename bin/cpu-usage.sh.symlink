@@ -1,2 +1,4 @@
 #!/bin/sh
-top -b -n 1 | awk -e '/%Cpu/ { printf("%3.0f", 100 - $8) }'
+# column 8 is idle
+# column 10 is I/O wait
+top -b -n 1 | awk -e '/%Cpu/ { printf("%3.0f", 100 - $8 - $10) }'

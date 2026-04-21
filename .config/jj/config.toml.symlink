@@ -28,6 +28,9 @@ diff-args = ["--color=always", "--syntax-highlight=off", "$left", "$right"]
 log = '(trunk()..@):: | (trunk()..@)-'
 
 [revset-aliases]
+'common_ancestor()' = 'common_ancestor(@)'
+'common_ancestor(b)' = 'common_ancestor(trunk(), b)'
+'common_ancestor(a, b)' = 'exactly(heads(::a & ::b), 1)'
 'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
 'full()' = 'present(@) | ancestors(immutable_heads().., 2) | present(trunk())'
 

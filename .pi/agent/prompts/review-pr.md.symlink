@@ -5,12 +5,16 @@ description: Review the diff of a PR feature branch
 I have checked out the feature branch of a PR locally. You are in a worktree
 with that feature branch cloned. Unless I have said otherwise, you are in a jj
 worktree, and should use `jj` commands, not `git`, to determine the diff and
-otherwise interrogate the history of the feature branch. The builtin `trunk()`
-revset function resolves to the latest revision on `main`, so you can use the
-following to get the diff of the entire PR:
+otherwise interrogate the history of the feature branch.
+There are some revset functions that make it easier to generate the diff for the PR.
+The builtin `trunk()` revset function resolves to the latest revision on `main`,
+and the custom `common_ancestor()` function resolves to the latest revision
+that is an ancestor of both `main` and the current revision.
+(That is, it resolves to the base revision of the PR.)
+So you can use the following to get the diff of the entire PR:
 
 ```
-$ jj diff -r 'trunk()..@'
+$ jj diff -f 'common_ancestor()'
 ```
 
 To start, please summarize the changes in the PR:

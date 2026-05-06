@@ -1,0 +1,2 @@
+#!/bin/sh
+top -l 1 -n 0 | awk '/^CPU usage:/ { sub(/%/, "", $7); printf("%3.0f", 100 - $7) }'

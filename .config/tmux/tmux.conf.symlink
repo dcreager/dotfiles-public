@@ -58,7 +58,7 @@ set-option -g status-style "fg=colour255,bg=colour235"
 
 set-option -g status-left "#[fg=colour255,bg=colour33] #h:#S "
 set-option -g status-left-length 40
-set-option -g status-right "#[fg=colour222] #(cpu-usage.sh)%  %Y-%m-%d %H:%M "
+set-option -g status-right "#[fg=colour222] #(cpu-usage.sh)%%  %Y-%m-%d %H:%M "
 
 set-option -g window-status-format "#[fg=colour247,bg=colour235] #I:#W "
 set-option -g window-status-current-format "#[fg=colour235,bg=colour247] #I:#W "

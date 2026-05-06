@@ -134,6 +134,7 @@ if executable('rg')
   set grepprg=rg\ --vimgrep
   command! -bang -nargs=* Find call fzf#vim#files('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), fzf#vim#with_preview(), <bang>0)
 endif
+set rtp+=$HOMEBREW_PREFIX/opt/fzf
 
 au FileType c       setlocal formatoptions-=t
 au FileType css     setlocal sw=4 sts=4

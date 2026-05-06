@@ -1,0 +1,10 @@
+if status is-interactive
+    if command -sq atuin
+        set -gx ATUIN_NOBIND "true"
+        atuin init fish | source
+        bind ctrl-r _atuin_search
+        bind -M insert ctrl-r _atuin_search
+        bind ctrl-up _atuin_bind_up
+        bind -M insert ctrl-up _atuin_bind_up
+    end
+end

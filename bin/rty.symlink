@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+# Runs a dev build of ty. Assumes my usual directory structure:
+#   ~/git/ruff/$worktree/target/$profile/ty
+#
+# {worktree} defaults to `work`. {profile} defaults to `debug`.
+
+WORKTREE=work
+PROFILE=debug
+OUTPUT_FORMAT=--output-format=concise
+QUIET=
+
+usage () {
+    echo "Usage: rty [-m] [-p] [-w WORKTREE] [-t PROFILE]" 1>&2
+    exit 1
+}
+
+while getopts ":mpw:t:fq" opt; do
+    case "${opt}" in
+        m)
+            WORKTREE=main
+            ;;
+        p)
+            TARGET=profiling
+            ;;
+        w)
+            WORKTREE=${OPTARG}
+            ;;
+        t)
+            PROFILE=${OPTARG}
+            ;;
+        f)
+            OUTPUT_FORMAT=
+            ;;
+        q)
+            QUIET=1
+            ;;
+        :)
+            echo "Option -${OPTARG} requires an argument" 1>&2
+            usage
+            ;;
+        *)
+            echo "Unknown option -${OPTARG}" 1>&2
+            usage
+            ;;
+    esac
+done
+shift $((OPTIND-1))
+
+WORKTREE_DIR="$HOME/git/ruff/$WORKTREE"
+if [ ! -d "$WORKTREE_DIR" ]; then
+    echo "Worktree $WORKTREE doesn't exist" 1>&2
+    exit 1
+fi
+
+PROFILE_DIR="$WORKTREE_DIR/target/$PROFILE"
+if [ ! -d "$PROFILE_DIR" ]; then
+    echo "Profile $PROFILE doesn't exist in worktree $WORKTREE" 1>&2
+    exit 1
+fi
+
+if [ -n "$QUIET" ]; then
+    exec >/dev/null
+    exec 2>/dev/null
+fi
+
+exec "$PROFILE_DIR/ty" check $OUTPUT_FORMAT "$@"

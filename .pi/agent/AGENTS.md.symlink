@@ -1,0 +1,59 @@
+# Global instructions for all projects
+
+## Temporary files and directories
+
+The /tmp partition is a tmpfs virtual memory filesystem,
+and is fairly small in size.
+Use $HOME/.pi/tmp as a temporary directory instead.
+(That will also ensure that any state that you create persists,
+in case I need to pause and resume a session across reboots.)
+
+## Source control
+
+You will typically be operating from within a Jujutsu (`jj`) worktree.
+Use `jj` for all source control operations.
+You should never need to invoke `git`.
+If you feel you are in a situation where you _do_ need to invoke `git` directly,
+confirm with me first.
+
+**Never** make edits to the working copy without creating your own jj revision
+to hold those edits.
+Similarly, **never** use `jj edit` to edit an existing revision.
+If you do, jj's aggressive snapshotting can cause local bookmarks
+to diverge needlessly from their remote counterparts.
+Instead, always create a new revision to hold your edits.
+Use `jj describe` to describe what you are trying to accomplish with each revision.
+Prefix your revision descriptions with `[π]` so they are easy to see in the log.
+
+When creating a new revision, always use some variant of `jj new`.
+
+You will typically want downstream revisions
+to incorporate any edits you are about to make.
+In this case, use `jj new -A @` to create a new revision on top of the current one,
+and to rebase all downstream revisions onto the newly created one.
+
+If you are creating a throwaway revision
+that downstream revisions should _not_ incorporate,
+use `jj new`.
+
+When viewing diffs,
+use `jj diff --git` for git-style code diffs,
+or `jj diff --stat` for summary diffs.
+I use a custom diff renderer, which means plain `jj diff` will be misleading.
+
+## PLAN.md
+
+When working on a feature, you will typically write an overview and detailed
+plan into a file called `PLAN.md`, stored in the repo. The file must include all
+relevant detail that you have learned. I will often use the file as a handoff
+document, allowing multiple agents to (sequentially) make progress on the plan.
+
+Your proposed plan should have detailed steps, which should typically be
+performed in order. (Larger changes might have phases or steps that can proceed
+independently. Always use the plan document as the ground truth for ordering and
+dependencies between steps.) The plan should have status markers to clearly
+indicate which steps and phases have already been completed. When resuming a
+plan that a previous agent created, read through other files in the repo as
+necessary to validate that the status markers are accurate. You should include
+these instructions in the plan even though they are also listed here in this
+AGENTS.md file.

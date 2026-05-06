@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Refresh the gpg-agent tty before ssh-ing somewhere from a terminal.  (Most
+# online sources run the gpg-connect-agent command directly here, once at the
+# beginning of each login, but that doesn't work for long-running tmux
+# sessions.)
+#
+# NOTE: To use this, you'll probably want to alias ssh to refresh-agent-and-ssh,
+# as follows, in your .bashrc or .zshrc:
+#
+#     alias ssh=refresh-agent-and-ssh
+#
+# You'll also want to set various environment variables (like $SSH and $GIT_SSH)
+# to tell other commands to use this wrapper instead of calling /usr/bin/ssh
+# directly.
+
+if tty -s; then
+    gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
+fi
+
+exec ssh "$@"

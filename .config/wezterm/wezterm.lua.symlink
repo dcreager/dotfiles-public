@@ -1,0 +1,8 @@
+local wezterm = require 'wezterm';
+return {
+   color_scheme = "Broadcast Dim",
+   dpi = 192.0,
+   enable_tab_bar = false,
+   font = wezterm.font("Iosevka Term"),
+   font_size = 10.0,
+}

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if ! jj root --at-op=@ --ignore-working-copy >/dev/null 2>&1; then
+    echo "You must run this from a jj workspace" >&2
+    exit 1
+fi
+
+export GIT_DIR=$(jj git root --at-op=@ --ignore-working-copy)
+TRUNK=$(jj commit-id -r 'trunk()')
+HEAD=$(jj commit-id -r @)
+
+exec prek run --from-ref "$TRUNK" --to-ref "$HEAD"

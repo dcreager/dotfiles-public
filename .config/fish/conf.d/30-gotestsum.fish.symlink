@@ -1,0 +1,1 @@
+set -x GOTESTSUM_FORMAT testname

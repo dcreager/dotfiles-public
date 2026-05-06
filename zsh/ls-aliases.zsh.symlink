@@ -6,7 +6,7 @@ else
     LS="ls -G"
 fi
 
-alias ls="$LS -F"
-alias ll="$LS -lAF"
-alias l="$LS -lF"
-alias la="$LS -AF"
+alias ls="$LS -NF"
+alias ll="$LS -lANF"
+alias l="$LS -lNF"
+alias la="$LS -ANF"

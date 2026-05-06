@@ -1,5 +1,7 @@
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
+" Always use /bin/sh for shell processes
+if &shell =~# 'fish$'
+  set shell=sh
+endif
 
 set hidden
 map <silent> <C-n> :noh<CR>
@@ -13,6 +15,19 @@ set tw=80
 set number
 syntax enable
 filetype plugin indent on
+
+lua require('leap').add_default_mappings()
+
+" Filetype detection for *.symlink files
+" If a file begins with '#!/', let vim autodetect the filetype. Otherwise
+" read 'linguist-language' from .gitattributes.
+augroup symlink
+  autocmd!
+  autocmd BufRead,BufNewFile *.symlink
+        \ if getline(1) !~ '#!/' |
+        \ let &ft=split(system('git check-attr linguist-language '.shellescape(expand('%:p'))))[-1] |
+        \ endif
+augroup END
 
 if exists('+colorcolumn')
     set colorcolumn=+1
@@ -34,7 +49,7 @@ set wildignore+=*/build/lib/*
 set wildignore+=*/__pycache__/*,*.pyc,*.pyo
 
 " Disable output and VCS files
-set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem
+set wildignore+=*.a,*.o,*.la,*.lo,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem
 
 " Disable archive files
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
@@ -45,6 +60,9 @@ set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
 " Disable temp and backup files
 set wildignore+=*.swp,*~,._*
 
+" Ignore virtualenvs
+set wildignore+=*/.venv/*
+
 " Ignore tox and htmlcov results
 set wildignore+=*/.tox/*,*/htmlcov/*
 
@@ -54,7 +72,7 @@ set wildignore+=*/*.egg-info/*
 set wildmode=longest,list,full
 set wildmenu
 
-set list listchars=tab:··,trail:◃,nbsp:•
+set list listchars=tab:··,trail:◃,nbsp:•,precedes:‹,extends:›
 
 " Emacs bindings in command line
 " from http://statico.github.io/vim.html
@@ -69,6 +87,13 @@ set list listchars=tab:··,trail:◃,nbsp:•
 :cnoremap <Esc>f <S-Right>
 :cnoremap <Esc>d <S-right><Delete>
 :cnoremap <C-g>  <C-c>
+
+" clang-format support
+au FileType c,cpp   map <Tab> :py3f ~/.local/share/clang/clang-format-py3.py<cr>
+au FileType c,cpp   imap <Tab> <c-o>:py3f ~/.local/share/clang/clang-format-py3.py<cr>
+
+" Rust stuff
+let g:rustfmt_autosave = 1
 
 " Airline configuration
 set laststatus=2
@@ -101,22 +126,27 @@ map <leader>et :tabe %%
 " find merge conflict markers
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
-" Ctrl-P stuffs
-let g:ctrlp_open_new_file = 'r'
-let g:ctrlp_open_multi = 'vr'
-let g:ctrlp_jump_to_buffer = 2
-let g:ctrlp_root_markers = ['.hg/']
-nmap Q :CtrlPBuffer<CR>
+" fzf stuffs
+nnoremap <C-p> :Files<CR>
+nnoremap Q :Buffers<CR>
+if executable('rg')
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+  set grepprg=rg\ --vimgrep
+  command! -bang -nargs=* Find call fzf#vim#files('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), fzf#vim#with_preview(), <bang>0)
+endif
 
 au FileType c       setlocal formatoptions-=t
 au FileType css     setlocal sw=4 sts=4
+au FileType gemtext setlocal tw=0 wrap linebreak
 au FileType gitcommit setlocal tw=72
+au FileType go      setlocal ts=4 tw=0 nowrap
 au FileType html    setlocal sw=2 sts=2
 au FileType htmldjango  setlocal sw=2 sts=2
 au FileType lua     setlocal formatoptions-=t sw=3 sts=3
 au FileType python  setlocal formatoptions-=t
 au FileType ragel   setlocal formatoptions-=t
 au FileType ruby    setlocal sw=2 sts=2
+au FileType tex     setlocal tw=0 wrap linebreak
 au FileType yaml    setlocal sw=2 sts=2
 
 au BufRead,BufNewFile PKGBUILD    set ft=sh
@@ -138,30 +168,30 @@ set backupdir=~/.vim/_backup/
 set directory=~/.vim/_temp/
 set viminfo='50,\"1000,n~/var/viminfo
 
-" GUI stuff
+" Color stuff
 
-if has("gui_running")
-    set columns=175
-    set lines=55
+set guicursor=n-v-c-sm:block
+set guicursor+=i-ci-ve:ver25
+set guicursor+=r-cr-o:hor20
+set guicursor+=a:blinkwait500-blinkoff500-blinkon500
+
+set termguicolors
+set background=light
+
+function DarkColors()
+    colorscheme anderson
     set background=dark
-    let g:solarized_visibility="low"
-    set guioptions-=T   " no toolbar
-    set guioptions-=l   " no scrollbars
-    set guioptions-=r
-    set guioptions-=L
-    set guioptions-=R
-    colorscheme solarized
+endfunction
 
-    set keymodel=
-    set gcr=n:blinkon0
+function LightColors()
+    colorscheme one
+    set background=light
+endfunction
+
+if empty($DARK)
+    call LightColors()
 else
-    set t_Co=256
+    call DarkColors()
 endif
-
-if has("gui_macvim")
-  set guifont=Ubuntu\ Mono\ derivative\ Powerline:h16
-  set fuopt=maxvert,maxhorz
-  map <D-F> :set fu!<CR>
-elseif has("gui_gtk2")
-  set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
-endif
+nmap <leader>d :call DarkColors()<cr>
+nmap <leader>l :call LightColors()<cr>

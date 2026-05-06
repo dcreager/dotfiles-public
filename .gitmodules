@@ -1,33 +1,44 @@
-[submodule ".vim/bundle/vim-pathogen.symlink"]
-	path = .vim/bundle/vim-pathogen.symlink
-	url = git://github.com/tpope/vim-pathogen.git
-[submodule ".vim/bundle/vim-fugitive.symlink"]
-	path = .vim/bundle/vim-fugitive.symlink
-	url = git://github.com/tpope/vim-fugitive.git
-[submodule ".vim/bundle/css-color.symlink"]
-	path = .vim/bundle/css-color.symlink
-	url = git://github.com/ap/vim-css-color.git
-[submodule ".vim/bundle/ctrlp.symlink"]
-	path = .vim/bundle/ctrlp.symlink
-	url = git://github.com/kien/ctrlp.vim.git
-[submodule ".vim/bundle/easymotion.symlink"]
-	path = .vim/bundle/easymotion.symlink
-	url = git://github.com/Lokaltog/vim-easymotion.git
-[submodule ".vim/bundle/javascript.symlink"]
-	path = .vim/bundle/javascript.symlink
-	url = git://github.com/pangloss/vim-javascript.git
-[submodule ".vim/bundle/markdown.symlink"]
-	path = .vim/bundle/markdown.symlink
-	url = git://github.com/tpope/vim-markdown.git
-[submodule ".vim/bundle/scss.symlink"]
-	path = .vim/bundle/scss.symlink
-	url = git://github.com/cakebaker/scss-syntax.vim.git
-[submodule ".vim/bundle/solarized.symlink"]
-	path = .vim/bundle/solarized.symlink
-	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule ".vim/bundle/puppet.symlink"]
-	path = .vim/bundle/puppet.symlink
-	url = git@github.com:dcreager/vim-puppet.git
-[submodule ".vim/bundle/vim-airline.symlink"]
-	path = .vim/bundle/vim-airline.symlink
-	url = https://github.com/bling/vim-airline.git
+[submodule ".local/share/nvim/site/pack/css-color/start/css-color.symlink"]
+	path = .local/share/nvim/site/pack/css-color/start/css-color.symlink
+	url = https://github.com/ap/vim-css-color
+[submodule ".local/share/nvim/site/pack/easymotion/start/easymotion.symlink"]
+	path = .local/share/nvim/site/pack/easymotion/start/easymotion.symlink
+	url = https://github.com/easymotion/vim-easymotion
+[submodule ".local/share/nvim/site/pack/javascript/start/javascript.symlink"]
+	path = .local/share/nvim/site/pack/javascript/start/javascript.symlink
+	url = https://github.com/pangloss/vim-javascript
+[submodule ".local/share/nvim/site/pack/markdown/start/markdown.symlink"]
+	path = .local/share/nvim/site/pack/markdown/start/markdown.symlink
+	url = https://github.com/tpope/vim-markdown
+[submodule ".local/share/nvim/site/pack/rust.vim/start/rust.vim.symlink"]
+	path = .local/share/nvim/site/pack/rust.vim/start/rust.vim.symlink
+	url = https://github.com/rust-lang/rust.vim.git
+[submodule ".local/share/nvim/site/pack/vim-fugitive/start/vim-fugitive.symlink"]
+	path = .local/share/nvim/site/pack/vim-fugitive/start/vim-fugitive.symlink
+	url = https://github.com/tpope/vim-fugitive
+[submodule ".local/share/nvim/site/pack/zig.vim/start/zig.vim.symlink"]
+	path = .local/share/nvim/site/pack/zig.vim/start/zig.vim.symlink
+	url = https://github.com/ziglang/zig.vim
+	branch = master
+[submodule ".local/share/nvim/site/pack/vim-go/start/vim-go.symlink"]
+	path = .local/share/nvim/site/pack/vim-go/start/vim-go.symlink
+	url = https://github.com/fatih/vim-go/
+	branch = master
+[submodule ".local/share/nvim/site/pack/vim-syntax-gemtext/start/vim-syntax-gemtext.symlink"]
+	path = .local/share/nvim/site/pack/vim-syntax-gemtext/start/vim-syntax-gemtext.symlink
+	url = https://github.com/kconner/vim-syntax-gemtext
+[submodule ".local/share/nvim/site/pack/vim-one/start/vim-one.symlink"]
+	path = .local/share/nvim/site/pack/vim-one/start/vim-one.symlink
+	url = https://github.com/rakr/vim-one
+	branch = master
+[submodule ".local/share/nvim/site/pack/fzf.vim/start/fzf.vim.symlink"]
+	path = .local/share/nvim/site/pack/fzf.vim/start/fzf.vim.symlink
+	url = https://github.com/junegunn/fzf.vim
+	branch = master
+[submodule ".local/share/nvim/site/pack/leap.nvim/start/leap.nvim.symlink"]
+	path = .local/share/nvim/site/pack/leap.nvim/start/leap.nvim.symlink
+	url = https://github.com/ggandor/leap.nvim
+	branch = main
+[submodule ".local/share/nvim/site/pack/templ.vim/start/templ.vim.symlink"]
+	path = .local/share/nvim/site/pack/templ.vim/start/templ.vim.symlink
+	url = https://github.com/joerdav/templ.vim

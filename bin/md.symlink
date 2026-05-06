@@ -1,0 +1,2 @@
+#!/bin/sh
+pandoc --metadata pagetitle=`basename "$1"` -s "$1" | w3m -T text/html

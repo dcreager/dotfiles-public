@@ -1,0 +1,28 @@
+---
+description: Triage ty ecosystem diagnostic diffs for likely regressions vs expected changes
+---
+You are reviewing a ty ecosystem diagnostic diff report. There might be a
+PLAN.md file in your worktree describing the change that this branch introduces
+or fixes.
+
+1. Load the diff report URL provided by the user.
+2. Summarize the scope: total diagnostics changed, and counts per change type (added/removed/changed) if available.
+3. Focus on new diagnostics first, especially `invalid-return-type`, `invalid-argument-type`, and other type-system regressions.
+4. Group findings by repository, prioritizing smaller repos (Optuna, pwndbg, etc.) before large ones (homeassistant, pandas, sympy, jax).
+5. For each repo:
+   - Identify patterns (e.g., decorator factories, generic callables, wrapper types like `_Wrapped`, `functools.wraps`, `lru_cache`).
+   - Decide if diagnostics look like true positives, false positives, or “existing bug now surfaced.”
+6. To verify diagnostics locally, use the `eco` command, as described in the
+   `local-ecosystem` prompt template. (Note that as a side effect, this clones
+   the project repo locally so you can read the project code when tracing
+   through the type checking logic. See the `local-ecosystem` prompt template
+   for details.)
+7. Provide a concise classification:
+   - **Likely false positives to fix now**
+   - **Likely true positives / real issues**
+   - **Existing-bug activations (defer)**
+
+Output format:
+- Summary paragraph
+- Bulleted lists for each classification
+- Notes on any follow-up needed

@@ -1,0 +1,4 @@
+alias ls="ls --color -NF"
+alias l="ls --color -lNF"
+alias la="ls --color -ANF"
+alias ll="ls --color -lANF"

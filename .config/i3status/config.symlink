@@ -1,0 +1,74 @@
+general {
+  interval = 5
+}
+
+order += "ethernet enp0s31f6"
+order += "ethernet tether0"
+order += "wireless wlp4s0"
+order += "ipv6"
+order += "cpu_usage"
+order += "battery 0"
+order += "battery 1"
+order += "volume master"
+order += "tztime local"
+
+ethernet enp0s31f6 {
+  format_up = " ⩫ %ip "
+  format_down = ""
+}
+
+ethernet tether0 {
+  format_up = " ≃ %ip "
+  format_down = ""
+}
+
+wireless wlp4s0 {
+  format_up = " ≋ %essid %bitrate %ip "
+  format_down = ""
+}
+
+ipv6 {
+  format_up = " ➅ %ip "
+  format_down = ""
+}
+
+cpu_usage {
+  format = " ⏣ %usage "
+}
+
+battery 0 {
+  format = " %status %percentage %remaining "
+  hide_seconds = true
+  integer_battery_capacity = true
+  low_threshold = 20
+  threshold_type = percentage
+  status_bat = "◐"
+  status_chr = "⚡"
+  status_full = "●"
+}
+
+battery 1 {
+  format = " %status %percentage %remaining "
+  hide_seconds = true
+  integer_battery_capacity = true
+  low_threshold = 20
+  threshold_type = percentage
+  status_bat = "◐"
+  status_chr = "⚡"
+  status_full = "●"
+}
+
+volume master {
+  device = "pulse"
+  format = " ♪ %volume "
+  format_muted = " ♪ OFF "
+}
+
+tztime utc {
+  format = " %Z %H:%M "
+  timezone = "UTC"
+}
+
+tztime local {
+  format = " %Y-%m-%d %H:%M "
+}

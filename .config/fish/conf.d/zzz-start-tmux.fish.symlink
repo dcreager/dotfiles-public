@@ -1,0 +1,8 @@
+if status is-interactive
+and not set -q TMUX
+and not set -q SKIP_TMUX
+    if not tmux has-session -t default 2>/dev/null
+        tmux new-session -d -s default
+    end
+    exec tmux attach -t default
+end

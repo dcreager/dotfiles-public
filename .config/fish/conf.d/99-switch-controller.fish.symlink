@@ -1,0 +1,1 @@
+set -x SDL_GAMECONTROLLERCONFIG "03002c11d620000013a7000000016800840642771V1241908210,PowerA NSW Wired controller,platform:Linux,a:b1,b:b0,x:b3,y:b2,back:b4,start:b6,guide:b5,leftshoulder:b9,rightshoulder:b10,leftstick:b7,rightstick:b8,leftx:a0,lefty:a1,rightx:a2,righty:a3,lefttrigger:a4,righttrigger:a5,dpup:h0.1,dpleft:h0.8,dpdown:h0.4,dpright:h0.2,"

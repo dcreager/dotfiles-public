@@ -1,0 +1,23 @@
+theme = "onelight"
+
+[editor]
+auto-completion = false
+auto-pairs = false
+color-modes = true
+mouse = false
+rulers = [81]
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
+
+[editor.indent-guides]
+render = true
+character = "┊"
+
+[editor.lsp]
+snippets = false
+
+[editor.whitespace]
+render = "all"

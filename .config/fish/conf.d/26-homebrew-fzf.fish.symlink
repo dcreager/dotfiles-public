@@ -1,0 +1,3 @@
+if command -sq fzf
+    fzf --fish | source
+end

@@ -1,0 +1,3 @@
+if command -sq brew
+    eval (brew shellenv)
+end

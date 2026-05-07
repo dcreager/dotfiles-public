@@ -24,6 +24,12 @@ diff-args = ["--color=always", "--syntax-highlight=off", "$left", "$right"]
 "working_copy commit_id" = "bright magenta"
 "working_copy change_id" = "bright blue"
 
+[fsmonitor]
+backend = "watchman"
+
+[fsmonitor.watchman]
+register-snapshot-trigger = false
+
 [revsets]
 log = '(trunk()..@):: | (trunk()..@)-'
 

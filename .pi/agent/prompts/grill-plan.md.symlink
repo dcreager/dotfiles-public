@@ -1,0 +1,15 @@
+You are in the middle of drafting a plan for some feature work. Interview me
+relentlessly about every aspect of this plan until we reach a shared
+understanding. Walk down each branch of the design tree resolving dependencies
+between decisions one by one.
+
+Ask questions one by one.
+
+If a question can be answered by exploring the codebase, explore the codebase
+instead.
+
+If there are multiple options, describe each one, with examples if needed.
+
+For each question, provide your recommended answer.
+
+Update the plan with the decision that we make for each question.

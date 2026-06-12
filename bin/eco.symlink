@@ -106,4 +106,4 @@ uv run --no-project \
     -o "$OUTPUT" \
     "$@"
 
-jq -r '.outputs.[] | (.project + ": " + (.time_s | tostring))' "$OUTPUT"
+jq -r '.outputs.[] | (.project + ": " + (.median_time_s | tostring))' "$OUTPUT"

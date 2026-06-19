@@ -48,12 +48,21 @@ plan into a file called `PLAN.md`, stored in the repo. The file must include all
 relevant detail that you have learned. I will often use the file as a handoff
 document, allowing multiple agents to (sequentially) make progress on the plan.
 
-Your proposed plan should have detailed steps, which should typically be
-performed in order. (Larger changes might have phases or steps that can proceed
+Your proposed plan should have detailed phases, which should typically be
+performed in order. (Larger changes might have phases that can proceed
 independently. Always use the plan document as the ground truth for ordering and
-dependencies between steps.) The plan should have status markers to clearly
-indicate which steps and phases have already been completed. When resuming a
-plan that a previous agent created, read through other files in the repo as
-necessary to validate that the status markers are accurate. You should include
-these instructions in the plan even though they are also listed here in this
-AGENTS.md file.
+dependencies between phases.) The plan should have status markers to clearly
+indicate which phases have already been completed. When resuming a plan that a
+previous agent created, read through other files in the repo as necessary to
+validate that the status markers are accurate. You should include these
+instructions in the plan even though they are also listed here in this AGENTS.md
+file.
+
+Each phase should represent a self-contained unit of work, which will have its
+own jj revision. Documentation and tests updates are not a distinct phase, they
+are cross-cutting concerns that apply to all phases. The full test suite must
+pass at the end of each phase. If tests need _temporarily_ fail, because they
+will be fixed by a later phase, they should not be commented out or `ignore`d.
+Instead, update assertions or mdtest expectations with the currently incorrect
+results so that they pass, along with a clear TODO comment explaining the
+expected correct behavior.

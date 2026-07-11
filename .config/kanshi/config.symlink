@@ -7,14 +7,14 @@ output "Dell Inc. DELL U3818DW *" {
 }
 
 profile laptop {
-    output eDP-1
+    output eDP-1 enable
 }
 
 profile desk {
-    output "Dell Inc. DELL U3818DW *"
+    output "Dell Inc. DELL U3818DW *" enable
 }
 
 profile dual {
-    output eDP-1 position 0,0
-    output "Dell Inc. DELL U3818DW *" position 1920,0
+    output eDP-1 enable position 0,0
+    output "Dell Inc. DELL U3818DW *" enable position 1920,0
 }

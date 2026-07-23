@@ -8,6 +8,30 @@ Use $HOME/.pi/tmp as a temporary directory instead.
 (That will also ensure that any state that you create persists,
 in case I need to pause and resume a session across reboots.)
 
+## Available command-line tools
+
+`gh` and `hub` are not available, even if you find them on the path. I have not
+logged in using these commands, and you do not have permission to perform any
+action that requires being logged in to GitHub. If you must access anything from
+GitHub, make direct HTTP calls to the API using curl.
+
+Do **NOT** install any new tools onto this machine without confirming first. Do
+not download arbitrary programs and run them, even from your temp directory.
+
+## Parallel cargo invocations
+
+It is not helpful to run `cargo` multiple times in parallel in the same
+workspace, since it will most likely wait for a global workspace lock before
+proceeding. That won't make anything _fail_, but the parallel execution won't
+buy you anything.
+
+## "Diagnosing" issues
+
+If you are asked to "diagnose" a problem, that means that I want you to figure
+out what the problem is, but I do _not_ want you to fix it. You can modify the
+code to help debug what the problem is, and you can _describe_ one or more
+_proposed_ fixes, but the word "diagnose" does not mean "fix".
+
 ## Source control
 
 You will typically be operating from within a Jujutsu (`jj`) worktree.

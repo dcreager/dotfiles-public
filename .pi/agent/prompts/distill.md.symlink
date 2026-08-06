@@ -19,8 +19,10 @@ current file contents, and snapshot the finished changes with
 `jj -R "$HOME/.pi/memory" status`. Complete the transaction in one lock-holding
 tool invocation.
 
-Do not save temporary task state, implementation status, full transcripts,
-secrets, speculation, or material already adequately covered by project
-instructions or documentation. If nothing deserves durable memory, say so and
+Do not save temporary task state or implementation status in curated memory
+notes; approved feature-specific state belongs only in its workspace plan and
+is not part of ordinary distillation. Do not save full transcripts, secrets,
+speculation, or material already covered by project instructions or
+documentation. If nothing deserves durable memory, say so and
 leave the vault unchanged without creating a revision. Otherwise summarize the
 facts saved and the note paths changed.

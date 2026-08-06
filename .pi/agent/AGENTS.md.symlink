@@ -65,28 +65,42 @@ use `jj diff --git` for git-style code diffs,
 or `jj diff --stat` for summary diffs.
 I use a custom diff renderer, which means plain `jj diff` will be misleading.
 
-## PLAN.md
+## Feature implementation plans
 
-When working on a feature, you will typically write an overview and detailed
-plan into a file called `PLAN.md`, stored in the repo. The file must include all
-relevant detail that you have learned. I will often use the file as a handoff
-document, allowing multiple agents to (sequentially) make progress on the plan.
+When working on a feature, keep its detailed implementation and handoff plan at
+`~/.pi/memory/plans/<project>/<workspace>/PLAN.md`, using the stable logical
+project name and the current Jujutsu workspace name. Prefer a dedicated feature
+workspace whose name aligns with its feature branch or bookmark. Do not create
+new `PLAN.md` files in the project working copy: plan state belongs in the
+private memory vault, not in implementation diffs.
 
-Your proposed plan should have detailed phases, which should typically be
-performed in order. (Larger changes might have phases that can proceed
-independently. Always use the plan document as the ground truth for ordering and
-dependencies between phases.) The plan should have status markers to clearly
-indicate which phases have already been completed. When resuming a plan that a
-previous agent created, read through other files in the repo as necessary to
-validate that the status markers are accurate. You should include these
-instructions in the plan even though they are also listed here in this AGENTS.md
-file.
+Existing workspaces might already have an in-repository `PLAN.md`. Use it as a
+legacy fallback when no workspace-scoped memory plan exists, and do not migrate,
+remove, or otherwise modify an existing workspace solely to adopt the new
+layout. If both locations contain a plan, ask which one is authoritative.
 
-Each phase should represent a self-contained unit of work, which will have its
-own jj revision. Documentation and tests updates are not a distinct phase, they
-are cross-cutting concerns that apply to all phases. The full test suite must
-pass at the end of each phase. If tests need _temporarily_ fail, because they
-will be fixed by a later phase, they should not be commented out or `ignore`d.
-Instead, update assertions or mdtest expectations with the currently incorrect
-results so that they pass, along with a clear TODO comment explaining the
-expected correct behavior.
+The plan must include the relevant context learned so far, detailed phases,
+dependencies, and clear completion markers. Treat it as the ground truth for
+phase ordering and handoff between sequential agents. When resuming, inspect the
+source, tests, and Jujutsu revisions to verify that its completion markers are
+accurate. Include these planning and handoff requirements in the plan itself.
+
+Each phase is a self-contained unit of work in its own project Jujutsu revision.
+Documentation and tests are cross-cutting requirements, not separate phases.
+The full test suite must pass at the end of every phase. If a later phase is
+needed for ultimately correct behavior, do not comment out or ignore failing
+tests; update the assertion or mdtest expectation to the currently observed
+behavior and add a clear TODO describing the expected correct behavior.
+
+After a phase and its tests are complete, snapshot its project revision and
+record both the stable Jujutsu change ID and exact commit ID in the plan. Update
+the phase marker in a separate, new memory-vault revision, following the shared
+advisory-lock protocol for every memory update. Create plan revisions only for
+initial plan creation, completed implementation phases, explicitly approved
+substantial replanning, or explicitly requested archival; do not create a
+revision for every incidental progress note.
+
+If a test failure or other finding appears to require a substantial change to
+the agreed plan, stop implementation, explain the evidence and alternatives,
+and wait for the user's decision. Archive a feature plan only when explicitly
+requested, typically as part of feature-branch and workspace cleanup.

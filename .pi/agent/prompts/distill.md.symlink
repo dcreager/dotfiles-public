@@ -1,0 +1,20 @@
+---
+description: Distill durable, verified lessons from this session into local Markdown memory
+argument-hint: "[topic or focus]"
+---
+Review the current conversation and distill reusable knowledge into the private
+Markdown memory vault under `~/.pi/memory/`.
+
+Focus: ${ARGUMENTS:-durable user preferences, project decisions, non-obvious lessons, and reusable technical knowledge}
+
+Load the `persistent-memory` skill and inspect the relevant indexes and existing
+notes before proposing changes. Preserve only a small number of confirmed,
+non-sensitive facts that are likely to help a future session. Choose the
+narrowest appropriate scope, merge with existing notes, resolve duplicates or
+contradictions, and update relevant index links.
+
+Do not save temporary task state, implementation status, full transcripts,
+secrets, speculation, or material already adequately covered by project
+instructions or documentation. If nothing deserves durable memory, say so and
+leave the vault unchanged. Otherwise summarize the facts saved and the note
+paths changed.

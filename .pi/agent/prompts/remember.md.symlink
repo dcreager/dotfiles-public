@@ -1,0 +1,18 @@
+---
+description: Save a durable, verified fact or preference in the local Markdown memory vault
+argument-hint: "<fact, preference, decision, or lesson>"
+---
+Record the following information in the private Markdown memory vault under
+`~/.pi/memory/`:
+
+$ARGUMENTS
+
+Load the `persistent-memory` skill and read the relevant vault indexes and
+existing notes first. If no information was provided, ask what should be
+remembered. Save only a durable, confirmed, non-sensitive fact; choose the
+narrowest appropriate user, project, or topic scope; and update an existing
+note instead of adding a duplicate. Maintain any necessary index links.
+
+If the information is ambiguous, sensitive, unverified, or too ephemeral to
+retain, explain why and ask for clarification rather than storing it. Finish by
+stating exactly what was saved and which note was changed.

@@ -37,3 +37,5 @@ After summarizing the change, please review the diff:
   (>5000-line) files.
 - Are there superfluous changes that could be extracted into a separate PR?
 - Are there any obvious layering violations?
+- Is the problem solved at the right level? Is this introducing a bandaid where
+  we could solve the issue more holistically?

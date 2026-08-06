@@ -1,8 +1,8 @@
 ---
 name: persistent-memory
 description: >
-  Maintains a private, local, agent-curated Markdown memory vault across pi
-  sessions. Use when starting substantive work that may benefit from prior
+  Maintains a private, local, agent-curated, Jujutsu-versioned Markdown memory
+  vault across pi sessions. Use when starting substantive work that may benefit from prior
   project context, recalling earlier decisions or user preferences, recording
   a durable correction or non-obvious lesson, or when the user asks to
   remember, recall, or distill information. Uses existing file tools only;
@@ -12,7 +12,8 @@ description: >
 # Persistent Markdown memory
 
 Use `~/.pi/memory/` as a private, human-readable knowledge vault. The vault is
-separate from public dotfiles and project working copies.
+its own Jujutsu repository, separate from public dotfiles and project working
+copies.
 
 ## Vault layout
 
@@ -40,6 +41,41 @@ separate from public dotfiles and project working copies.
 Only create a project directory or topic file when there is useful knowledge to
 put in it. Choose descriptive filenames and normal relative Markdown links.
 The layout may grow naturally; do not impose a database-like schema.
+
+## Version every vault write with Jujutsu
+
+The vault must be its own Jujutsu repository. Verify that its `.jj` directory
+exists and that its repository root is the vault itself:
+
+```sh
+memory_root="$HOME/.pi/memory"
+test -d "$memory_root/.jj" &&
+  test "$(jj -R "$memory_root" root)" = "$(realpath "$memory_root")"
+```
+
+If verification fails, stop without writing and ask the user to repair or
+initialize the vault. Never silently create a replacement repository, write to
+a parent repository, or invoke `git`.
+
+After deciding that a real memory change is needed, but before changing any
+vault file, create and describe one revision for the coherent update:
+
+```sh
+jj -R "$memory_root" new -A @
+jj -R "$memory_root" describe -m '[π] <specific topic>'
+```
+
+Use the existing file tools to make the changes, then snapshot and verify them:
+
+```sh
+jj -R "$memory_root" status
+jj -R "$memory_root" diff --stat
+```
+
+Do not create an empty revision merely to recall information or conclude that
+nothing should be saved. Do not use `jj edit`, rewrite earlier memory
+revisions, push the vault, or restore historical content unless the user
+explicitly requests it.
 
 ## Recall relevant knowledge
 
@@ -97,22 +133,25 @@ material sent to that provider.
    - `topics/` for genuinely reusable technical knowledge.
 3. If the correct project identity or whether a preference should be global is
    unclear, ask instead of silently creating a duplicate or broadening scope.
-4. Prefer editing or replacing an existing entry over appending a near-duplicate.
+4. If a real change is warranted, verify the vault's Jujutsu repository and
+   create a new, specifically described `[π]` revision before the first write.
+5. Prefer editing or replacing an existing entry over appending a near-duplicate.
    Resolve contradictions against the latest verified evidence.
-5. Write concise, specific Markdown. Include a date and a short provenance
+6. Write concise, specific Markdown. Include a date and a short provenance
    pointer when useful, such as a user statement, repository file, or the
    current pi session ID if already available.
-6. Add or update relative links in the nearest section and project indexes.
+7. Add or update relative links in the nearest section and project indexes.
    Keep indexes short and descriptive; read them to navigate rather than
    injecting every note into every model request.
-7. Split a note when it becomes unwieldy. Archive superseded information only
+8. Split a note when it becomes unwieldy. Archive superseded information only
    when its historical rationale remains useful; never archive secrets.
-8. Usually preserve no more than a few high-value facts from a task. If
-   nothing is durable, make no memory changes.
+9. Snapshot the completed update with `jj -R "$HOME/.pi/memory" status`.
+10. Usually preserve no more than a few high-value facts from a task. If
+    nothing is durable, make no memory changes and create no revision.
 
-Do not write project memory into the current repository, create or change a
-source-control revision for the separate vault, or invoke `git`. Existing
-project instructions still govern edits inside project working copies.
+Do not write project memory into the current project repository or invoke
+`git`. Existing project instructions still govern edits inside project working
+copies; the memory vault has its own independent revision history.
 
 ## User-invoked workflows
 

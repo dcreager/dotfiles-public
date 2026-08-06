@@ -11,7 +11,10 @@ Load the `persistent-memory` skill and read the relevant vault indexes and
 existing notes first. If no information was provided, ask what should be
 remembered. Save only a durable, confirmed, non-sensitive fact; choose the
 narrowest appropriate user, project, or topic scope; and update an existing
-note instead of adding a duplicate. Maintain any necessary index links.
+note instead of adding a duplicate. Before the first write, verify that the
+vault is its own Jujutsu repository and create a new, specifically described
+`[π]` revision. Maintain any necessary index links and snapshot the completed
+changes with `jj -R "$HOME/.pi/memory" status`.
 
 If the information is ambiguous, sensitive, unverified, or too ephemeral to
 retain, explain why and ask for clarification rather than storing it. Finish by

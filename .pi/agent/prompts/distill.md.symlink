@@ -11,10 +11,13 @@ Load the `persistent-memory` skill and inspect the relevant indexes and existing
 notes before proposing changes. Preserve only a small number of confirmed,
 non-sensitive facts that are likely to help a future session. Choose the
 narrowest appropriate scope, merge with existing notes, resolve duplicates or
-contradictions, and update relevant index links.
+contradictions, and update relevant index links. Before the first write,
+verify that the vault is its own Jujutsu repository and create one new,
+specifically described `[π]` revision for the complete distillation. Snapshot
+the finished changes with `jj -R "$HOME/.pi/memory" status`.
 
 Do not save temporary task state, implementation status, full transcripts,
 secrets, speculation, or material already adequately covered by project
 instructions or documentation. If nothing deserves durable memory, say so and
-leave the vault unchanged. Otherwise summarize the facts saved and the note
-paths changed.
+leave the vault unchanged without creating a revision. Otherwise summarize the
+facts saved and the note paths changed.

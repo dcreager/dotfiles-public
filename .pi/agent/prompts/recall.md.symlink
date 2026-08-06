@@ -7,11 +7,12 @@ relevant to:
 
 $ARGUMENTS
 
-Load the `persistent-memory` skill, read the root and relevant section indexes,
-follow promising note links, and use a focused `rg` search if necessary. If no
+Load the `persistent-memory` skill, verify that the vault is its own Jujutsu
+repository, read the root and relevant section indexes, follow promising note
+links, and use a focused `rg` search if necessary. If no
 topic or question was provided, ask what should be recalled.
 
 Summarize only relevant saved facts, cite the note paths, and distinguish
 potentially stale memory from information verified against current sources.
 Say explicitly if no matching memory exists. This is a read-only memory
-operation; do not create or modify notes.
+operation; do not create a revision or modify notes.

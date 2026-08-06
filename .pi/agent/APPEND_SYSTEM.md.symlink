@@ -15,11 +15,14 @@ might benefit from prior knowledge:
 
 During or after substantive work, curate a small number of confirmed, reusable
 facts when they would genuinely help a future session. Before making any vault
-changes, verify that `~/.pi/memory/` is its own `jj` repository, create a new
-revision with `jj -R "$HOME/.pi/memory" new -A @`, and describe it with a
-specific `[π]`-prefixed message. After the update, run `jj status` against the
-vault to snapshot the changes. Never write to an unversioned vault; read-only
-recall does not need a new revision.
+changes, acquire an exclusive advisory lock on `~/.pi/memory.lock`. While holding
+that same lock, verify that `~/.pi/memory/` is its own `jj` repository, create a
+revision with `jj -R "$HOME/.pi/memory" new -A @`, describe it with a specific
+`[π]`-prefixed message, apply updates against the current file contents, and run
+`jj status` against the vault to snapshot the changes. Release the lock after
+the transaction. File-descriptor locks do not survive separate tool invocations,
+so perform the complete update in one lock-holding invocation. Never write to an
+unversioned vault; read-only recall needs neither a lock nor a new revision.
 
 Update existing notes rather than accumulating duplicates. Keep project-specific
 knowledge separate from global user preferences and reusable topics. Explicit

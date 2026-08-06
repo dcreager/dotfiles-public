@@ -42,10 +42,26 @@ Only create a project directory or topic file when there is useful knowledge to
 put in it. Choose descriptive filenames and normal relative Markdown links.
 The layout may grow naturally; do not impose a database-like schema.
 
-## Version every vault write with Jujutsu
+## Serialize and version every vault write
 
-The vault must be its own Jujutsu repository. Verify that its `.jj` directory
-exists and that its repository root is the vault itself:
+The vault is shared across sessions. After deciding that a real change is needed,
+acquire an exclusive advisory lock on `~/.pi/memory.lock` before modifying the
+vault. Keep the same lock continuously throughout the entire update:
+
+1. Verify that the vault is its own Jujutsu repository.
+2. Create and describe one new revision for the coherent update.
+3. Apply changes against the current file contents and update relevant indexes.
+4. Run `jj status` to snapshot the result, then release the lock.
+
+The lock file lives outside the vault so it is never versioned. File-descriptor
+locks are released when their owning tool invocation exits, so all four steps
+must happen inside one lock-holding invocation; separate `bash`, `edit`, or
+`write` calls cannot preserve the lock. Shell `flock` and Python's
+`fcntl.flock` both provide the required advisory locking. Read-only recall does
+not require a lock or a revision.
+
+Within the locked transaction, verify that the vault's `.jj` directory exists
+and that its repository root is the vault itself:
 
 ```sh
 memory_root="$HOME/.pi/memory"
@@ -57,15 +73,16 @@ If verification fails, stop without writing and ask the user to repair or
 initialize the vault. Never silently create a replacement repository, write to
 a parent repository, or invoke `git`.
 
-After deciding that a real memory change is needed, but before changing any
-vault file, create and describe one revision for the coherent update:
+Still within the same locked transaction, create and describe the revision:
 
 ```sh
 jj -R "$memory_root" new -A @
 jj -R "$memory_root" describe -m '[π] <specific topic>'
 ```
 
-Use the existing file tools to make the changes, then snapshot and verify them:
+Read or revalidate affected files while the lock is held before replacing their
+contents, so an update cannot overwrite another session's intervening changes.
+After applying the changes, snapshot and verify them before releasing the lock:
 
 ```sh
 jj -R "$memory_root" status
@@ -133,8 +150,9 @@ material sent to that provider.
    - `topics/` for genuinely reusable technical knowledge.
 3. If the correct project identity or whether a preference should be global is
    unclear, ask instead of silently creating a duplicate or broadening scope.
-4. If a real change is warranted, verify the vault's Jujutsu repository and
-   create a new, specifically described `[π]` revision before the first write.
+4. If a real change is warranted, acquire the vault lock; while continuously
+   holding it, verify the Jujutsu repository, create a new specifically
+   described `[π]` revision, and complete the remaining mutation steps.
 5. Prefer editing or replacing an existing entry over appending a near-duplicate.
    Resolve contradictions against the latest verified evidence.
 6. Write concise, specific Markdown. Include a date and a short provenance
@@ -145,7 +163,8 @@ material sent to that provider.
    injecting every note into every model request.
 8. Split a note when it becomes unwieldy. Archive superseded information only
    when its historical rationale remains useful; never archive secrets.
-9. Snapshot the completed update with `jj -R "$HOME/.pi/memory" status`.
+9. Snapshot the completed update with `jj -R "$HOME/.pi/memory" status` before
+   releasing the vault lock.
 10. Usually preserve no more than a few high-value facts from a task. If
     nothing is durable, make no memory changes and create no revision.
 

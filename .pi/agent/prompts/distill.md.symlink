@@ -12,9 +12,12 @@ notes before proposing changes. Preserve only a small number of confirmed,
 non-sensitive facts that are likely to help a future session. Choose the
 narrowest appropriate scope, merge with existing notes, resolve duplicates or
 contradictions, and update relevant index links. Before the first write,
-verify that the vault is its own Jujutsu repository and create one new,
-specifically described `[π]` revision for the complete distillation. Snapshot
-the finished changes with `jj -R "$HOME/.pi/memory" status`.
+acquire an exclusive advisory lock on `~/.pi/memory.lock`. While continuously
+holding that lock, verify that the vault is its own Jujutsu repository, create
+one new specifically described `[π]` revision, apply the distillation against
+current file contents, and snapshot the finished changes with
+`jj -R "$HOME/.pi/memory" status`. Complete the transaction in one lock-holding
+tool invocation.
 
 Do not save temporary task state, implementation status, full transcripts,
 secrets, speculation, or material already adequately covered by project

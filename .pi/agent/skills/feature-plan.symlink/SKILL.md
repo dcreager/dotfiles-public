@@ -85,7 +85,10 @@ propose alternatives with their tradeoffs, and await the user's decision.
 A feature plan changes only when it is initially created, an implementation
 phase finishes successfully, the user approves substantial replanning, or the
 user explicitly requests archival. Each update follows the persistent-memory
-skill's shared exclusive-lock and Jujutsu transaction requirements.
+skill's shared exclusive-lock and Jujutsu transaction requirements. Its revision
+subject must use `[π] <branch-name>: <specific plan update>`, where
+`<branch-name>` is the feature branch or bookmark name. If that name is not
+unambiguous, determine it or ask before changing the plan.
 
 At the end of a completed implementation phase:
 

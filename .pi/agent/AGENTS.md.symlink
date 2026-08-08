@@ -100,6 +100,13 @@ initial plan creation, completed implementation phases, explicitly approved
 substantial replanning, or explicitly requested archival; do not create a
 revision for every incidental progress note.
 
+Every memory-vault revision that changes a feature plan must prefix its subject,
+after the mandatory `[π] ` marker, with the feature branch or bookmark name and
+`: `, for example `[π] dcreager/fully-static-sequents: checkpoint phase 1`.
+This applies to initial creation, phase checkpoints, approved replanning, and
+archival. If the branch name is not unambiguous, determine it or ask before
+creating the plan revision.
+
 If a test failure or other finding appears to require a substantial change to
 the agreed plan, stop implementation, explain the evidence and alternatives,
 and wait for the user's decision. Archive a feature plan only when explicitly

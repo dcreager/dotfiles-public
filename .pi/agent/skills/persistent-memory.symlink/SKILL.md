@@ -211,6 +211,12 @@ revision open during implementation. Every plan creation, checkpoint, approved
 revision, or archival follows the same exclusive-lock and Jujutsu transaction
 rules as any other vault update.
 
+Every revision that changes a feature plan must prefix its subject, after the
+mandatory `[π] ` marker, with the feature branch or bookmark name and `: `:
+`[π] <branch-name>: <specific plan update>`. This naming requirement applies to
+initial creation, phase checkpoints, approved replanning, and archival. If the
+branch name cannot be determined unambiguously, ask before writing the plan.
+
 Archive explicitly requested completed or abandoned plans at:
 
 ```text

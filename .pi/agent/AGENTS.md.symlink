@@ -1,5 +1,11 @@
 # Global instructions for all projects
 
+## Persistent user preferences
+
+Before the first substantive task in each session, always read
+`~/.pi/memory/user/preferences.md`. Re-read it after context compaction if its
+contents are no longer available.
+
 ## Temporary files and directories
 
 The /tmp partition is a tmpfs virtual memory filesystem,

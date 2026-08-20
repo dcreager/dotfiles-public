@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -e
+
+usage () {
+    echo "Usage: review-ruff PR_NUMBER" 1>&2
+    exit 1
+}
+
+PR_NUMBER=$1; shift
+if [ -z "$PR_NUMBER" ]; then
+    echo "Missing PR number" >&2
+    usage
+fi
+
+PR_URL=https://github.com/astral-sh/ruff/pull/${PR_NUMBER}
+SESSION=review-${PR_NUMBER}
+WINDOW=${SESSION}:0
+
+tmux new-session -d -s ${SESSION}
+tmux send-keys -t ${WINDOW} "cd ~/git/ruff/main" C-m
+tmux send-keys -t ${WINDOW} "jj workspace add ../review-${PR_NUMBER}" C-m
+tmux send-keys -t ${WINDOW} "cd ~/git/ruff/review-${PR_NUMBER}" C-m
+tmux send-keys -t ${WINDOW} "pi --thinking xhigh -n review-${PR_NUMBER} 'Review ${PR_URL}'" C-m

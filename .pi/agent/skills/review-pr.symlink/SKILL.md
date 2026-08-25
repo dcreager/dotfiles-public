@@ -47,6 +47,13 @@ Before presenting review findings:
 
 ## Review the diff
 
+Review the PR within its stated scope and report issues introduced by its changes. Do not report a
+pre-existing limitation as a PR defect merely because new infrastructure could eventually address
+it. Flag the limitation only if the PR claims completeness, makes it worse, or must migrate the
+additional callers for its own changed behavior to be correct. Respect deliberate sequencing that
+keeps infrastructure or refactoring separate from subsequent behavioral migrations; reviewable
+follow-up work is not itself a defect in the current PR.
+
 Check correctness and maintainability, including:
 
 - Whether the new code matches the style of nearby code.

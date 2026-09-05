@@ -1,26 +1,42 @@
 ---
 name: feature-plan
 description: >
-  Reads, reviews, validates, summarizes, or resumes a workspace-scoped feature
-  implementation plan. Use when the user says "read the plan", "review the
-  plan", "resume the plan", "continue the plan", "catch me up", "what is the
-  current phase?", or asks what a previous agent completed, what remains, or
-  whether a feature plan matches the current implementation. Finds plans in
-  persistent memory, supports legacy in-repository plans, and does not start
-  implementing without authorization.
+  Manages workspace-scoped feature implementation and handoff plans. Use before
+  substantive agent-led feature planning or implementation, and when creating,
+  locating, reading, reviewing, validating, resuming, checkpointing, replanning,
+  or archiving a feature plan. Does not start implementation without authorization.
 ---
 
-# Read, review, or resume a feature plan
+# Manage a workspace-scoped feature plan
 
-Treat the current feature's plan as the implementation and handoff ground
-truth. Determine whether the user wants only an investigation and summary, a
-critical review, or to resume a confirmed implementation phase.
+Feature plans are the ground truth for active implementation phases and handoff
+between sequential agents. Store them in the private memory vault, outside project
+implementation diffs.
+
+## Decide whether a plan is appropriate
+
+Assume that a task does not use a workspace plan unless the user's instructions
+clearly indicate that an agent will lead the substantive implementation of a
+feature. Do not create one merely because the user asks questions, requests
+diagnosis or review, or authorizes an isolated implementation task without
+establishing an agent-led feature workflow.
+
+Do not infer that a worktree is human-centric. When the user explicitly identifies
+one as human-centric, record confirmed findings, decisions, validation results,
+and revision anchors as factual notes rather than phases for an agent to execute.
+Do not create a phased implementation plan there merely because the user asks
+questions.
+
+Prefer a dedicated feature workspace whose name aligns with its feature bookmark.
+Do not rename or otherwise modify an existing workspace solely to enforce that
+preference.
 
 ## Find the current plan
 
-1. Load the `persistent-memory` skill and read `~/.pi/memory/INDEX.md`.
-2. Identify the stable logical project from `projects/INDEX.md`, using its
-   documented aliases instead of inventing a path-based project identity.
+1. Load the `persistent-memory` skill for the vault's generic recall and mutation
+   protocol, then read `~/.pi/memory/INDEX.md`.
+2. Identify the stable logical project through `projects/INDEX.md` and its aliases;
+   never invent a path-based project identity.
 3. Determine the current Jujutsu workspace, for example:
 
    ```sh
@@ -28,75 +44,121 @@ critical review, or to resume a confirmed implementation phase.
      -T 'working_copies.map(|workspace| workspace.name()).join("\n") ++ "\n"'
    ```
 
-4. Look for the feature plan at:
+4. Look for the plan at:
 
    ```text
    ~/.pi/memory/plans/<project>/<workspace>/PLAN.md
    ```
 
-5. If no external plan exists, an existing `PLAN.md` at the project root is a
-   legacy fallback. Do not create, move, migrate, archive, or modify either plan
-   merely because the user asked to read or review it. If both locations exist,
-   ask which plan is authoritative. If neither exists, explain that and ask how
-   to proceed.
+5. If no external plan exists, use an existing project-root `PLAN.md` only as a
+   legacy fallback. Do not create new plans in project working copies or migrate
+   an existing plan merely to adopt the external layout. If both locations contain
+   a plan, ask which is authoritative.
 
-Plan discovery and inspection are read-only; they require neither the memory
-lock nor a new memory revision.
+If project identity, workspace, or feature bookmark is ambiguous, determine it or
+ask instead of guessing. Plan discovery and inspection are read-only and require
+neither a vault lock nor a new revision.
+
+If the user asks only to read or review and no plan exists, report that and stop.
+When the user's instructions clearly establish a new agent-led feature workflow,
+develop an approved plan before editing source; load `grill-plan` when design
+decisions need to be drafted or pressure-tested.
+
+## Required plan content
+
+A plan must contain enough context for another agent to resume safely:
+
+- the problem, scope, agreed design, and meaningful rejected alternatives;
+- dependencies, assumptions, risks, unresolved decisions, and relevant source or
+  documentation pointers;
+- ordered, self-contained implementation phases with clear completion markers;
+- validation requirements and handoff instructions; and
+- stable Jujutsu change IDs and exact commit IDs for completed phases.
+
+Each implementation phase belongs in its own project Jujutsu revision.
+Documentation and tests are cross-cutting requirements, not separate phases. The
+full required test suite must pass at the end of every phase.
+
+If a later phase is required for ultimately correct behavior, do not comment out
+or ignore a currently failing test. Update its expectation to the currently
+observed behavior and add a clear `TODO` describing the expected correct behavior.
 
 ## Verify rather than assume
 
-Read the complete plan, applicable project `AGENTS.md` instructions, and the
-existing user/project memory relevant to the feature. Follow only the source,
-test, documentation, benchmark, or design references needed to understand the
-current phase and its prerequisites.
+Read the complete plan, applicable `AGENTS.md`, relevant project-library notes,
+and only the source, tests, documentation, benchmarks, or design references needed
+to understand the active phase and its prerequisites.
 
-Check each claimed completed phase against the actual implementation and
-available tests. Inspect recorded project change IDs, commit IDs, revision
-descriptions, and relevant `jj diff --git` output when useful. A changed commit
-ID after rebasing does not invalidate its stable change ID, but report
-meaningful discrepancies rather than silently trusting stale status markers.
+Verify claimed completed phases against implementation, tests, and Jujutsu
+history. Inspect recorded change IDs, commit IDs, revision descriptions, and
+`jj diff --git` output when useful. Rebasing may change a commit ID without
+invalidating its stable change ID, but report meaningful discrepancies.
 
 Summarize:
 
-- the feature's goal and agreed design;
+- the feature goal and agreed design;
 - completed, active, and remaining phases;
-- important dependencies, known limitations, and unresolved decisions;
-- discrepancies between the plan and actual code/tests; and
-- the next actionable phase or the specific investigation the user requested.
+- dependencies, limitations, risks, and unresolved decisions;
+- discrepancies between the plan and actual code or tests; and
+- the next actionable phase or requested investigation.
 
 ## Respect the requested mode
 
 **Read, inspect, catch up, or review:** Stop after the requested summary or
-critique. Do not implement the next phase, change the plan, fix discovered
-problems, or treat a review as permission to start work. If the user wants to
-pressure-test design choices, also follow the `grill-plan` skill.
+critique. Do not implement, modify the plan, or fix discovered problems.
 
-**Resume or continue:** Verify and summarize first, describe the exact next
-phase and proposed scope, and obtain confirmation before implementing unless the
-user has already explicitly approved that precise work. Do not skip incomplete
-prerequisites or broaden the agreed plan without approval.
+**Resume or continue:** Verify and summarize first. State the exact next phase and
+proposed scope, then obtain confirmation unless the user already authorized that
+precise work.
 
-If a failing test, unexpected result, or other discovery suggests a substantial
-change to the plan, stop implementation. Explain the evidence and likely cause,
-propose alternatives with their tradeoffs, and await the user's decision.
+**Implement an approved phase:** Before editing source, create a new project
+revision as required by global instructions. Do not skip incomplete prerequisites
+or broaden the agreed phase silently.
 
-## Checkpoint only meaningful plan changes
+If a failure or discovery appears to require a substantial change to the agreed
+architecture, scope, sequencing, or approach, stop. Explain the evidence and
+tradeoffs, load `grill-plan` to work through the alternatives, and wait for user
+approval before replanning or proceeding.
 
-A feature plan changes only when it is initially created, an implementation
-phase finishes successfully, the user approves substantial replanning, or the
-user explicitly requests archival. Each update follows the persistent-memory
-skill's shared exclusive-lock and Jujutsu transaction requirements. Its revision
-subject must use `[π] <branch-name>: <specific plan update>`, where
-`<branch-name>` is the feature branch or bookmark name. If that name is not
-unambiguous, determine it or ask before changing the plan.
+## Checkpoint meaningful changes only
 
-At the end of a completed implementation phase:
+Change a feature plan only for:
 
-1. Finish all required documentation, tests, and validation.
-2. Snapshot the phase's project Jujutsu revision.
-3. Record its stable change ID and exact commit ID in the plan.
-4. Mark the phase complete in one new, locked memory-vault revision.
+1. Initial creation of an approved plan.
+2. Successful completion of an implementation phase and its required full test
+   suite.
+3. Substantial replanning explicitly approved by the user.
+4. Archival explicitly requested by the user.
 
-Do not create plan revisions for incidental progress. Keep plans active until
-the user explicitly requests archival, normally as part of feature-workspace
-cleanup.
+Do not create plan revisions for incidental progress or leave a shared vault
+revision open during project implementation.
+
+Every plan mutation follows the generic exclusive-lock and Jujutsu transaction in
+the `persistent-memory` skill. Its revision description must be:
+
+```text
+[π] <feature-branch-or-bookmark>: <specific plan update>
+```
+
+If the branch or bookmark is ambiguous, determine it or ask before writing.
+
+After a phase succeeds, snapshot its project revision and obtain its identifiers:
+
+```sh
+jj log --ignore-working-copy -r @ --no-graph \
+  -T 'change_id ++ "\n" ++ commit_id ++ "\n"'
+```
+
+Then, in a separate new vault revision, record both identifiers and mark the phase
+complete. Never mix plan checkpoint edits into the project's implementation
+revision.
+
+Archive a plan only on explicit request, normally during feature-workspace
+cleanup, at:
+
+```text
+~/.pi/memory/archive/plans/<project>/<workspace>/PLAN.md
+```
+
+Do not infer that completed phases or an upstream merge authorize archival or
+workspace removal.

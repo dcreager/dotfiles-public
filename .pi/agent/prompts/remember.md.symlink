@@ -1,24 +1,21 @@
 ---
-description: Save a durable, verified fact or preference in the local Markdown memory vault
-argument-hint: "<fact, preference, decision, or lesson>"
+description: Save durable, verified knowledge in the local Markdown library
+argument-hint: "<fact, decision, or lesson>"
 ---
-Record the following information in the private Markdown memory vault under
+Record the following information in the private Markdown knowledge library under
 `~/.pi/memory/`:
 
 $ARGUMENTS
 
-Load the `persistent-memory` skill and read the relevant vault indexes and
-existing notes first. If no information was provided, ask what should be
-remembered. Save only a durable, confirmed, non-sensitive fact; choose the
-narrowest appropriate user, project, or topic scope; and update an existing
-note instead of adding a duplicate. Before the first write, acquire an exclusive
-advisory lock on `~/.pi/memory.lock`. While continuously holding that lock,
-verify that the vault is its own Jujutsu repository, create a new specifically
-described `[π]` revision, apply changes against current file contents, maintain
-necessary index links, and snapshot the completed changes with
-`jj -R "$HOME/.pi/memory" status`. Complete the transaction in one lock-holding
-tool invocation.
+Load the `persistent-memory` skill and follow its scope, safety, indexing, locking,
+and Jujutsu transaction requirements. Read relevant indexes and existing notes
+before writing. If no information was provided, ask what should be remembered.
 
-If the information is ambiguous, sensitive, unverified, or too ephemeral to
-retain, explain why and ask for clarification rather than storing it. Finish by
-stating exactly what was saved and which note was changed.
+Save only durable, confirmed, non-sensitive project or topic knowledge. Update an
+existing note instead of adding a duplicate. If the request is a user preference
+or workflow instruction, explain that it belongs in `~/.pi/agent/AGENTS.md`, a
+project `AGENTS.md`, or a specialized skill rather than the knowledge library.
+
+If the information is ambiguous, sensitive, unverified, or too ephemeral, explain
+why and ask for clarification rather than storing it. Finish by stating exactly
+what was saved and which note changed.

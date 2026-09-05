@@ -1,119 +1,151 @@
 # Global instructions for all projects
 
-## Persistent user preferences
+## Knowledge library
 
-Before the first substantive task in each session, always read
-`~/.pi/memory/user/preferences.md`. Re-read it after context compaction if its
-contents are no longer available.
+`~/.pi/memory/` is a private library of durable project and topic knowledge, plus
+workspace-scoped feature plans. It is not a source of user instructions. Load the
+`persistent-memory` skill when the user asks to remember, recall, or distill
+knowledge, or when prior project or domain knowledge would materially help the
+current task. Treat library notes as potentially stale and verify changeable facts
+against current authoritative sources.
+
+Do not store user preferences or workflow instructions in the knowledge library.
+Global mandatory preferences belong in this file, project-specific instructions
+belong in that project's `AGENTS.md`, and specialized procedures belong in skills.
 
 ## Temporary files and directories
 
-The /tmp partition is a tmpfs virtual memory filesystem,
-and is fairly small in size.
-Use $HOME/.pi/tmp as a temporary directory instead.
-(That will also ensure that any state that you create persists,
-in case I need to pause and resume a session across reboots.)
+The `/tmp` partition is a fairly small tmpfs virtual memory filesystem. Use
+`$HOME/.pi/tmp` for temporary files and directories instead. This also preserves
+state when a session must pause across reboots.
 
 ## Available command-line tools
 
-`gh` and `hub` are not available, even if you find them on the path. I have not
-logged in using these commands, and you do not have permission to perform any
-action that requires being logged in to GitHub. If you must access anything from
-GitHub, make direct HTTP calls to the API using curl.
+`gh` and `hub` are not available, even if they appear on the path. They are not
+authenticated, and you do not have permission to perform actions requiring GitHub
+login. If GitHub access is necessary, make direct HTTP calls to the API with
+`curl`.
 
-Do **NOT** install any new tools onto this machine without confirming first. Do
-not download arbitrary programs and run them, even from your temp directory.
+Do **not** install new tools without confirming first. Do not download arbitrary
+programs and run them, even from the temporary directory.
 
-## Parallel cargo invocations
+## Communication
 
-It is not helpful to run `cargo` multiple times in parallel in the same
-workspace, since it will most likely wait for a global workspace lock before
-proceeding. That won't make anything _fail_, but the parallel execution won't
-buy you anything.
+### Diagnosis is not implementation
 
-## "Diagnosing" issues
+When asked to **diagnose** a problem, investigate and explain the cause and propose
+one or more fixes with their tradeoffs, but do not implement a fix without
+subsequent explicit approval. Debugging edits are permitted when needed to identify
+the cause.
 
-If you are asked to "diagnose" a problem, that means that I want you to figure
-out what the problem is, but I do _not_ want you to fix it. You can modify the
-code to help debug what the problem is, and you can _describe_ one or more
-_proposed_ fixes, but the word "diagnose" does not mean "fix".
+### Make short PR summaries self-contained
+
+When summarizing investigation results for a PR, put each category's conclusion,
+representative projects or examples, and justification in the same bullet. Avoid
+context-dependent headings such as “previously deferred” and conclusion-only
+bullets without supporting information.
 
 ## Source control
 
-You will typically be operating from within a Jujutsu (`jj`) worktree.
-Use `jj` for all source control operations.
-You should never need to invoke `git`.
-If you feel you are in a situation where you _do_ need to invoke `git` directly,
-confirm with me first.
+You will typically operate in a Jujutsu (`jj`) worktree. Use `jj` for all source
+control operations and never invoke `git` without confirming first.
 
-**Never** make edits to the working copy without creating your own jj revision
-to hold those edits.
-Similarly, **never** use `jj edit` to edit an existing revision.
-If you do, jj's aggressive snapshotting can cause local bookmarks
-to diverge needlessly from their remote counterparts.
-Instead, always create a new revision to hold your edits.
-Use `jj describe` to describe what you are trying to accomplish with each revision.
-Prefix your revision descriptions with `[π]` so they are easy to see in the log.
+Never edit a working copy without first creating your own revision. Do not use
+`jj edit` on an existing revision except for rebase conflict resolution as
+described below. Create a new revision with `jj new`; use `jj new -A @` when
+downstream revisions should incorporate the change, or plain `jj new` for a
+throwaway revision that downstream revisions should not inherit. Describe each
+revision with a specific `[π]`-prefixed message.
 
-When creating a new revision, always use some variant of `jj new`.
+The exception to the `jj edit` rule is resolving conflicts in a rebased stack.
+This includes both revisions marked `(conflict)` and conceptual or semantic
+conflicts introduced by the rebase even when no tracked file contains conflict
+markers. Work from the oldest affected revision through its descendants, and fix
+each conflict in the revision that introduces it. This exception does not
+authorize unrelated changes or ordinary feature work in existing revisions.
 
-You will typically want downstream revisions
-to incorporate any edits you are about to make.
-In this case, use `jj new -A @` to create a new revision on top of the current one,
-and to rebase all downstream revisions onto the newly created one.
+Prefer a dedicated workspace per feature whose name aligns with its feature
+bookmark; do not rename existing workspaces merely to enforce this preference.
 
-If you are creating a throwaway revision
-that downstream revisions should _not_ incorporate,
-use `jj new`.
+Use `jj diff --git` for git-style diffs and `jj diff --stat` for summaries. Plain
+`jj diff` uses the user's custom renderer and can be misleading.
 
-When viewing diffs,
-use `jj diff --git` for git-style code diffs,
-or `jj diff --stat` for summary diffs.
-I use a custom diff renderer, which means plain `jj diff` will be misleading.
+## Feature plans
 
-## Feature implementation plans
+Before substantive agent-led feature planning or implementation, load the
+`feature-plan` skill. When drafting, pressure-testing, or substantially revising a
+plan, also load the `grill-plan` skill. Those skills are authoritative for plan
+discovery, storage, lifecycle, and handoff; do not invent or duplicate a separate
+planning workflow.
 
-When working on a feature, keep its detailed implementation and handoff plan at
-`~/.pi/memory/plans/<project>/<workspace>/PLAN.md`, using the stable logical
-project name and the current Jujutsu workspace name. Prefer a dedicated feature
-workspace whose name aligns with its feature branch or bookmark. Do not create
-new `PLAN.md` files in the project working copy: plan state belongs in the
-private memory vault, not in implementation diffs.
+## Testing
 
-Existing workspaces might already have an in-repository `PLAN.md`. Use it as a
-legacy fallback when no workspace-scoped memory plan exists, and do not migrate,
-remove, or otherwise modify an existing workspace solely to adopt the new
-layout. If both locations contain a plan, ask which one is authoritative.
+Test important user-visible behavior or meaningful caller-visible contracts, not
+incidental representations, algorithms, helpers, or intermediate state. Prefer
+tests that remain valid after an implementation change preserving observable
+behavior.
 
-The plan must include the relevant context learned so far, detailed phases,
-dependencies, and clear completion markers. Treat it as the ground truth for
-phase ordering and handoff between sequential agents. When resuming, inspect the
-source, tests, and Jujutsu revisions to verify that its completion markers are
-accurate. Include these planning and handoff requirements in the plan itself.
+Before adding coverage, inspect existing behavioral tests and avoid duplicating an
+already-covered requirement through another API. Add a case only for a materially
+distinct observable condition. A temporary implementation-focused unit test is
+acceptable when important new functionality is not yet reachable behaviorally;
+mark it `XXX:` and remove it within the feature branch once integration supplies
+behavioral coverage.
 
-Each phase is a self-contained unit of work in its own project Jujutsu revision.
-Documentation and tests are cross-cutting requirements, not separate phases.
-The full test suite must pass at the end of every phase. If a later phase is
-needed for ultimately correct behavior, do not comment out or ignore failing
-tests; update the assertion or mdtest expectation to the currently observed
-behavior and add a clear TODO describing the expected correct behavior.
+Do not run multiple `cargo` commands in parallel in the same workspace; they will
+usually serialize on Cargo's workspace lock.
 
-After a phase and its tests are complete, snapshot its project revision and
-record both the stable Jujutsu change ID and exact commit ID in the plan. Update
-the phase marker in a separate, new memory-vault revision, following the shared
-advisory-lock protocol for every memory update. Create plan revisions only for
-initial plan creation, completed implementation phases, explicitly approved
-substantial replanning, or explicitly requested archival; do not create a
-revision for every incidental progress note.
+## Code and design preferences
 
-Every memory-vault revision that changes a feature plan must prefix its subject,
-after the mandatory `[π] ` marker, with the feature branch or bookmark name and
-`: `, for example `[π] dcreager/fully-static-sequents: checkpoint phase 1`.
-This applies to initial creation, phase checkpoints, approved replanning, and
-archival. If the branch name is not unambiguous, determine it or ask before
-creating the plan revision.
+### Keep comments concise and rationale-focused
 
-If a test failure or other finding appears to require a substantial change to
-the agreed plan, stop implementation, explain the evidence and alternatives,
-and wait for the user's decision. Archive a feature plan only when explicitly
-requested, typically as part of feature-branch and workspace cleanup.
+Omit comments that merely narrate incidental implementation details. Explain the
+design decision or invariant a maintainer must preserve and, when an obvious
+existing mechanism seems applicable, why it is insufficient. Use `XXX:` for
+temporary work that must be resolved on the current feature branch; an ordinary
+`TODO:` does not carry that branch-completion requirement.
+
+### Prefer focused, minimal implementation diffs
+
+Avoid unrelated changes. When several approaches are otherwise sound, generally
+prefer the smaller diff. Do not add trivial accessors for identically named fields;
+expose fields at the narrow visibility callers need when no extra invariant or
+behavior justifies a method.
+
+Do not rename an existing method unless its old name has become inaccurate. When
+generalizing an API with many callers, consider retaining the simple method as a
+shim around a new general method; with only a few callers, update the existing
+method and callers instead of adding compatibility machinery.
+
+Do not merge distinct match arms merely to remove duplication when they differ in
+argument order, arity, or implementation. Prefer separate direct arms over flags,
+argument reshuffling, or nested dispatch. Minimality never overrides correctness,
+accurate naming, necessary refactoring, or an agreed design.
+
+### Prefer direct function signatures
+
+Do not group arguments into a context struct, tuple, or wrapper solely to reduce a
+parameter count or satisfy `clippy::too_many_arguments`. Keep the direct signature
+and use `#[expect(clippy::too_many_arguments)]` when suppression is needed.
+
+### Preserve documented invariants
+
+Treat assertions backed by invariant comments as requirements. If new work violates
+one, fix the code producing the invalid state rather than replacing the assertion
+with a silent fallback. If evidence suggests the invariant itself is wrong,
+explain that evidence and ask before weakening it.
+
+### Preserve conceptual coherence when changing representations
+
+A simplification should remove conceptual work by exploiting the new invariant;
+moving the same decisions into a helper is not a meaningful simplification by
+itself. When removing a representation state, carry the new model through callers
+instead of recreating that state with optional-style helpers, provenance wildcards,
+or scattered sentinels.
+
+If tests appear to require those workarounds, first check whether their construction
+API can express the intended distinction. Improve that API and make expectations
+explicit before concluding that the removed state is necessary. Prefer clearly
+named constructors for frequently used logical identities, while distinguishing
+mathematical identity handling from accidental inference or metadata behavior.
+

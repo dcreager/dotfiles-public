@@ -1,28 +1,23 @@
 ---
-description: Distill durable, verified lessons from this session into local Markdown memory
+description: Distill durable, verified lessons from this session into the local Markdown library
 argument-hint: "[topic or focus]"
 ---
 Review the current conversation and distill reusable knowledge into the private
-Markdown memory vault under `~/.pi/memory/`.
+Markdown library under `~/.pi/memory/`.
 
-Focus: ${ARGUMENTS:-durable user preferences, project decisions, non-obvious lessons, and reusable technical knowledge}
+Focus: ${ARGUMENTS:-durable project decisions, non-obvious lessons, and reusable technical knowledge}
 
-Load the `persistent-memory` skill and inspect the relevant indexes and existing
-notes before proposing changes. Preserve only a small number of confirmed,
-non-sensitive facts that are likely to help a future session. Choose the
-narrowest appropriate scope, merge with existing notes, resolve duplicates or
-contradictions, and update relevant index links. Before the first write,
-acquire an exclusive advisory lock on `~/.pi/memory.lock`. While continuously
-holding that lock, verify that the vault is its own Jujutsu repository, create
-one new specifically described `[π]` revision, apply the distillation against
-current file contents, and snapshot the finished changes with
-`jj -R "$HOME/.pi/memory" status`. Complete the transaction in one lock-holding
-tool invocation.
+Load the `persistent-memory` skill and follow its scope, safety, indexing, locking,
+and Jujutsu transaction requirements. Inspect relevant indexes and existing notes
+before proposing changes. Preserve only a few confirmed, non-sensitive facts likely
+to help a future session, choosing the narrowest project or topic scope and merging
+with existing notes.
 
-Do not save temporary task state or implementation status in curated memory
-notes; approved feature-specific state belongs only in its workspace plan and
-is not part of ordinary distillation. Do not save full transcripts, secrets,
-speculation, or material already covered by project instructions or
-documentation. If nothing deserves durable memory, say so and
-leave the vault unchanged without creating a revision. Otherwise summarize the
-facts saved and the note paths changed.
+Do not save user preferences or workflow instructions; those belong in
+`AGENTS.md` or specialized skills. Do not save feature implementation status;
+workspace plans are managed only through the planning skills. Do not save full
+transcripts, secrets, speculation, or material already covered by authoritative
+instructions or documentation.
+
+If nothing deserves durable storage, leave the library unchanged without creating
+a revision. Otherwise summarize the knowledge saved and the note paths changed.

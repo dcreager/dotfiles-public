@@ -1,18 +1,16 @@
 ---
-description: Search the local Markdown memory vault and answer using relevant saved notes
+description: Search the local Markdown knowledge library and answer from relevant saved notes
 argument-hint: "<topic or question>"
 ---
-Search the private Markdown memory vault under `~/.pi/memory/` for information
+Search the private Markdown knowledge library under `~/.pi/memory/` for information
 relevant to:
 
 $ARGUMENTS
 
-Load the `persistent-memory` skill, verify that the vault is its own Jujutsu
-repository, read the root and relevant section indexes, follow promising note
-links, and use a focused `rg` search if necessary. If no
+Load the `persistent-memory` skill and follow its focused recall workflow. If no
 topic or question was provided, ask what should be recalled.
 
-Summarize only relevant saved facts, cite the note paths, and distinguish
-potentially stale memory from information verified against current sources.
-Say explicitly if no matching memory exists. This is a read-only memory
-operation; do not create a revision or modify notes.
+Summarize only relevant saved knowledge, cite note paths, and distinguish
+potentially stale library material from facts verified against current sources.
+Say explicitly when no matching knowledge exists. This is read-only: do not create
+a revision or modify the library.

@@ -8,7 +8,7 @@ tug = ["bookmark", "move", "--from", "heads(::@ & bookmarks())", "--to", "closes
 
 [ui]
 default-command = "status"
-diff-formatter = "difft"
+diff-formatter = ":color-words"
 
 [merge-tools.difft]
 diff-args = ["--color=always", "--syntax-highlight=off", "$left", "$right"]

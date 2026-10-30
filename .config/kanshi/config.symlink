@@ -18,3 +18,8 @@ profile dual {
     output eDP-1 enable position 0,0
     output "Dell Inc. DELL U3818DW *" enable position 1920,0
 }
+
+profile hdmi {
+    output eDP-1 enable position 0,0
+    output HDMI-A-1 enable position 0,0
+}

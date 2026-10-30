@@ -37,6 +37,14 @@ log = '(trunk()..@):: | (trunk()..@)-'
 [templates]
 log = 'log_real_compact'
 
+log_node = '''
+  if(
+    self && empty && !current_working_copy && !immutable && !conflict,
+    label("mutable", "·"),
+    builtin_log_node
+  )
+'''
+
 [template-aliases]
 'commit_timestamp(commit)' = 'commit.author().timestamp()'
 
@@ -56,7 +64,7 @@ if(commit.root(),
       commit.tags(),
       commit.working_copies(),
       format_commit_labels(commit),
-      if(commit.empty(), empty_commit_marker),
+      if(current_working_copy && commit.empty(), empty_commit_marker),
       if(commit.author().email().local() != "dcreager", commit.author().email()),
       if(commit.description(),
         commit.description().first_line(),

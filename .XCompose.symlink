@@ -64,8 +64,10 @@ include "%L"
 <Multi_key> <underscore> <t> : "ₜ"     U209C      # subscript lowercase t
 
 # Emoji
-<Multi_key> <0> <0> : "💯"     U1F4AF   # 100
-<Multi_key> <u> <p> : "👍"     U1F44D   # thumbs up
+<Multi_key> <0> <0>                 : "💯"     U1F4AF   # 100
+<Multi_key> <plus> <1>              : "👍"     U1F44D   # thumbs up
+<Multi_key> <u> <p>                 : "☝️"              # thumbs up
+<Multi_key> <colon> <parenright>    : "😀"     U1F600   # grinning face
 
 # GREEK CAPITAL LETTERS
 <Multi_key> <G> <A> : "Α"      U0391    # GREEK CAPITAL LETTER ALPHA

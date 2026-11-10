@@ -33,7 +33,8 @@ label {
 }
 
 #workspaces button {
-    padding: 0 2px;
+    min-width: 0;
+    padding: 0 8px;
     background-color: transparent;
     color: #ffffff;
 }
